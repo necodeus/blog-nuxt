@@ -1,17 +1,19 @@
-export const getBlogPostById = cachedFunction(async (id: string) => {
-    const data: any = await $fetch(`http://admin.local/api/blog/posts/${id}`)
+import { PAPER_API_URL } from '../config/env'
 
-    return { id, data, cachedAt: Date.now()}
+export const getBlogPostById = cachedFunction(async (id: string) => {
+    const data: any = await $fetch(`${PAPER_API_URL}/posts/${id}`)
+
+    return { id: `post-${id}`, data, cachedAt: Date.now()}
 }, {
     maxAge: 3,
     name: 'getBlogPostById',
     getKey: (id: string) => id
 })
 
-export const getBlogPosts = cachedFunction(async (id: string) => {
-    const data: any = await $fetch(`http://admin.local/api/blog/posts`)
+export const getBlogPosts = cachedFunction(async () => {
+    const data: any = await $fetch(`${PAPER_API_URL}/posts`)
 
-    return { id, data, cachedAt: Date.now()}
+    return { id: 'posts', data, cachedAt: Date.now()}
 }, {
     maxAge: 3,
     name: 'getBlogPosts',

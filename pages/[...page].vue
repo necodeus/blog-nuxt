@@ -8,10 +8,10 @@ definePageMeta({
 
 const route = useRoute();
 
-const postId = ref(route.meta.link?.data?.content_id);
+const postId = ref(route.meta.link?.contentId);
 
-const { data: post, pending: pendingPost } = useFetch(`/api/posts/${postId.value}`, {
-  transform: (data) => data?.data?.data
+const { data, pending: pendingPost } = useFetch(`/api/posts/${postId.value}`, {
+  transform: (data) => data?.data
 });
 
 const isProfileVisible = ref(false);
@@ -28,25 +28,26 @@ onMounted(() => {
 
 <template>
   <Head v-if="!pendingPost">
-    <Title>{{ post.title }} - blog.necodeo.com</Title>
-    <Meta name="description" :content="post.teaser" />
+    <Title>{{ data.post.title }} - blog.necodeo.com</Title>
+    <Meta name="description" :content="data.post.teaser" />
   </Head>
 
   <BlogPostHeaderLoading v-if="pendingPost" />
   <BlogPostHeader v-else
-    :image="'https://blog.necodeo.com/uploads/backgrounds/01.jpg'"
-    :name="post.title"
-    :timeAgo="moment(post.creation_dt).fromNow()"
-    :teaser="post.teaser"
+    :image="data?.post?.mainImageUrl"
+    :name="data?.post?.title"
+    :timeAgo="moment(data?.post?.createdAt).fromNow()"
+    :teaser="data?.post?.teaser"
+    :authorName="data?.postPublisher?.displayName"
   />
 
   <BlogPostContentLoading v-if="pendingPost" />
-  <BlogPostContent v-else :content="post.full_content_md" />
+  <BlogPostContent v-else :content="data?.post?.cachedFragments" />
 
   <div v-observe-visibility="{ callback: setProfileVisibility, once: true }">
     <div class="component-border-horizontal font-jost p-[30px]">
       <SectionTitle><b>Więcej</b> o autorze</SectionTitle>
-      <BlogPostAuthorFilled :profile="post?.author_profile || {}" />
+      <BlogPostAuthorFilled :profile="data?.postPublisher || {}" />
       <!-- <BlogPostAuthorOnDemand :loadProfile="isProfileVisible" /> -->
     </div>
   </div>

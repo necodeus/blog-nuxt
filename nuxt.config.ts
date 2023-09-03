@@ -1,28 +1,3 @@
-let publicConfig: any = {}
-
-switch (process.env.NODE_ENV) {
-    case 'production':
-        publicConfig = {
-            API_BASE: 'http://admin.local/api',
-            API_USER_TOKEN: '',
-            // WEBSOCKET_BASE: 'wss://blog.necodeo.com/player',
-        };
-        break;
-    // case 'development':
-    //     publicEnvs = {
-    //         API_BASE: '',
-    //         WEBSOCKET_BASE: '',
-    //     };
-    //     break;
-    default:
-        publicConfig = {
-            API_BASE: 'http://admin.local/api',
-            API_USER_TOKEN: '',
-            WEBSOCKET_BASE: 'ws://localhost:1337',
-        };
-        break;
-}
-
 export default defineNuxtConfig({
     css: [
         '@/assets/css/main.css',
@@ -42,7 +17,9 @@ export default defineNuxtConfig({
     //         },
     //     },
     // },
-    devtools: { enabled: true },
+    devtools: {
+        enabled: true,
+    },
     pages: true,
     nitro: {
       // storage: {
@@ -63,7 +40,6 @@ export default defineNuxtConfig({
         },
     },
     runtimeConfig: {
-        public: publicConfig,
         // private: {
         //     API_KEY: process.env.API_KEY,
         // },
