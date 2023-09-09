@@ -1,16 +1,16 @@
 <template>
     <div class="flex items-center mt-2.5">
         <div class="mobile-photo min-w-[120px] max-w-[120px] min-h-[120px] max-h-[120px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
-            :style="`background-image: url(${profile.image_uri})`"></div>
+            :style="`background-image: url(${profile.avatarUrl})`"></div>
         <div class="ml-[20px] pr-[20px]">
-            <div class="uppercase text-[20px] tracking-[1px]">{{ profile.name }}</div>
+            <div class="uppercase text-[20px] tracking-[1px]">{{ profile.displayName }}</div>
             <div v-if="!descriptionBelow" class="mobile-description mt-[10px] text-[17px]">
-                {{ profile.description }}
+                {{ profile.bio }}
             </div>
         </div>
     </div>
     <div v-if="descriptionBelow" class="mobile-description text-[17px] mt-[10px]">
-        {{ profile.description }}
+        {{ profile.bio }}
     </div>
 </template>
 

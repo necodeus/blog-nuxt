@@ -1,7 +1,7 @@
 <script setup>
-const { data: posts, pending: pendingPosts } = useFetch(`/api/posts`, {
+const { data, pending: pendingPosts } = useFetch(`/api/posts`, {
   transform: (data) => {
-    return data?.data?.data;
+    return data?.data;
   }
 });
 
@@ -24,7 +24,7 @@ definePageMeta({
   <section class="component-padding component-border-horizontal">
     <SectionTitle><b>Lista</b> wpisów</SectionTitle>
 
-    <BlogPostsListLoading v-if="pendingPosts || !posts?.length" :repeats="1" />
-    <BlogPostsList v-else :posts="posts" />
+    <BlogPostsListLoading v-if="pendingPosts || !data?.posts?.length" :repeats="1" />
+    <BlogPostsList v-else :posts="data?.posts" />
   </section>
 </template>

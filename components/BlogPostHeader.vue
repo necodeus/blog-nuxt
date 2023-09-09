@@ -17,7 +17,7 @@
             </div>
 
             <div class="flex mt-[10px]">
-                <div class="text-[17px] opacity-50 italic">~ Dawid Smulewicz</div>
+                <div class="text-[17px] opacity-50 italic">~ {{ authorName }}</div>
             </div>
         </div>
     </div>
@@ -41,6 +41,10 @@ const props = defineProps({
         type: String,
         required: true
     },
+    authorName: {
+        type: String,
+        required: true
+    }
 })
 </script>
 

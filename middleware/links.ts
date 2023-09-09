@@ -3,17 +3,19 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return;
     }
 
-    const { data: link } = await $fetch(`/api/links?url=${to.path}`).catch(() => { return { data: null } }) as any
+    const { data } = await $fetch(`/api/links?url=${to.path}`).catch(() => { return { data: null } }) as any
+    const link = data.links[0] ?? null
+
     to.meta.link = link
 
-    const contentType = link?.data?.content_type;
+    const contentType = link?.contentType;
 
-    if (!link?.data) {
+    if (!link.contentId) {
         throw createError({ statusCode: 404, message: 'Ta strona prowadzi do nikąd!' })
     }
 
-    const responseCode = link?.data?.response_code;
-    const responseLocation = link?.data?.response_location;
+    const responseCode = link?.httpResStatusCode;
+    const responseLocation = link?.extraData?.responseLocation;
 
     if (contentType === 'INTERNAL_REDIRECTION') {
         return navigateTo(responseLocation, { redirectCode: responseCode });

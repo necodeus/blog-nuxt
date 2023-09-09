@@ -8,7 +8,7 @@
         v-else
         ref="target"
         :profile="profile"
-        :descriptionBelodsaadsw="descriptionBelow"
+        :descriptionBelow="descriptionBelow"
     />
 </template>
 
