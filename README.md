@@ -2,7 +2,7 @@
 
 ## Description
 
-Paper is an elegantly designed blog website, meticulously crafted with modern web technologies like Nuxt.js, Pinia, and Tailwind CSS. The website relies on a custom API for its functionality, ensuring a seamless user experience. Keep in mind that it's essential to replace the API with your own for personalized content.
+Paper is an elegantly designed blog website, meticulously crafted with modern web technologies like Nuxt.js, Pinia, and Tailwind CSS. The website relies on a custom API for its functionality, ensuring a seamless user experience.
 
 ## Packages
 
