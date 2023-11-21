@@ -8,24 +8,24 @@
                 <div class="w-[384px] p-[7px] box-content">
                     <Advertisement />
                 </div>
-                <SimpleBar data-simplebar-auto-hide="true" class="component-border-vertical">
+                <simplebar data-simplebar-auto-hide="true" class="component-border-vertical">
                     <div class="main">
                         <ErrorHeader :code="error.statusCode" :message="error.message" />
-                        <Spotify v-if="stackMode" />
+                        <!-- <Spotify v-if="stackMode" /> -->
                     </div>
-                </SimpleBar>
-                <SimpleBar data-simplebar-auto-hide="true" class="component-border-vertical" v-if="!stackMode">
+                </simplebar>
+                <simplebar data-simplebar-auto-hide="true" class="component-border-vertical" v-if="!stackMode">
                     <div class="sidebar">
-                        <Spotify />
+                        <!-- <Spotify /> -->
                     </div>
-                </SimpleBar>
+                </simplebar>
             </div>
         </div>
     </div>
 </template>
-  
+
 <script setup>
-import { SimpleBar } from "simplebar-vue3";
+import simplebar from "simplebar-vue";
 import "simplebar/dist/simplebar.min.css";
 
 // import { usePlayerStore } from "./store/player";
@@ -45,11 +45,8 @@ const setProperMode = (width = 900) => {
 };
 
 onMounted(() => {
-    if (!process.client) {
-        return;
-    }
-
     window?.addEventListener("resize", () => {
+        console.log('resize')
         setProperMode(900);
     });
 
@@ -708,4 +705,3 @@ defineProps({
 .simplebar-track.simplebar-vertical {
     width: 8px;
 }</style>
-  

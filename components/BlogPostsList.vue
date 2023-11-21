@@ -1,22 +1,16 @@
 <template>
     <ul class="font-jost">
-        <li class="block my-[20px]" v-for="(post, p) in posts" v-bind:key="p">
-            <h1 class="flex my-[10px]">
+        <li style="margin: 5px" class="block relative p-[40px]" v-for="(post, p) in posts" v-bind:key="p">
+            <h1 class="flex mb-[40px]">
                 <span class="text-[38px]">{{ post.title }}</span>
             </h1>
 
-            <div class="flex items-center my-[10px]">
-                <span class="text-[17px] font-medium mr-[5px]">Opublikowano</span>
-                <span class="text-[17px]">{{ moment(post.createdAt).fromNow() }}</span>
+            <div class="flex items-center mt-[40px]">
+                <span class="text-[16px]"><b style="font-weight: 600">Dawid</b></span>
+                <span class="text-[16px]">, {{ moment(post.created_at).fromNow() }}</span>
             </div>
 
-            <div class="flex my-[10px]">
-                <span class="text-[22px] tracking-[1px]">{{ post.teaser }}</span>
-            </div>
-
-            <div class="flex my-[10px] text-[19px] tracking-[1px]">
-                <ReadMore :url="post.link?.httpReqUri" />
-            </div>
+            <NuxtLink :to="post.slug" style="width: 100%; height: 100%; top: 0; bottom: 0; right: 0; left: 0; position: absolute;"></NuxtLink>
         </li>
     </ul>
 </template>

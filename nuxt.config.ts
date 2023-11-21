@@ -5,45 +5,17 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
-        '@pinia/nuxt',
     ],
-    // vite: {
-    //     server: {
-    //         watch: {
-    //             usePolling: true,
-    //         },
-    //         hmr: {
-    //             port: 3040,
-    //         },
-    //     },
-    // },
     devtools: {
         enabled: true,
     },
     pages: true,
-    nitro: {
-      // storage: {
-      //   cache: {
-      //     driver: 'redis',
-      //   },
-      // },
-      // devStorage: {
-      //   cache: {
-      //     driver: 'memory',
-      //   },
-      // },
-    },
     vite: {
-        // @ts-ignore
         ssr: {
             noExternal: ["moment"],
         },
     },
-    runtimeConfig: {
-        // private: {
-        //     API_KEY: process.env.API_KEY,
-        // },
-    },
+    runtimeConfig: { },
     app: {
         head: {
             htmlAttrs: {
@@ -54,7 +26,6 @@ export default defineNuxtConfig({
             script: [
                 {
                     hid: 'adsbygoogle-script',
-                    // type: 'text/partytown',
                     src: 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-google6',
                     async: true,
                     'data-ad-client': 'ca-google',

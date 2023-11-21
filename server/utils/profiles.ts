@@ -1,5 +1,7 @@
+import { PAPER_API_URL } from "../config/env"
+
 export const getProfileById = cachedFunction(async (id: string) => {
-    const data: any = await $fetch(`http://admin.local/api/blog/profiles/${id}/details`)
+    const data: any = await $fetch(`${PAPER_API_URL}/profiles/${id}/details`)
 
     return { id, data, cachedAt: Date.now()}
 }, {

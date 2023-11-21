@@ -3,25 +3,35 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return;
     }
 
-    const { data } = await $fetch(`/api/links?url=${to.path}`).catch(() => { return { data: null } }) as any
-    const link = data.links[0] ?? null
+    const { data: r1 } = await useFetch(`/api/pages?url=${to.path}`) as any
 
-    to.meta.link = link
+    const { data: { page } } = unref(r1)
 
-    const contentType = link?.contentType;
-
-    if (!link.contentId) {
-        throw createError({ statusCode: 404, message: 'Ta strona prowadzi do nikąd!' })
+    if (!page) {
+        throw createError({
+            statusCode: 500,
+            message: 'Coś poszło nie tak!'
+        })
     }
 
-    const responseCode = link?.httpResStatusCode;
-    const responseLocation = link?.extraData?.responseLocation;
+    switch (page.content_type) {
+        case 'POST':
+            to.meta.content_id = page.content_id
+            return;
+        case 'REDIRECTION':
+            const { data: r2 } = await useFetch(`/api/redirections/${page.content_id}`) as any
+            const { data: { redirection } } = unref(r2)
 
-    if (contentType === 'INTERNAL_REDIRECTION') {
-        return navigateTo(responseLocation, { redirectCode: responseCode });
+            const { link, code, is_external } = redirection
+
+            return navigateTo(link, {
+                redirectCode: code,
+                external: is_external,
+            });
     }
 
-    if (contentType === 'EXTERNAL_REDIRECTION') {
-        return navigateTo(responseLocation, { redirectCode: responseCode, external: true });
-    }
+    throw createError({
+        statusCode: 404,
+        message: 'Ta strona prowadzi do nikąd!'
+    })
 })

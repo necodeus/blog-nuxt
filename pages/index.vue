@@ -21,10 +21,8 @@ definePageMeta({
     <Meta name="description" content="Blog" />
   </Head>
 
-  <section class="component-padding component-border-horizontal">
-    <SectionTitle><b>Lista</b> wpisów</SectionTitle>
-
-    <BlogPostsListLoading v-if="pendingPosts || !data?.posts?.length" :repeats="1" />
+  <section class="component-padding component-border-horizontal" style="margin: 0; padding: 0;">
+    <BlogPostsListLoading :repeats="10" v-if="pendingPosts || !data?.posts?.length" />
     <BlogPostsList v-else :posts="data?.posts" />
   </section>
 </template>

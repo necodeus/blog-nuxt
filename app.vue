@@ -8,50 +8,42 @@
         <div class="w-[384px] p-[7px] box-content">
           <Advertisement />
         </div>
-        <SimpleBar data-simplebar-auto-hide="true" class="component-border-vertical">
+        <simplebar data-simplebar-auto-hide="false" class="component-border-vertical">
           <div class="main">
             <NuxtPage />
 
-            <!-- <div class="component-padding component-border-horizontal" v-if="stackMode">
-              <SectionTitle><b>Spotify</b> na żywo</SectionTitle>
-              <Spotify />
-            </div> -->
-          </div>
-        </SimpleBar>
-        <SimpleBar
-          data-simplebar-auto-hide="true"
-          class="component-border-vertical"
-          v-if="!stackMode"
-        >
-          <!-- <div class="sidebar">
-            <div class="component-padding component-border-horizontal">
-              <SectionTitle><b>Spotify</b> na żywo</SectionTitle>
-              <Spotify />
+            <div class="component-padding component-border-horizontal" v-if="isMobile">
+              <SectionTitle><b>Inne</b> artykuły</SectionTitle>
             </div>
-          </div> -->
-        </SimpleBar>
+          </div>
+        </simplebar>
+        <simplebar
+          data-simplebar-auto-hide="false"
+          class="component-border-vertical"
+          v-if="!isMobile"
+        >
+          <div class="sidebar">
+            <div class="component-padding component-border-horizontal">
+              <SectionTitle><b>Inne</b> artykuły</SectionTitle>
+            </div>
+          </div>
+        </simplebar>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import { SimpleBar } from "simplebar-vue3";
+import simplebar from "simplebar-vue";
 import "simplebar/dist/simplebar.min.css";
 
-// import { usePlayerStore } from "./store/player";
-// const playerStore = usePlayerStore();
-
-// let { data } = await useFetch("/api/spotify/player");
-// playerStore.updateCurrentPlayer(data);
-
-let stackMode = ref(false);
+let isMobile = ref(false);
 
 const setProperMode = (width = 900) => {
   if (window.innerWidth <= width) {
-    stackMode.value = true;
+    isMobile.value = true;
   } else {
-    stackMode.value = false;
+    isMobile.value = false;
   }
 };
 
@@ -60,7 +52,8 @@ onMounted(() => {
     return;
   }
 
-  window?.addEventListener("resize", () => {
+  window.addEventListener("resize", () => {
+    console.log('resize')
     setProperMode(900);
   });
 

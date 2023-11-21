@@ -8,9 +8,7 @@ definePageMeta({
 
 const route = useRoute();
 
-const postId = ref(route.meta.link?.contentId);
-
-const { data, pending: pendingPost } = useFetch(`/api/posts/${postId.value}`, {
+const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`, {
   transform: (data) => data?.data
 });
 
@@ -34,21 +32,21 @@ onMounted(() => {
 
   <BlogPostHeaderLoading v-if="pendingPost" />
   <BlogPostHeader v-else
-    :image="data?.post?.mainImageUrl"
-    :name="data?.post?.title"
-    :timeAgo="moment(data?.post?.createdAt).fromNow()"
-    :teaser="data?.post?.teaser"
-    :authorName="data?.postPublisher?.displayName"
+    :image="data?.post?.main_image_url ?? ''"
+    :name="data?.post?.title ?? ''"
+    :timeAgo="moment(data?.post?.created_at).fromNow()"
+    :teaser="data?.post?.teaser ?? ''"
+    :authorName="data?.postPublisher?.displayName ?? ''"
+    :postId="data?.post?.id ?? ''"
+    :rating="data?.stars ?? {}"
   />
 
   <BlogPostContentLoading v-if="pendingPost" />
-  <BlogPostContent v-else :content="data?.post?.cachedFragments" />
+  <BlogPostContent v-else :content="data?.post?.content ?? ''" />
 
   <div v-observe-visibility="{ callback: setProfileVisibility, once: true }">
     <div class="component-border-horizontal font-jost p-[30px]">
-      <SectionTitle><b>Więcej</b> o autorze</SectionTitle>
-      <BlogPostAuthorFilled :profile="data?.postPublisher || {}" />
-      <!-- <BlogPostAuthorOnDemand :loadProfile="isProfileVisible" /> -->
+      <BlogPostAuthorOnDemand :loadProfile="isProfileVisible" />
     </div>
   </div>
 </template>

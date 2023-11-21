@@ -14,7 +14,7 @@ and much more... (see package.json)
 ## Installation
 
 ```bash
-nvm install v18.12.1
+nvm install v20.9.0
 npm install -g yarn
 yarn
 ```

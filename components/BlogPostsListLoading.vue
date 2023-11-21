@@ -1,21 +1,17 @@
 <template>
     <ul class="font-jost">
-        <li class="block my-[20px]" v-for="p in repeats" :key="p">
-            <h1 class="flex my-[10px]">
+        <li style="margin: 5px" class="block p-[40px]" v-for="p in repeats" :key="p">
+            <h1 class="flex mb-[40px]">
                 <span class="text-[38px] animated-background">Mauris sed pulvinar ipsum.</span>
             </h1>
 
-            <div class="flex items-center my-[10px]">
-                <span class="text-[17px] font-medium mr-[5px] animated-background">Opublikowano</span>
-                <span class="text-[17px] animated-background">nieznany czasu temu</span>
+            <div class="flex items-center mt-[40px]">
+                <div class="text-[16px] animated-background">Anonim</div>
+                <div class="text-[16px] animated-background ml-[5px]">nieznany czas temu</div>
             </div>
 
             <div class="flex my-[10px]">
                 <span class="text-[22px] tracking-[1px] animated-background">Neque eos at et non aut. Aut sed qui rerum.</span>
-            </div>
-
-            <div class="flex my-[10px]">
-                <ReadMoreLoading />
             </div>
         </li>
     </ul>
