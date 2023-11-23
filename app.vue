@@ -12,9 +12,7 @@
           <div class="main">
             <NuxtPage />
 
-            <div class="component-padding component-border-horizontal" v-if="isMobile">
-              <SectionTitle><b>Inne</b> artykuły</SectionTitle>
-            </div>
+            <OtherPosts v-if="isMobile" />
           </div>
         </simplebar>
         <simplebar
@@ -23,9 +21,7 @@
           v-if="!isMobile"
         >
           <div class="sidebar">
-            <div class="component-padding component-border-horizontal">
-              <SectionTitle><b>Inne</b> artykuły</SectionTitle>
-            </div>
+            <OtherPosts />
           </div>
         </simplebar>
       </div>

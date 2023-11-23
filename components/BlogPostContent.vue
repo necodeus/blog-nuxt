@@ -5,13 +5,29 @@
     ></div>
 </template>
 
-<script lang="ts" setup>
+<script setup>
 import MarkdownIt from 'markdown-it'
 
-const md = new MarkdownIt()
-const convertMarkdownToHTML = (content: any) => md.render(content);
+import hljs from 'highlight.js'
+import 'highlight.js/styles/a11y-dark.css'
 
-const props = defineProps({
+const md = new MarkdownIt({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return '<pre class="hljs"><code>' +
+               hljs.highlight(lang, str, true).value +
+               '</code></pre>';
+      } catch (__) {}
+    }
+
+    return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
+  }
+})
+
+const convertMarkdownToHTML = (content) => md.render(content);
+
+defineProps({
     content: {
         type: String,
         required: true,
@@ -24,15 +40,21 @@ const props = defineProps({
     margin: 0;
 }
 
-.c-content pre code {
-    padding: 23px;
+.c-content pre.hljs {
+    padding: 42px 21px;
     margin: 7px;
+    overflow: auto;
+    border-radius: 14px;
 }
 
-.c-content pre code,
+.c-content pre.hljs code,
 .c-content pre code * {
     font-family: Consolas, Monaco, monospace;
     font-size: 12px;
+}
+
+.c-content h2 {
+    font-size: 30px;
 }
 
 .c-content  table,
@@ -62,5 +84,23 @@ const props = defineProps({
 
 .c-content a {
     color: #7400ff;
+}
+
+.c-content blockquote p {
+    margin: 0;
+}
+
+.c-content blockquote {
+    background-color: #c4c4c41a;
+    border-radius: 14px;
+    font-style: italic;
+    margin: 7px;
+    padding: 42px 21px;
+    color: #575757;
+}
+
+.c-content blockquote p:last-child {
+    margin-top: 28px;
+    font-weight: 500;
 }
 </style>

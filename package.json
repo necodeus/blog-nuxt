@@ -23,5 +23,8 @@
     "simplebar": "^6.2.5",
     "simplebar-vue": "^2.3.3",
     "vue-observe-visibility": "^1.0.0"
+  },
+  "dependencies": {
+    "highlight.js": "^11.9.0"
   }
 }

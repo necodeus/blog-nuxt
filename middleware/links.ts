@@ -3,6 +3,9 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return;
     }
 
+    // przydałoby się wysyłać zapytanie po listę wpisów (w zakładce "inne artykuły")
+
+    // może robić to na etapie głównego komponentu aplikacji?
     const { data: r1 } = await useFetch(`/api/pages?url=${to.path}`) as any
 
     const { data: { page } } = unref(r1)
