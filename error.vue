@@ -46,7 +46,6 @@ const setProperMode = (width = 900) => {
 
 onMounted(() => {
     window?.addEventListener("resize", () => {
-        console.log('resize')
         setProperMode(900);
     });
 

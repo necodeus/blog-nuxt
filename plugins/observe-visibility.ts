@@ -1,13 +1,28 @@
+export default defineNuxtPlugin((nuxtApp) => {
+    nuxtApp.vueApp.directive('observe-visibility', {
+        mounted(el, binding) {
+            if (typeof IntersectionObserver === 'undefined') {
+                console.error('IntersectionObserver API is not available in your browser.')
+                return
+            }
 
-import { ObserveVisibility } from 'vue-observe-visibility'
+            const observer = new IntersectionObserver((entries: any, observer: any): any => {
+                const isVisible = entries.some((entry: any) => entry.isIntersecting)
+                binding.value(isVisible, (text: any) => {
+                    observer.disconnect()
+                })
+            }, {
+                threshold: binding.arg || 0
+            } as any);
 
-export default defineNuxtPlugin((app) => {
-    app.vueApp.directive('observe-visibility', {
-        beforeMount: (el: any, binding: any, vnode: any) => {
-            vnode.context = binding.instance
-            ObserveVisibility.bind(el, binding, vnode)
+            observer.observe(el);
+
+            el._vue_visibilityObserver = observer;
         },
-        update: ObserveVisibility.update,
-        unmounted: ObserveVisibility.unbind,
-    } as any);
+        unmounted(el) {
+            if (el._vue_visibilityObserver) {
+                el._vue_visibilityObserver.disconnect();
+            }
+        }
+    });
 });

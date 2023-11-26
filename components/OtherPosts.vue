@@ -2,7 +2,7 @@
 	<div class="other-posts component-padding component-border-horizontal font-jost" v-show="!pending">
 		<SectionTitle><b>Inne</b> wpisy</SectionTitle>
 		<ul>
-			<li class="text-[20px]" v-for="(post, p) in filteredPosts" v-bind:key="p">
+			<li class="text-[20px]" v-for="(post, p) in filteredPosts ?? []" v-bind:key="p">
 				<NuxtLink :to="post.slug">{{ post.title }}</NuxtLink>
 			</li>
 		</ul>
@@ -20,9 +20,11 @@ const {
 
 const route = useRoute()
 
-const filteredPosts = posts.filter((post) => post.content_id !== route.meta.content_id)
-console.log(filteredPosts)
+const filteredPosts = ref(posts.filter((post) => post.content_id !== route.meta.content_id))
 
+watch(() => route.meta.content_id, (newVal, oldVal) => {
+	filteredPosts.value = posts.filter((post) => post.content_id !== route.meta.content_id)
+});
 </script>
 
 <style>

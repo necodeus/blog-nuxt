@@ -1,20 +1,24 @@
 <template>
     <div class="flex items-center mt-2.5">
-        <div class="mobile-photo min-w-[120px] max-w-[120px] min-h-[120px] max-h-[120px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
-            :style="`background-image: url(${profile.avatarUrl})`"></div>
+        <div class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
+            :style="`background-image: url(${IMAGES_URL}/${profile.image_id_avatar})`"></div>
         <div class="ml-[20px] pr-[20px]">
-            <div class="uppercase text-[20px] tracking-[1px]">{{ profile.displayName }}</div>
-            <div v-if="!descriptionBelow" class="mobile-description mt-[10px] text-[17px]">
+            <div class="text-[20px] tracking-[1px] font-medium">{{ profile.display_name }}</div>
+            <div v-if="!descriptionBelow" class="mobile-description text-[17px]">
                 {{ profile.bio }}
             </div>
         </div>
     </div>
-    <div v-if="descriptionBelow" class="mobile-description text-[17px] mt-[10px]">
+    <div v-if="descriptionBelow" class="mobile-description text-[17px]">
         {{ profile.bio }}
     </div>
+    <!-- TODO: dodać do sekcji link "Zobacz inne wpisy tego autora" -->
+    <!-- TODO: dodać do sekcji linki do GitHub i LinkedIn -->
 </template>
 
-<script lang="ts" setup>
+<script setup>
+import { IMAGES_URL } from '../server/config/env'
+
 defineProps({
     profile: {
         type: Object,

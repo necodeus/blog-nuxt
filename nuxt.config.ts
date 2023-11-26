@@ -2,6 +2,9 @@ export default defineNuxtConfig({
     css: [
         '@/assets/css/main.css',
     ],
+    plugins: [
+        '~/plugins/observe-visibility.ts',
+    ],
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',

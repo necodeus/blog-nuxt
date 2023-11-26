@@ -1,24 +1,23 @@
 <template>
     <div class="component-border-horizontal font-jost">
         <div class="relative">
-            <div
-                class="background"
-                :style="{ backgroundImage: `url(${ image })` }"
-            ></div>
-            <div class="!pt-[200px] relative bg-[linear-gradient(transparent_25%,white_50%)]">
+            <picture>
+                <source media="(min-width: 768px)" :srcset="image" />
+                <img class="background" :src="image" />
+            </picture>
+            <div class="!pt-[350px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                 <div class="m-[20px] absolute z-[1] right-0 top-0 flex">
                     <Back />
                 </div>
-                <div class="component-padding relative !pb-[10px]">
-                    <h1 class="flex mb-[10px]">
+                <div class="component-padding relative !py-0">
+                    <h1 class="flex">
                         <span class="text-[38px]">{{ name }}</span>
                     </h1>
-
-                    <Stars :initialRating="rating.average" :postId="postId" />
                 </div>
             </div>
         </div>
-        <div class="component-padding relative !mt-0 !pt-0">
+        <div class="component-padding relative !pt-[10px]" style="background-color: white;">
+            <Stars class="mb-[10px]" :initialRating="rating.average" :postId="postId" />
             <span class="text-[20px] tracking-[1px]">{{ teaser }}</span>
         </div>
     </div>
@@ -64,12 +63,16 @@ const props = defineProps({
     background-color: #eee;
     background-size: cover;
     background-position: center;
-    opacity: 0.5;
+    opacity: 0.6;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     position: absolute;
-    margin: 7px 7px 0 7px;
+    margin: 7px 7px 7px 7px;
+    width: calc(100% - 7px * 2);
+    height: 100%;
+    display: block;
+    object-fit: cover;
 }
 </style>
