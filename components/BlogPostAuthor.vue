@@ -18,7 +18,6 @@
 
 <script setup>
 const config = useRuntimeConfig();
-console.log('blogpostauthor', config)
 const IMAGES_URL = config.public.IMAGES_URL;
 
 defineProps({
