@@ -17,7 +17,9 @@
 </template>
 
 <script setup>
-import { IMAGES_URL } from '../server/config/env'
+const config = useRuntimeConfig();
+console.log('blogpostauthor', config)
+const IMAGES_URL = config.public.IMAGES_URL;
 
 defineProps({
     profile: {
