@@ -22,9 +22,7 @@
     "moment": "^2.29.4",
     "nuxt": "^3.8.2",
     "simplebar": "^6.2.5",
-    "simplebar-vue": "^2.3.3"
-  },
-  "dependencies": {
+    "simplebar-vue": "^2.3.3",
     "twemoji": "^14.0.2"
   }
 }
