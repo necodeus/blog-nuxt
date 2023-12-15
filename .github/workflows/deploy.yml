@@ -39,7 +39,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name:  ${{ github.ref_name }}_${{ steps.semantic.outputs.new_version }}
+          tag_name: ${{ steps.semantic.outputs.new_version }}
           release_name: "Release for production v${{ steps.semantic.outputs.new_version }} - $(date +'%Y-%m-%d')"
           draft: false
           prerelease: false
