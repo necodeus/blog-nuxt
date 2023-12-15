@@ -10,6 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       upload_url: ${{ steps.create_release.outputs.upload_url }}
+      new_tag: ${{ steps.tag.outputs.tag }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -28,14 +29,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
+      - name: Generate Tag
+        id: tag
+        run: echo "::set-output name=tag::$(echo production-v$(npx semantic-release --dry-run | grep 'The next release version is' | sed 's/.*is //')-$(date +'%Y%m%d'))"
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.extract_tag.outputs.tag }}
-          release_name: ${{ github.ref_name }} v${{ steps.extract_tag.outputs.tag }} - ${{ steps.current_date.outputs.date }}
+          tag_name: ${{ steps.tag.outputs.tag }}
+          release_name: Release ${{ steps.tag.outputs.tag }}
           draft: false
           prerelease: false
 
@@ -47,7 +52,7 @@ jobs:
         id: extract_tag
         run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
 
-  build_and_deploy:
+  build_release:
     needs: semantic_release
     runs-on: ubuntu-latest
     steps:
