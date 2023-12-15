@@ -6,7 +6,7 @@ on:
       - production
 
 jobs:
-  build_and_package:
+  build_and_deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -26,16 +26,12 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Archive Output Directory
-        run: tar -czf production_output_$(date +%s).tar.gz .output
-
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v2
-        with:
-          name: production-build
-          path: production_output_*.tar.gz
+      - name: Archive Built Output
+        run: |
+          tar -czf production_output_$(date +%s).tar.gz .output
 
       - name: Create Release
+        id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -44,4 +40,14 @@ jobs:
           release_name: Release ${{ github.run_number }}
           draft: false
           prerelease: false
-          body: ""
+          body: "Production build artifacts"
+
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }}
+          asset_path: ./production_output_$(date +%s).tar.gz
+          asset_name: production_output.tar.gz
+          asset_content_type: application/gzip
