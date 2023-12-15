@@ -6,9 +6,30 @@ on:
       - production
 
 jobs:
-  build_and_deploy:
+  semantic_release:
     runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          fetch-depth: 0 # Important to fetch all commits for semantic-release to work
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.9.0'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Semantic Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }} # If you're publishing to npm
+
+  build_and_deploy:
+    needs: semantic_release
+    runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
 
@@ -26,21 +47,19 @@ jobs:
       - name: Build
         run: yarn build
 
-      - name: Setup Environment Variables
+      - name: Setup Environment Variables for Artifacts
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
 
       - name: Archive Built Output
         run: tar -czf ${{ env.ARCHIVE_NAME }} .output
 
-      - name: Create Release
-        uses: softprops/action-gh-release@v1
+      - name: Upload Release Asset
+        uses: actions/upload-release-asset@v1
+        if: success() # Ensure this runs only if the previous steps succeed
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.run_number }}
-          name: Release ${{ github.run_number }}
-          draft: false
-          prerelease: false
-          body: "Production build artifacts"
-          files: ${{ env.ARCHIVE_NAME }}
-          allow_empty_upload: true
+          upload_url: ${{ needs.semantic_release.outputs.upload_url }} # Adjust this based on your semantic-release configuration
+          asset_path: ${{ env.ARCHIVE_NAME }}
+          asset_name: ${{ env.ARCHIVE_NAME }}
+          asset_content_type: application/gzip
