@@ -8,9 +8,6 @@ on:
 jobs:
   semantic_release:
     runs-on: ubuntu-latest
-    outputs:
-      upload_url: ${{ steps.create_release.outputs.upload_url }}
-      new_tag: ${{ steps.tag.outputs.tag }}
     steps:
       - uses: actions/checkout@v2
         with:
@@ -28,30 +25,9 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Generate Tag
-        id: tag
-        run: |
-          NEW_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed 's/.*is //')
-          echo "::set-output name=tag::production-v${NEW_VERSION}-$(date +'%Y%m%d')"
-
-      - name: Create and Push Tag
-        run: |
-          git tag ${{ steps.tag.outputs.tag }}
-          git push origin ${{ steps.tag.outputs.tag }}
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-
-      - name: Get Current Date
-        id: current_date
-        run: echo "::set-output name=date::$(date +'%Y-%m-%d')"
-
-      - name: Extract Tag
-        id: extract_tag
-        run: echo "::set-output name=tag::$(git describe --tags --abbrev=0)"
-
-  build_release:
+  build_and_deploy:
     needs: semantic_release
     runs-on: ubuntu-latest
     steps:
