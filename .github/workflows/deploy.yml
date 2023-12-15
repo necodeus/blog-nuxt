@@ -1,4 +1,4 @@
-name: Deployy
+name: Deploy
 
 on:
   push:
@@ -44,7 +44,7 @@ jobs:
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
 
       - name: Archive Built Output
-        run: tar -czf ${{ env.ARCHIVE_NAME }} .output
+        run: tar -czf ${{ env.ARCHIVE_NAME }} -C .output .
 
       - name: Get Release Upload URL
         id: get_upload_url
