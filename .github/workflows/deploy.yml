@@ -31,18 +31,17 @@ jobs:
 
       - name: Generate Tag
         id: tag
-        run: echo "::set-output name=tag::$(echo production-v$(npx semantic-release --dry-run | grep 'The next release version is' | sed 's/.*is //')-$(date +'%Y%m%d'))"
+        run: |
+          NEW_VERSION=$(npx semantic-release --dry-run | grep 'The next release version is' | sed 's/.*is //')
+          echo "::set-output name=tag::production-v${NEW_VERSION}-$(date +'%Y%m%d')"
 
-      - name: Create Release
-        id: create_release
-        uses: actions/create-release@v1
+      - name: Create and Push Tag
+        run: |
+          git tag ${{ steps.tag.outputs.tag }}
+          git push origin ${{ steps.tag.outputs.tag }}
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          tag_name: ${{ steps.tag.outputs.tag }}
-          release_name: Release ${{ steps.tag.outputs.tag }}
-          draft: false
-          prerelease: false
+
 
       - name: Get Current Date
         id: current_date
