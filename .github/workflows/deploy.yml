@@ -9,7 +9,6 @@ jobs:
   semantic_release:
     runs-on: ubuntu-latest
     outputs:
-      new_version: ${{ steps.semantic.outputs.new_version }}
       upload_url: ${{ steps.create_release.outputs.upload_url }}
     steps:
       - uses: actions/checkout@v2
@@ -25,11 +24,7 @@ jobs:
         run: npm install
 
       - name: Semantic Release
-        id: semantic
-        run: |
-          VERSION=$(npx semantic-release)
-          echo "New version: $VERSION"
-          echo "::set-output name=new_version::$VERSION"
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
@@ -39,12 +34,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ steps.semantic.outputs.new_version }}
-          release_name: "Release for production v${{ steps.semantic.outputs.new_version }} - $(date +'%Y-%m-%d')"
+          tag_name: ${{ github.ref_name }}
+          release_name: Release ${{ github.ref_name }}
           draft: false
           prerelease: false
 
-  build_and_package:
+  build_archive_upload:
     needs: semantic_release
     runs-on: ubuntu-latest
     steps:
