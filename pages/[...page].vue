@@ -23,6 +23,8 @@
   <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
     <BlogPostAuthorFilled :profile="data.postAuthor" />
   </div>
+
+  <BlogPostComments />
 </template>
 
 <script setup>
