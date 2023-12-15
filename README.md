@@ -1,4 +1,4 @@
-# Paper
+# Blog
 
 ## Description
 
