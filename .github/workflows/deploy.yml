@@ -26,9 +26,11 @@ jobs:
       - name: Build
         run: yarn build
 
+      - name: Setup Environment Variables
+        run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
+
       - name: Archive Built Output
-        run: |
-          tar -czf production_output_$(date +%s).tar.gz .output
+        run: tar -czf ${{ env.ARCHIVE_NAME }} .output
 
       - name: Create Release
         id: create_release
@@ -48,6 +50,6 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./production_output_$(date +%s).tar.gz
-          asset_name: production_output.tar.gz
+          asset_path: ${{ env.ARCHIVE_NAME }}
+          asset_name: ${{ env.ARCHIVE_NAME }}
           asset_content_type: application/gzip
