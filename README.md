@@ -4,7 +4,7 @@
 
 ## Description
 
-... ;)
+...
 
 ## Requirements
 
@@ -14,8 +14,8 @@
 ## Installation
 
 ```bash
-nvm install v20.9.0
-nvm use v20.9.0
+nvm install 20.9.0
+nvm use 20.9.0
 npm install -g yarn
 yarn
 yarn dev
