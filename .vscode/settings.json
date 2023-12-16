@@ -1,11 +1,9 @@
 {
     "workbench.colorCustomizations": {
-        "activityBar.activeBackground": "#ffffffb3",
         "activityBar.background": "#ffffffb3",
         "activityBar.foreground": "#000000",
-        "activityBar.inactiveForeground": "#676767"
-    },
-    "yaml.schemas": {
-        "https://json.schemastore.org/github-workflow.json": "file:///c%3A/Users/Dawid/Desktop/paper/.github/workflows/deploy.yml"
+        "activityBar.inactiveForeground": "#676767",
+        "activityBar.border": "#ffffff",
+        "activityBar.activeBackground": "#ffffffb3"
     }
 }

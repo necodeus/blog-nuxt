@@ -2,21 +2,23 @@ export default defineNuxtConfig({
     css: [
         '@/assets/css/main.css',
     ],
+    components: true,
     plugins: [
         '~/plugins/observe-visibility.ts',
     ],
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
+        '@formkit/nuxt',
     ],
-    devtools: {
-        enabled: true,
-    },
     pages: true,
     vite: {
         ssr: {
             noExternal: ["moment"],
         },
+    },
+    formkit: {
+        autoImport: true,
     },
     runtimeConfig: {
         public: {
@@ -24,6 +26,9 @@ export default defineNuxtConfig({
             'PAPER_API_URL': 'http://paper-api.localhost/api/v1',
             'IMAGES_URL': 'http://images.localhost',
         }
+    },
+    experimental: {
+        watcher: 'parcel',
     },
     app: {
         head: {

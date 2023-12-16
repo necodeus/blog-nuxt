@@ -1,12 +1,12 @@
-module.exports = {
-    content: [
-        './src/**/*.vue',
-    ],
+export default {
+	content: [
+		"./components/**/*.{js,vue,ts}",
+		"./layouts/**/*.vue",
+		"./pages/**/*.vue",
+	],
     theme: {
-        colors: {},
         fontFamily: {
             jost: ['Jost', 'sans-serif'],
         },
-        extend: {},
     },
 }

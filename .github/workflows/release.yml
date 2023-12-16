@@ -1,4 +1,4 @@
-name: Deploy
+name: Release
 
 on:
   push:
@@ -6,7 +6,7 @@ on:
       - production
 
 jobs:
-  semantic_release:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -25,11 +25,6 @@ jobs:
         run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
-
-      # - name: Setup Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '20.9.0'
 
       - name: Install Yarn
         run: npm install -g yarn
