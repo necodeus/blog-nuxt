@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/necodeus/blog-nuxt/compare/v1.2.0...v1.2.1) (2023-12-16)
+
+
+### Bug Fixes
+
+* **1:** build release v3 ([1a304b6](https://github.com/necodeus/blog-nuxt/commit/1a304b6a241e6f13edd39d55193e38f26d1e6f4a))
+
 # [1.2.0](https://github.com/necodeus/blog-nuxt/compare/v1.1.0...v1.2.0) (2023-12-15)
 
 
