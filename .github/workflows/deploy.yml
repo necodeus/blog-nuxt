@@ -26,10 +26,10 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '20.9.0'
+      # - name: Setup Node.js
+      #   uses: actions/setup-node@v2
+      #   with:
+      #     node-version: '20.9.0'
 
       - name: Install Yarn
         run: npm install -g yarn
@@ -44,7 +44,10 @@ jobs:
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
 
       - name: Archive Built Output
-        run: tar -czf ${{ env.ARCHIVE_NAME }} -C .output .
+        run: |
+          cd .output
+          tar -czf ../${{ env.ARCHIVE_NAME }} *
+          cd ..
 
       - name: Get Release Upload URL
         id: get_upload_url
