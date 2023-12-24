@@ -37,9 +37,7 @@ let isMobile = ref(false);
 
 const route = useRoute();
 
-let isHomePage = computed(() => {
-  return route.path === "/";
-});
+const isHomePage = computed(() => route.path === '/');
 
 const setProperMode = (width = 900) => {
   if (window.innerWidth <= width) {
