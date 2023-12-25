@@ -21,7 +21,7 @@
           v-if="!isMobile"
         >
           <div class="sidebar">
-            <OtherPosts />
+            <OtherPosts v-if="!isHomePage" />
           </div>
         </simplebar>
       </div>
@@ -34,6 +34,10 @@ import simplebar from "simplebar-vue";
 import "simplebar/dist/simplebar.min.css";
 
 let isMobile = ref(false);
+
+const route = useRoute();
+
+const isHomePage = computed(() => route.path === '/');
 
 const setProperMode = (width = 900) => {
   if (window.innerWidth <= width) {
