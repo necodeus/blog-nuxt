@@ -18,13 +18,11 @@
   <BlogPostContentLoading v-if="pendingPost" />
   <BlogPostContent v-else :content="data?.post?.content ?? ''" />
 
-  <Vis v-if="!pendingPost" />
-
   <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
     <BlogPostAuthorFilled :profile="data.postAuthor" />
   </div>
 
-  <BlogPostComments />
+  <BlogPostComments v-if="!pendingPost" :postId="data?.post?.id" />
 </template>
 
 <script setup>

@@ -1,9 +1,9 @@
 // import { delay } from "@/utils/helpers";
 
 export default defineEventHandler(async (event) => {
-    const { id } = event.context.params as any
+    const { postId } = event.context.params as any
 
     // await delay(3000);
 
-    return await getBlogPostById(id).catch(() => null)
+    return await getBlogPostById(postId).catch(() => null)
 })
