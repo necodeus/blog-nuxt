@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/necodeus/blog-nuxt/compare/v1.3.0...v1.4.0) (2023-12-26)
+
+
+### Features
+
+* **0:** comment section for non logged in users ([7f742fc](https://github.com/necodeus/blog-nuxt/commit/7f742fc1e988b606ef26feff5e04c7d940bb53b7))
+
 # [1.3.0](https://github.com/necodeus/blog-nuxt/compare/v1.2.4...v1.3.0) (2023-12-25)
 
 
