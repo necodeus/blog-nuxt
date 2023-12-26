@@ -187,6 +187,8 @@ const toggleReply = (commentId = null) => {
 const submitComment = async (commentId = '') => {
     const content = commentContents.value[commentId] || '';
 
+    commentContents.value[commentId] = '';
+
     const response = await fetch(`/api/posts/${props.postId}/comments/${commentId}`, {
         method: 'POST',
         headers: {
