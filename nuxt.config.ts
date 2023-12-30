@@ -5,6 +5,7 @@ export default defineNuxtConfig({
     components: true,
     plugins: [
         '~/plugins/observe-visibility.ts',
+        '~/plugins/websocket.ts',
     ],
     modules: [
         '@nuxtjs/tailwindcss',

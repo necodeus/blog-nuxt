@@ -12,7 +12,6 @@
     :teaser="data?.post?.teaser ?? ''"
     :authorName="data?.postPublisher?.displayName ?? ''"
     :postId="data?.post?.id ?? ''"
-    :rating="data?.stars ?? {}"
   />
 
   <BlogPostContentLoading v-if="pendingPost" />

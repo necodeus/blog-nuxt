@@ -13,7 +13,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     if (!page) {
         throw createError({
             statusCode: 500,
-            message: 'Coś poszło nie tak!'
+            message: 'Coś poszło nie tak!',
         })
     }
 
@@ -31,10 +31,10 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
                 redirectCode: code,
                 external: is_external,
             });
+        default:
+            throw createError({
+                statusCode: 404,
+                message: 'Ta strona prowadzi do nikąd!'
+            })
     }
-
-    throw createError({
-        statusCode: 404,
-        message: 'Ta strona prowadzi do nikąd!'
-    })
 })
