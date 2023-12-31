@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/necodeus/blog-nuxt/compare/v1.6.0...v1.7.0) (2023-12-31)
+
+
+### Features
+
+* **0:** wss instead of ws ([6a830e7](https://github.com/necodeus/blog-nuxt/commit/6a830e79dbfdbc3278ab13cdf17c91d098280329))
+
 # [1.6.0](https://github.com/necodeus/blog-nuxt/compare/v1.5.0...v1.6.0) (2023-12-31)
 
 
