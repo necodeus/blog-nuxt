@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/necodeus/blog-nuxt/compare/v1.5.0...v1.6.0) (2023-12-31)
+
+
+### Features
+
+* **0:** change websocket address ([9fd2edc](https://github.com/necodeus/blog-nuxt/commit/9fd2edc6eaadb92122581665dfeb6a558bd48837))
+
 # [1.5.0](https://github.com/necodeus/blog-nuxt/compare/v1.4.0...v1.5.0) (2023-12-30)
 
 
