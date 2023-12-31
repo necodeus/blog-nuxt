@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/necodeus/blog-nuxt/compare/v1.9.0...v1.9.1) (2023-12-31)
+
+
+### Bug Fixes
+
+* **0:** fix sessionId cookie domain ([eebbbff](https://github.com/necodeus/blog-nuxt/commit/eebbbffea619c5f5c1d0e094a5bbbcf0aaf1f835))
+
 # [1.9.0](https://github.com/necodeus/blog-nuxt/compare/v1.8.0...v1.9.0) (2023-12-31)
 
 
