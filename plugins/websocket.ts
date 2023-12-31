@@ -1,7 +1,7 @@
 const ws: any = ref(null);
 
 function initWebSocket() {
-    const connection = new WebSocket('ws://localhost:8090');
+    const connection = new WebSocket('ws://www.necodeo.com:8090');
 
     connection.onopen = function () {
         console.log('Connected to the server.');
