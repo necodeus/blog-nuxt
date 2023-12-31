@@ -1,3 +1,10 @@
+# [1.5.0](https://github.com/necodeus/blog-nuxt/compare/v1.4.0...v1.5.0) (2023-12-30)
+
+
+### Features
+
+* **0:** websocket ([6628960](https://github.com/necodeus/blog-nuxt/commit/66289603ca71610646ebaf998cd7d0e62fc26c32))
+
 # [1.4.0](https://github.com/necodeus/blog-nuxt/compare/v1.3.0...v1.4.0) (2023-12-26)
 
 
