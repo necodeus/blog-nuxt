@@ -1,7 +1,9 @@
 const ws: any = ref(null);
 
 function initWebSocket() {
-    const connection = new WebSocket('wss://www.necodeo.com:8090');
+    const env = useRuntimeConfig();
+
+    const connection = new WebSocket(env.public.WEBSOCKET_ADDRESS as string);
 
     connection.onopen = function () {
         console.log('Connected to the server.');

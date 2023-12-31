@@ -1,3 +1,6 @@
+import fs from 'fs';
+import path from 'path';
+
 export default defineNuxtConfig({
     css: [
         '@/assets/css/main.css',
@@ -26,6 +29,8 @@ export default defineNuxtConfig({
             'COMMON_API_URL': 'http://common-api.localhost/api/v1',
             'PAPER_API_URL': 'http://paper-api.localhost/api/v1',
             'IMAGES_URL': 'http://images.localhost',
+            'WEBSOCKET_SESSION_HOST': 'localhost', // necodeo.com
+            'WEBSOCKET_ADDRESS': 'ws://localhost:8090', // wss://www.necodeo.com:8090
         }
     },
     experimental: {
