@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/necodeus/blog-nuxt/compare/v1.7.0...v1.8.0) (2023-12-31)
+
+
+### Features
+
+* **0:** set sessionId, display post rating average ([12ea851](https://github.com/necodeus/blog-nuxt/commit/12ea8512e867c8bbab1004943076e4bb33e17a10))
+
 # [1.7.0](https://github.com/necodeus/blog-nuxt/compare/v1.6.0...v1.7.0) (2023-12-31)
 
 
