@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/necodeus/blog-nuxt/compare/v1.8.0...v1.9.0) (2023-12-31)
+
+
+### Features
+
+* **0:** fix sessionId validation ([daed465](https://github.com/necodeus/blog-nuxt/commit/daed46585765407bbb1cb42d49d3604c991c2857))
+
 # [1.8.0](https://github.com/necodeus/blog-nuxt/compare/v1.7.0...v1.8.0) (2023-12-31)
 
 
