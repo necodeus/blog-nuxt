@@ -1,9 +1,9 @@
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4, validate } from 'uuid';
 
 export default function () {
     const sessionId = useCookie('sessionId');
 
-    if (sessionId.value) {
+    if (!validate(sessionId.value)) {
         sessionId.value = uuidv4();
     }
 }
