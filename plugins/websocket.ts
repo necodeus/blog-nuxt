@@ -19,7 +19,7 @@ function initWebSocket() {
     ws.value = connection;
 }
 
-export default defineNuxtPlugin(nuxtApp => {
+export default defineNuxtPlugin((nuxtApp) => {
     if (!process.client) {
         return;
     }

@@ -17,8 +17,7 @@
             </div>
         </div>
         <div class="component-padding relative !pt-[10px]" style="background-color: white;">
-            <!-- TODO: pobrać wartość do initialRating z wpisu -->
-            <Stars class="mb-[10px]" :initialRating="0" :postId="postId" />
+            <Stars class="mb-[10px]" :initialRating="averageRating" :postId="postId" />
             <span class="text-[20px] tracking-[1px]">{{ teaser }}</span>
         </div>
     </div>
@@ -51,6 +50,11 @@ const props = defineProps({
         required: false,
         default: () => ''
     },
+    averageRating: {
+        type: Number,
+        required: false,
+        default: () => 0
+    }
 })
 </script>
 

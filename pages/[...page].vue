@@ -12,6 +12,7 @@
     :teaser="data?.post?.teaser ?? ''"
     :authorName="data?.postPublisher?.displayName ?? ''"
     :postId="data?.post?.id ?? ''"
+    :averageRating="data?.post?.rating_average ?? 0"
   />
 
   <BlogPostContentLoading v-if="pendingPost" />
