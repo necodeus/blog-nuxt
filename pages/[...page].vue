@@ -35,9 +35,7 @@ definePageMeta({
 
 const route = useRoute();
 
-const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`, {
-  transform: (data) => data?.data
-});
+const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`);
 
 onMounted(() => {
   const scroll = document.querySelector(".simplebar-content-wrapper");

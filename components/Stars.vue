@@ -44,6 +44,7 @@ watch(() => props.initialRating, (newVal) => {
 })
 
 const setRating = async (newRating) => {
+
     selectedRating.value = newRating;
 
     if ($ws.value.readyState !== 1) {
@@ -51,11 +52,13 @@ const setRating = async (newRating) => {
         return;
     }
 
-    $ws.value.onmessage = (event) => {
+    $ws.value.onmessage = async (event) => {
         const { postId, average } = JSON.parse(event.data);
 
         if (postId === props.postId) {
             rating.value = average;
+
+            console.log('Invalidating cache for post', props.postId);
         }
     }
 

@@ -27,20 +27,16 @@ export default {
         };
     },
     methods: {
-        setProperMode(width = 900) {
-            if (window.innerWidth <= width) {
-                this.descriptionBelow = true;
-            } else {
-                this.descriptionBelow = false;
-            }
+        isMobile(width = 900) {
+            return window.innerWidth <= width
         },
     },
     async mounted() {
         window.addEventListener("resize", () => {
-            this.setProperMode(900);
+            this.descriptionBelow = this.isMobile(900);
         });
 
-        this.setProperMode(900);
+        this.descriptionBelow = this.isMobile(900);
     },
 };
 </script>

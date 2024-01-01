@@ -12,7 +12,7 @@
           <div class="main">
             <NuxtPage />
 
-            <OtherPosts v-if="isMobile" />
+            <OtherPosts v-if="isMobile && !isHomePage" />
           </div>
         </simplebar>
         <simplebar

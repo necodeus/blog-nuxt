@@ -10,20 +10,14 @@
 </template>
 
 <script setup>
-const { data: r1, pending, error, refresh } = await useAsyncData('other-posts', () => $fetch('/api/posts'))
-
-const {
-	data: {
-		posts,
-	},
-} = unref(r1)
+const { data, pending } = await useAsyncData('other-posts', () => $fetch('/api/posts'))
 
 const route = useRoute()
 
-const filteredPosts = ref(posts.filter((post) => post.content_id !== route.meta.content_id))
+const filteredPosts = ref(data.value.posts.filter((post) => post.content_id !== route.meta.content_id))
 
-watch(() => route.meta.content_id, (newVal, oldVal) => {
-	filteredPosts.value = posts.filter((post) => post.content_id !== route.meta.content_id)
+watch(() => route.meta.content_id, () => {
+	filteredPosts.value = data.value.posts.filter((post) => post.content_id !== route.meta.content_id)
 });
 </script>
 
