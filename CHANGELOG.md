@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/necodeus/blog-nuxt/compare/v1.9.2...v1.9.3) (2024-01-01)
+
+
+### Bug Fixes
+
+* **0:** refactoring ([86084aa](https://github.com/necodeus/blog-nuxt/commit/86084aaa0302424f396516c54ab71ef41ac55acb))
+
 ## [1.9.2](https://github.com/necodeus/blog-nuxt/compare/v1.9.1...v1.9.2) (2023-12-31)
 
 
