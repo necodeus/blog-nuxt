@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/necodeus/blog-nuxt/compare/v1.9.1...v1.9.2) (2023-12-31)
+
+
+### Bug Fixes
+
+* **0:** fix websocket for localhost ([2fd1f55](https://github.com/necodeus/blog-nuxt/commit/2fd1f5522c807c6ac0699da55a03772f2766590b))
+
 ## [1.9.1](https://github.com/necodeus/blog-nuxt/compare/v1.9.0...v1.9.1) (2023-12-31)
 
 
