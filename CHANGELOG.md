@@ -1,3 +1,10 @@
+## [1.12.1](https://github.com/necodeus/blog-nuxt/compare/v1.12.0...v1.12.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* **pap-12:** reduce emoji size ([9366549](https://github.com/necodeus/blog-nuxt/commit/9366549f87244b07e41c5739c92e0054684c2c3b))
+
 # [1.12.0](https://github.com/necodeus/blog-nuxt/compare/v1.11.0...v1.12.0) (2024-01-04)
 
 
