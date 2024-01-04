@@ -1,3 +1,10 @@
+## [1.15.1](https://github.com/necodeus/blog-nuxt/compare/v1.15.0...v1.15.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* **0:** nuxt with storybook was bad idea ([b6b26c0](https://github.com/necodeus/blog-nuxt/commit/b6b26c0c90e437a659a0f89aa14e72ab0ca33d2c))
+
 # [1.15.0](https://github.com/necodeus/blog-nuxt/compare/v1.14.1...v1.15.0) (2024-01-04)
 
 
