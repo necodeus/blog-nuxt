@@ -3,7 +3,7 @@
         <div class="relative">
             <picture>
                 <source media="(min-width: 768px)" :srcset="image" />
-                <img class="background" :src="image" />
+                <img class="background" :src="image" loading="lazy" />
             </picture>
             <div class="!pt-[350px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
                 <div class="m-[20px] absolute z-[1] right-0 top-0 flex">

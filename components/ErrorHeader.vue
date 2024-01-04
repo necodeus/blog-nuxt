@@ -1,7 +1,7 @@
 <template>
     <div class="component-border-horizontal relative font-jost">
         <!-- TODO: move background image to images.necodeo.com or s3 -->
-        <img style="margin: 7px; width: calc(100% - 14px); height: auto;" src="/uploads/backgrounds/error.jpg" />
+        <img style="margin: 7px; width: calc(100% - 14px); height: auto;" src="/uploads/backgrounds/error.jpg" loading="lazy" />
         <div class="m-[20px] absolute z-[1] top-0 right-0 flex">
             <PetTheCat class="mr-2" />
             <BackFilled />
