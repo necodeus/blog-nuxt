@@ -14,7 +14,13 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
         '@formkit/nuxt',
+        '@storybook-vue/nuxt-storybook',
     ],
+    storybook: {
+        url: 'http://localhost:6006',
+        storybookRoute: '/__storybook__',
+        port: 6006,
+    },
     pages: true,
     vite: {
         ssr: {

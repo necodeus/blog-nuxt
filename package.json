@@ -7,7 +7,9 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare && husky install"
+    "postinstall": "nuxt prepare && husky install",
+    "storybook": "storybook dev --port 6006",
+    "build-storybook": "storybook build"
   },
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
@@ -22,7 +24,7 @@
     "@semantic-release/github": "^9.2.5",
     "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/markdown-it": "^13.0.7",
-    "@types/node": "^20.9.0",
+    "@types/node": "^18.17.5",
     "highlight.js": "^11.9.0",
     "husky": "^8.0.3",
     "markdown-it": "^14.0.0",
@@ -31,9 +33,22 @@
     "semantic-release": "^22.0.12",
     "simplebar": "^6.2.5",
     "simplebar-vue": "^2.3.3",
-    "twemoji": "^14.0.2"
+    "twemoji": "^14.0.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "7.5.3",
+    "@storybook/vue3": "7.5.3",
+    "@storybook-vue/nuxt": "0.2.0",
+    "@nuxtjs/storybook": "7.0.0",
+    "@storybook/addon-links": "7.5.3",
+    "@storybook/builder-vite": "7.5.3",
+    "@storybook/addon-essentials": "7.5.3",
+    "@storybook/addon-interactions": "7.5.3",
+    "@storybook/testing-library": "^0.2.0",
+    "@storybook/blocks": "7.5.3"
   },
   "dependencies": {
+    "@storybook-vue/nuxt-storybook": "^0.0.1-latest.7",
     "js-sha256": "^0.10.1",
     "uuid": "^9.0.1"
   }
