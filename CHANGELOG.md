@@ -1,3 +1,10 @@
+# [1.14.0](https://github.com/necodeus/blog-nuxt/compare/v1.13.0...v1.14.0) (2024-01-04)
+
+
+### Features
+
+* **pap-35, pap-34:** post author, publication date and number of comments in the header ([90efd05](https://github.com/necodeus/blog-nuxt/commit/90efd05315b3a03b0db97555ec80668736180908))
+
 # [1.13.0](https://github.com/necodeus/blog-nuxt/compare/v1.12.1...v1.13.0) (2024-01-04)
 
 
