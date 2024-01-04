@@ -1,3 +1,10 @@
+# [1.12.0](https://github.com/necodeus/blog-nuxt/compare/v1.11.0...v1.12.0) (2024-01-04)
+
+
+### Features
+
+* **0:** restore external-links component ([21e8297](https://github.com/necodeus/blog-nuxt/commit/21e829722ba63d98669fc8a785d0b7f3b1398b7f))
+
 # [1.11.0](https://github.com/necodeus/blog-nuxt/compare/v1.10.0...v1.11.0) (2024-01-04)
 
 
