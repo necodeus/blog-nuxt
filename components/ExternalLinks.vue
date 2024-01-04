@@ -7,10 +7,9 @@
 					class="text-[20px] block"
 					target="_blank"
 					rel="noopener noreferrer nofollow"
-					href="https://nuxt.com/"
+					href="https://github.com/necodeus/blog-nuxt"
 				>
-					<b>nuxt.com</b>
-					<div class="link-description">Oficjalna strona Nuxt.js</div>
+					<b class="font-medium">github.com/necodeus/blog-nuxt</b> <br /> Kod źródłowy tej strony
 				</a>
 			</li>
 		</ul>

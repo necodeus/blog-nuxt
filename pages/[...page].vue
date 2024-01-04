@@ -4,25 +4,27 @@
     <Meta name="description" :content="data.post.teaser" />
   </Head>
 
-  <BlogPostHeaderLoading v-if="pendingPost" />
-  <BlogPostHeader v-else
+  <PostHeaderPlaceholder v-if="pendingPost" />
+  <PostHeader v-else
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"
-    :timeAgo="moment(data?.post?.created_at).fromNow()"
+    :timeAgo="data?.post?.created_at"
     :teaser="data?.post?.teaser ?? ''"
-    :authorName="data?.postPublisher?.displayName ?? ''"
+    :authorName="data?.postAuthor?.display_name ?? ''"
+    :authorPhoto="'https://images.necodeo.com/' + data?.postAuthor?.image_id_avatar ?? ''"
     :postId="data?.post?.id ?? ''"
     :averageRating="data?.post?.rating_average ?? 0"
+    :numberOfComments="data?.post?.comments_count"
   />
 
-  <BlogPostContentLoading v-if="pendingPost" />
-  <BlogPostContent v-else :content="data?.post?.content ?? ''" />
+  <PostContentPlaceholder v-if="pendingPost" />
+  <PostContent v-else :content="data?.post?.content ?? ''" />
 
   <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
-    <BlogPostAuthorFilled :profile="data.postAuthor" />
+    <PostAuthorFilled :profile="data.postAuthor" />
   </div>
 
-  <BlogPostComments v-if="!pendingPost" :postId="data?.post?.id" />
+  <PostComments v-if="!pendingPost" :postId="data?.post?.id" />
 </template>
 
 <script setup>

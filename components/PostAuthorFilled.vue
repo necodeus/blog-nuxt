@@ -1,10 +1,10 @@
 <template>
-    <BlogPostAuthorLoading
+    <PostAuthorPlaceholder
         v-if="!Object.keys(profile).length"
         ref="target"
         :descriptionBelow="descriptionBelow"
     />
-    <BlogPostAuthor
+    <PostAuthor
         v-else
         ref="target"
         :profile="profile"
