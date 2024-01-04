@@ -1,3 +1,10 @@
+## [1.14.1](https://github.com/necodeus/blog-nuxt/compare/v1.14.0...v1.14.1) (2024-01-04)
+
+
+### Bug Fixes
+
+* **0:** fix shell scripts ([fb10621](https://github.com/necodeus/blog-nuxt/commit/fb10621a6f442ba349b240c6df168ee8895b9b60))
+
 # [1.14.0](https://github.com/necodeus/blog-nuxt/compare/v1.13.0...v1.14.0) (2024-01-04)
 
 
