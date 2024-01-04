@@ -41,7 +41,10 @@
                 <div class="mb-2 flex">
                     <div
                         class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] bg-cover bg-center !rounded-full bg-[#eee] mr-3">
-                        <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)" class="rounded-full" loading="lazy" />
+                        <picture>
+                            <source media="(min-width: 768px)" :srcset="getGravatarURL(comment.author_name, 40)" />
+                            <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)" class="rounded-full" loading="lazy" />
+                        </picture>
                     </div>
                     <div class="flex items-center">
                         <div class="flex items-center">
@@ -86,7 +89,10 @@
                     <div class="flex mb-1">
                         <div
                             class="min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-cover bg-center !rounded-[50%] bg-[#eee] mr-2">
-                            <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)" class="rounded-[50%]" loading="lazy" />
+                            <picture>
+                                <source media="(min-width: 768px)" :srcset="getGravatarURL(reply.author_name, 20)" />
+                                <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)" class="rounded-[50%]" loading="lazy" />
+                            </picture>
                         </div>
                         <div class="flex items-center">
                             <div class="flex items-center font-medium">
