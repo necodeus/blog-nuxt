@@ -14,6 +14,7 @@ export default defineNuxtConfig({
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
         '@formkit/nuxt',
+        '@storybook-vue/nuxt-storybook',
     ],
     pages: true,
     vite: {
