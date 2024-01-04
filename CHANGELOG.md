@@ -1,3 +1,10 @@
+# [1.11.0](https://github.com/necodeus/blog-nuxt/compare/v1.10.0...v1.11.0) (2024-01-04)
+
+
+### Features
+
+* **pap-33:** lazy loading for all images ([1a87b46](https://github.com/necodeus/blog-nuxt/commit/1a87b46096837d4df5d5c31c5988b0150f12b92c))
+
 # [1.10.0](https://github.com/necodeus/blog-nuxt/compare/v1.9.3...v1.10.0) (2024-01-04)
 
 
