@@ -1,3 +1,10 @@
+# [1.13.0](https://github.com/necodeus/blog-nuxt/compare/v1.12.1...v1.13.0) (2024-01-04)
+
+
+### Features
+
+* **pap-38:** add missing picture tags ([83575a2](https://github.com/necodeus/blog-nuxt/commit/83575a24ebe82517a45403ef6e2fa4300f7351cf))
+
 ## [1.12.1](https://github.com/necodeus/blog-nuxt/compare/v1.12.0...v1.12.1) (2024-01-04)
 
 
