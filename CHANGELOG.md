@@ -1,3 +1,10 @@
+# [1.10.0](https://github.com/necodeus/blog-nuxt/compare/v1.9.3...v1.10.0) (2024-01-04)
+
+
+### Features
+
+* **pap-50:** other-posts placeholder ([e744be1](https://github.com/necodeus/blog-nuxt/commit/e744be1ce5fde75f5d4f09f0ea34e53b9093345a))
+
 ## [1.9.3](https://github.com/necodeus/blog-nuxt/compare/v1.9.2...v1.9.3) (2024-01-01)
 
 
