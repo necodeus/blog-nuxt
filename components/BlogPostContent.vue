@@ -45,6 +45,11 @@ defineProps({
 </script>
 
 <style>
+.c-content img.emoji {
+    height: 20px;
+    display: inline;
+}
+
 .c-content table,
 .c-content :not(.code-tabs) ul,
 .c-content .contains-task-list,
