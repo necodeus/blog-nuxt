@@ -1,3 +1,10 @@
+# [1.15.0](https://github.com/necodeus/blog-nuxt/compare/v1.14.1...v1.15.0) (2024-01-04)
+
+
+### Features
+
+* **pap-49:** storybook ([30117c3](https://github.com/necodeus/blog-nuxt/commit/30117c36e93f6b15d634f350da0ca2cab4ec4714))
+
 ## [1.14.1](https://github.com/necodeus/blog-nuxt/compare/v1.14.0...v1.14.1) (2024-01-04)
 
 
