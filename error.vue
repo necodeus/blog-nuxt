@@ -12,11 +12,13 @@
                     <div class="main">
                         <ErrorHeader :code="error.statusCode" :message="error.message" />
                         <OtherPosts v-if="stackMode" />
+                        <ExternalLinks v-if="stackMode" />
                     </div>
                 </simplebar>
                 <simplebar data-simplebar-auto-hide="true" class="component-border-vertical" v-if="!stackMode">
                     <div class="sidebar">
                         <OtherPosts />
+                        <ExternalLinks />
                     </div>
                 </simplebar>
             </div>

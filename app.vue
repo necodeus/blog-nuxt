@@ -13,6 +13,7 @@
             <NuxtPage />
 
             <OtherPosts v-if="isMobile && !isHomePage" />
+            <ExternalLinks v-if="isMobile" />
           </div>
         </simplebar>
         <simplebar
@@ -22,6 +23,7 @@
         >
           <div class="sidebar">
             <OtherPosts v-if="!isHomePage" />
+            <ExternalLinks />
           </div>
         </simplebar>
       </div>
