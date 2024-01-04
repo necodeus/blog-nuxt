@@ -1,38 +1,14 @@
 <template>
-	<div class="other-posts component-padding component-border-horizontal font-jost" v-show="!pending">
-		<SectionTitle><b>Inne</b> wpisy</SectionTitle>
-		<ul>
-			<li class="text-[20px]" v-for="(post, p) in filteredPosts ?? []" v-bind:key="p">
-				<NuxtLink :to="post.slug">{{ post.title }}</NuxtLink>
-			</li>
-		</ul>
-	</div>
+	<OtherPostsPlaceholder v-show="pending" />
+	<OtherPostsFilled v-show="!pending" :posts="getData(data.posts)" />
 </template>
 
 <script setup>
-const { data, pending } = await useAsyncData('other-posts', () => $fetch('/api/posts'))
+const getData = (posts = []) => {
+	return posts.filter((post) => post.slug !== route.params.slug) || []
+}
+
+const { data, pending } = useFetch('/api/posts')
 
 const route = useRoute()
-
-const filteredPosts = ref(data.value.posts.filter((post) => post.content_id !== route.meta.content_id))
-
-watch(() => route.meta.content_id, () => {
-	filteredPosts.value = data.value.posts.filter((post) => post.content_id !== route.meta.content_id)
-});
 </script>
-
-<style>
-.other-posts > ul > li {
-	text-indent: -20px;
-	margin-left: 20px;
-}
-
-.other-posts > ul > li > a {
-	padding: 5px 0;
-	display: block;
-}
-
-.other-posts > ul > li:not(:last-child) {
-	margin-bottom: 15px;
-}
-</style>
