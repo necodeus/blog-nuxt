@@ -1,3 +1,10 @@
+## [1.16.2](https://github.com/necodeus/blog-nuxt/compare/v1.16.1...v1.16.2) (2024-01-05)
+
+
+### Bug Fixes
+
+* **0:** header placeholder, other posts error ([23b2e34](https://github.com/necodeus/blog-nuxt/commit/23b2e34e4cf34443f97a7da840e58abc63dd3256))
+
 ## [1.16.1](https://github.com/necodeus/blog-nuxt/compare/v1.16.0...v1.16.1) (2024-01-05)
 
 
