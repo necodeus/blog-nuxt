@@ -2,12 +2,11 @@
     <div class="container">
         <div class="wrapper">
             <div class="w-[384px] p-[7px] box-content">
-                <Advertisement />
+                <Advertisement v-if="!isMobile" />
             </div>
             <simplebar data-simplebar-auto-hide="false" class="component-border-vertical">
                 <div class="main">
                     <NuxtPage />
-
                     <OtherPosts v-if="isMobile && !isHomePage" />
                     <ExternalLinks v-if="isMobile" />
                 </div>
@@ -28,9 +27,13 @@ import "simplebar/dist/simplebar.min.css";
 
 let isMobile = ref(false);
 
-const route = useRoute();
+const router = useRouter();
 
-const isHomePage = computed(() => route.path === '/');
+const isHomePage = computed(() => {
+    console.log(router.currentRoute.value.path);
+
+    return router.currentRoute.value.path === "/";
+});
 
 const setProperMode = (width = 900) => {
     if (window.innerWidth <= width) {
