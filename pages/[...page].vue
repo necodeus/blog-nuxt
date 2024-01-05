@@ -7,10 +7,10 @@
   <PostHeaderPlaceholder
     v-if="pendingPost"
     image=""
-    name="Hello world"
+    name="Aliquam erat volutpat"
     timeAgo="2024-01-01 03:37:37"
     teaser="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies ultrices, nisl nisl ultricies nisl, nec ultricies"
-    authorName=""
+    authorName="John Doe"
     authorPhoto=""
     postId=""
     :averageRating="0"
