@@ -1,11 +1,11 @@
 <template>
     <ul class="font-jost">
-        <li style="margin: 5px" class="block relative p-[40px]" v-for="(post, p) in posts" v-bind:key="p">
-            <h1 class="flex mb-[40px]">
+        <li style="margin: 5px" class="block relative p-[30px]" v-for="(post, p) in posts" v-bind:key="p">
+            <h1 class="flex mb-[30px]">
                 <span class="text-[38px]">{{ post.title }}</span>
             </h1>
 
-            <div class="flex items-center mt-[40px]">
+            <div class="flex items-center mt-[30px]">
                 <span class="text-[16px]"><b style="font-weight: 600">Dawid</b></span>
                 <span class="text-[16px]">, {{ moment(post.created_at).fromNow() }}</span>
             </div>
