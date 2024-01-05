@@ -1,3 +1,10 @@
+# [1.16.0](https://github.com/necodeus/blog-nuxt/compare/v1.15.1...v1.16.0) (2024-01-05)
+
+
+### Features
+
+* **0:** layouts + story page in dev mode ([2fe3161](https://github.com/necodeus/blog-nuxt/commit/2fe31617f6108bc57dc7a1002b651bb35ddd726b))
+
 ## [1.15.1](https://github.com/necodeus/blog-nuxt/compare/v1.15.0...v1.15.1) (2024-01-04)
 
 
