@@ -1,3 +1,10 @@
+## [1.16.1](https://github.com/necodeus/blog-nuxt/compare/v1.16.0...v1.16.1) (2024-01-05)
+
+
+### Bug Fixes
+
+* **0:** fix ssr other posts filtering ([ead2614](https://github.com/necodeus/blog-nuxt/commit/ead2614234593ce4f2bb396be49bdbc716adc905))
+
 # [1.16.0](https://github.com/necodeus/blog-nuxt/compare/v1.15.1...v1.16.0) (2024-01-05)
 
 
