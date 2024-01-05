@@ -1,3 +1,10 @@
+## [1.16.3](https://github.com/necodeus/blog-nuxt/compare/v1.16.2...v1.16.3) (2024-01-05)
+
+
+### Bug Fixes
+
+* **0:** header placeholder - missing author name ([6634aea](https://github.com/necodeus/blog-nuxt/commit/6634aea191687c59230f4f6cb300230235d8df85))
+
 ## [1.16.2](https://github.com/necodeus/blog-nuxt/compare/v1.16.1...v1.16.2) (2024-01-05)
 
 
