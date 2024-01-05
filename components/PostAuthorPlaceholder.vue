@@ -1,15 +1,3 @@
-<script lang="ts" setup>
-defineProps({
-    descriptionBelow: {
-        type: Boolean,
-        default: false,
-        required: true,
-    },
-})
-
-const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, iaculis sit amet ante a, convallis dignissim magna. Morbi aliquet consequat bibendum.";
-</script>
-
 <template>
     <div class="flex items-center">
         <div
@@ -25,6 +13,18 @@ const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, ia
     </div>
     <div v-if="descriptionBelow" class="mobile-description text-[17px] animated-background">{{ description }}</div>
 </template>
+
+<script lang="ts" setup>
+defineProps({
+    descriptionBelow: {
+        type: Boolean,
+        default: false,
+        required: true,
+    },
+})
+
+const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, iaculis sit amet ante a, convallis dignissim magna. Morbi aliquet consequat bibendum.";
+</script>
 
 <style scoped>
 @keyframes placeHolderShimmer {

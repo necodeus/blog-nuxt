@@ -4,7 +4,18 @@
     <Meta name="description" :content="data.post.teaser" />
   </Head>
 
-  <PostHeaderPlaceholder v-if="pendingPost" />
+  <PostHeaderPlaceholder
+    v-if="pendingPost"
+    image=""
+    name="Hello world"
+    timeAgo="2024-01-01 03:37:37"
+    teaser="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies ultrices, nisl nisl ultricies nisl, nec ultricies"
+    authorName=""
+    authorPhoto=""
+    postId=""
+    :averageRating="0"
+    :numberOfComments="0"
+  />
   <PostHeader v-else
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"

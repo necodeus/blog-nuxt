@@ -1,6 +1,6 @@
 <template>
 	<OtherPostsPlaceholder v-show="pending" />
-	<OtherPostsFilled v-show="!pending" :posts="getData(data.posts)" />
+	<OtherPostsFilled v-show="!pending" :posts="getData(data?.posts || [])" />
 </template>
 
 <script setup>

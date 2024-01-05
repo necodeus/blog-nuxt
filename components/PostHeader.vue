@@ -11,7 +11,7 @@
                 </div>
                 <div class="component-padding relative !py-0 flex items-center mb-[10px]">
                     <picture>
-                        <source media="(min-width: 768px)" :srcset="authorPhoto5" />
+                        <source media="(min-width: 768px)" :srcset="authorPhoto" />
                         <img
                             :src="authorPhoto"
                             loading="lazy"
@@ -35,7 +35,7 @@
                 </div>
             </div>
         </div>
-        <div class="component-padding relative !pt-[10px]" style="background-color: white;">
+        <div class="component-padding relative !pt-[10px] bg-white">
             <div class="flex items-center mb-[10px]">
                 <Stars :initialRating="averageRating" :postId="postId" />
                 <div class="div-separator"></div>
@@ -111,12 +111,15 @@ const props = defineProps({
     display: block;
     object-fit: cover;
 }
-
 .div-separator {
     background-color: black;
     border-radius: 999px;
     width: 3px;
     height: 3px;
+    min-width: 3px;
+    min-height: 3px;
+    max-width: 3px;
+    max-height: 3px;
     margin: 0 10px;
     display: flex;
     opacity: 0.5;
