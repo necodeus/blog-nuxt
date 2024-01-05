@@ -5,10 +5,12 @@
 
 <script setup>
 const getData = (posts = []) => {
-	return posts.filter((post) => post.slug !== route.params.slug) || []
+	const currentRoute = router.currentRoute.value.path
+
+	return posts.filter((post) => post.slug !== currentRoute) || []
 }
 
 const { data, pending } = useFetch('/api/posts')
 
-const route = useRoute()
+const router = useRouter()
 </script>

@@ -2,8 +2,10 @@
 	<div class="component-padding component-border-horizontal font-jost">
 		<SectionTitle><b>Inne</b> wpisy</SectionTitle>
 		<ul>
-			<li class="text-[20px]" v-for="(post, p) in 3" v-bind:key="p">
-				<div class="content-placeholder" to="/">&nbsp;</div>
+			<li class="list text-[20px]" v-for="(post, p) in 3" v-bind:key="p">
+				<div class="content-placeholder" to="/">
+                    Lorem ipsum dolor sit amet.
+                </div>
 			</li>
 		</ul>
 	</div>
@@ -32,10 +34,10 @@
     background-color: #eee;
     border-radius: 4px;
     color: transparent;
-	display: block;
+	display: inline-block;
 }
 
-ul > li:not(:last-child) {
+.list:not(:last-child) {
 	margin-bottom: 15px;
 }
 </style>
