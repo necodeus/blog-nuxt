@@ -1,7 +1,17 @@
-import fs from 'fs';
-import path from 'path';
-
 export default defineNuxtConfig({
+    hooks: {
+        'pages:extend'(pages) {
+            if (process.env.NODE_ENV === 'development') {
+                return;
+            }
+
+            const storyIndex = pages.findIndex(page => page.name === 'story');
+
+            if (storyIndex !== -1) {
+                pages.splice(storyIndex, 1);
+            }
+        }
+    },
     css: [
         '@/assets/css/main.css',
     ],
