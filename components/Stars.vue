@@ -16,64 +16,67 @@ User
                 </svg>
             </div>
         </div>
-        <p>{{ rating?.toFixed(1) }}</p>
+        <p v-if="postRating === null">_.__</p>
+        <p v-else>{{ postRating }}</p>
     </div>
 </template>
 
 <script setup>
-const { $ws } = useNuxtApp();
+import { usePostsStore } from '../store/posts'
+const { getPostRating, getConnection } = usePostsStore()
 
 const props = defineProps({
     initialRating: {
         type: Number,
-        default: 0
+        default: 0,
     },
     postId: {
         type: String,
         required: false,
-        default: () => ''
+        default: () => '',
     }
+})
+
+const rating = ref(null)
+
+const postRating = computed(() => {
+    const rt = getPostRating(props.postId)
+
+    rating.value = rt
+
+    if (rt !== null && rt != undefined) {
+        return (rt * 1).toFixed(2)
+    }
+
+    return null
 })
 
 const selectedRating = ref(0)
 
-const rating = ref(props.initialRating)
-
-watch(() => props.initialRating, (newVal) => {
-    rating.value = newVal
-})
+// watch(() => props.initialRating, (newVal) => {
+//     rating.value = newVal
+// })
 
 const setRating = async (newRating) => {
+    selectedRating.value = newRating
 
-    selectedRating.value = newRating;
-
-    if ($ws.value.readyState !== 1) {
-        console.log('Connection lost.');
-        return;
-    }
-
-    $ws.value.onmessage = async (event) => {
-        const { postId, average } = JSON.parse(event.data);
-
-        if (postId === props.postId) {
-            rating.value = average;
-        }
-    }
-
-    $ws.value.send(JSON.stringify({
+    getConnection().send(JSON.stringify({
+        type: 'UPDATE_POST_RATING',
         postId: props.postId,
         value: newRating,
-    }));
+    }))
 }
 
 const fillWidth = (star) => {
     if (star <= Math.floor(rating.value)) {
-        return '0%';
+        return '0%'
     }
+
     if (star === Math.ceil(rating.value)) {
-        return `${100 - (rating.value % 1) * 100}%`;
+        return `${100 - (rating.value % 1) * 100}%`
     }
-    return '100%';
+
+    return '100%'
 }
 </script>
 

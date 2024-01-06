@@ -19,7 +19,7 @@
   <PostHeader v-else
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"
-    :timeAgo="data?.post?.created_at"
+    :timeAgo="data?.post?.created_at || '2023-01-01 03:37:37'"
     :teaser="data?.post?.teaser ?? ''"
     :authorName="data?.postAuthor?.display_name ?? ''"
     :authorPhoto="'https://images.necodeo.com/' + data?.postAuthor?.image_id_avatar ?? ''"
@@ -34,8 +34,6 @@
   <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
     <PostAuthorFilled :profile="data.postAuthor" />
   </div>
-
-  <!-- <PostComments v-if="!pendingPost" :postId="data?.post?.id" /> -->
 </template>
 
 <script setup>
@@ -48,5 +46,24 @@ definePageMeta({
 
 const route = useRoute();
 
-const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`);
+const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`)
+
+import { usePostsStore } from '../store/posts'
+const { getConnection } = usePostsStore()
+
+onMounted(() => {
+  getConnection().onopen = () => {
+    getConnection().send(JSON.stringify({
+      type: 'GET_POST_RATING',
+      postId: route.meta.content_id,
+    }))
+  }
+
+  if (getConnection().readyState === 1) {
+    getConnection().send(JSON.stringify({
+      type: 'GET_POST_RATING',
+      postId: route.meta.content_id,
+    }))
+  }
+})
 </script>

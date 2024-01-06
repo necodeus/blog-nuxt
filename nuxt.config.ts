@@ -23,6 +23,7 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
+        '@pinia/nuxt',
     ],
     pages: true,
     vite: {

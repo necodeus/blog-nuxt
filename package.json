@@ -33,7 +33,9 @@
     "twemoji": "^14.0.2"
   },
   "dependencies": {
+    "@pinia/nuxt": "^0.5.1",
     "js-sha256": "^0.10.1",
+    "pinia": "^2.1.7",
     "uuid": "^9.0.1"
   }
 }

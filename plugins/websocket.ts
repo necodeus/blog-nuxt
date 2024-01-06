@@ -1,25 +1,30 @@
-const ws: any = ref(null);
-
-function initWebSocket() {
-    const env = useRuntimeConfig();
-
-    const connection = new WebSocket(env.public.WEBSOCKET_ADDRESS as string);
-
-    connection.onerror = function (error: any) {
-        console.error(error);
-    };
-
-    connection.onclose = initWebSocket;
-
-    ws.value = connection;
-}
+import { usePostsStore } from '../store/posts';
 
 export default defineNuxtPlugin((nuxtApp) => {
     if (!process.client) {
         return;
     }
 
-    initWebSocket();
+    const pinia = usePinia();
 
-    nuxtApp.provide('ws', ws);
+    const { addPostRating, setConnection } = usePostsStore(pinia)
+
+    const ws = new WebSocket(useRuntimeConfig().public.WEBSOCKET_ADDRESS);
+    setConnection(ws);
+
+    ws.onerror = function (error) {
+        console.error(error);
+    };
+
+    ws.onmessage = function (messageEvent: WebSocketEventMap['message']) {
+        try {
+            const data = JSON.parse(messageEvent.data);
+
+            if (data.type === 'RATINGS_AVERAGE') {
+                addPostRating(data.postId, data.average);
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    };
 });
