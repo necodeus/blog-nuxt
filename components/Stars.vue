@@ -10,8 +10,6 @@ User
             >
                 <svg
                     viewBox="0 0 19.8 19.8"
-                    width="20"
-                    height="20"
                     class="star-background"
                 >
                     <path
@@ -33,8 +31,6 @@ User
             >
                 <svg
                     viewBox="0 0 19.8 19.8"
-                    width="20"
-                    height="20"
                     class="star-fill"
                     :style="{
                         clipPath: `inset(0 ${fillWidth(star)} 0 0)`,
@@ -117,6 +113,15 @@ const fillWidth = (star) => {
 <style scoped>
 .star {
     margin-right: 5px;
+}
+
+.star svg {
+    width: 20px !important;
+    height: 20px !important;
+    min-width: 20px !important;
+    min-height: 20px !important;
+    max-width: 20px !important;
+    max-height: 20px !important;
 }
 
 .star:last-child {
