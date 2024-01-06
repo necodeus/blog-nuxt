@@ -10,8 +10,8 @@ User
             >
                 <svg
                     viewBox="0 0 19.8 19.8"
-                    width="26"
-                    height="24"
+                    width="20"
+                    height="20"
                     class="star-background"
                 >
                     <path
@@ -33,8 +33,8 @@ User
             >
                 <svg
                     viewBox="0 0 19.8 19.8"
-                    width="26"
-                    height="24"
+                    width="20"
+                    height="20"
                     class="star-fill"
                     :style="{
                         clipPath: `inset(0 ${fillWidth(star)} 0 0)`,
