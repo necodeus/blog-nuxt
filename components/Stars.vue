@@ -2,21 +2,55 @@ User
 <template>
     <div class="star-rating">
         <div class="flex absolute">
-            <div v-for="star in 5" :key="star" class="star" @click="() => { setRating(star); }">
-                <svg width="25" height="25" viewBox="0 0 25 25" class="star-background">
-                    <path d="M9.9,1 L12.5,7.7 L19.8,7.7 L14.15,12.3 L16.6,19 L9.9,14.6 L3.2,19 L5.65,12.3 L0,7.7 L7.3,7.7 Z" fill="#eee"></path>
+            <div
+                class="star"
+                @click="() => { setRating(star); }"
+                v-for="star in 5"
+                :key="star"
+            >
+                <svg
+                    viewBox="0 0 19.8 19.8"
+                    width="26"
+                    height="24"
+                    class="star-background"
+                >
+                    <path
+                        d="M9.9,1 L12.5,7.7 L19.8,7.7 L14.15,12.3 L16.6,19 L9.9,14.6 L3.2,19 L5.65,12.3 L0,7.7 L7.3,7.7 Z"
+                        fill="#eee"
+                        :stroke="(star === selectedRating ? 'gray' : 'transparent')"
+                        stroke-opacity="0.25"
+                        stroke-width="1"
+                    ></path>
                 </svg>
             </div>
         </div>
         <div class="flex">
-            <div v-for="star in 5" :key="star" class="star relative" @click="() => { setRating(star); }">
-                <!-- <span :style="{ borderBottom: (star === selectedRating ? '1px solid black' : '0') }">{{ selectedRating }}</span> -->
-                <svg width="25" height="25" viewBox="0 0 25 25" class="star-fill" :style="`clip-path: inset(0 ${fillWidth(star)} 0 0)`">
-                    <path d="M9.9,1 L12.5,7.7 L19.8,7.7 L14.15,12.3 L16.6,19 L9.9,14.6 L3.2,19 L5.65,12.3 L0,7.7 L7.3,7.7 Z" fill="gold"></path>
+            <div
+                class="star relative"
+                @click="() => { setRating(star); }"
+                v-for="star in 5"
+                :key="star"
+            >
+                <svg
+                    viewBox="0 0 19.8 19.8"
+                    width="26"
+                    height="24"
+                    class="star-fill"
+                    :style="{
+                        clipPath: `inset(0 ${fillWidth(star)} 0 0)`,
+                    }"
+                >
+                    <path
+                        d="M9.9,1 L12.5,7.7 L19.8,7.7 L14.15,12.3 L16.6,19 L9.9,14.6 L3.2,19 L5.65,12.3 L0,7.7 L7.3,7.7 Z"
+                        fill="gold"
+                        :stroke="(star === selectedRating ? '#c6a700' : 'transparent')"
+                        stroke-opacity="0.25"
+                        stroke-width="1"
+                    ></path>
                 </svg>
             </div>
         </div>
-        <p v-if="postRating === null">_.__</p>
+        <p v-if="postRating === null" class="animated-background">0.00</p>
         <p v-else>{{ postRating }}</p>
     </div>
 </template>
@@ -81,6 +115,14 @@ const fillWidth = (star) => {
 </script>
 
 <style scoped>
+.star {
+    margin-right: 5px;
+}
+
+.star:last-child {
+    margin-right: 10px;
+}
+
 .star-rating {
     display: flex;
     align-items: center;
@@ -98,5 +140,29 @@ const fillWidth = (star) => {
     fill: gold;
     clip-path: inset(0 0 0 0);
     transition: clip-path 0.25s ease-in-out;
+}
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -800px 0
+    }
+    100% {
+        background-position: 800px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #eee 8%, #fff 18%, #eee 33%);
+    background-size: 800px 104px;
+    position: relative;
+    background-color: #eee;
+    border-radius: 4px;
+    color: transparent;
+    display: block !important;
 }
 </style>
