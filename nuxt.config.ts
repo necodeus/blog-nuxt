@@ -23,16 +23,12 @@ export default defineNuxtConfig({
     modules: [
         '@nuxtjs/tailwindcss',
         '@nuxtjs/partytown',
-        '@formkit/nuxt',
     ],
     pages: true,
     vite: {
         ssr: {
             noExternal: ["moment"],
         },
-    },
-    formkit: {
-        autoImport: true,
     },
     runtimeConfig: {
         public: {

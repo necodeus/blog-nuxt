@@ -1,21 +1,16 @@
-// Convert input options to more useable format
-// and compile search regexp
-
 'use strict';
 
-
-function quoteRE(str) {
+function quoteRE(str: any) {
   return str.replace(/[.?*+^$[\]\\(){}|-]/g, '\\$&');
 }
 
-
-export default (options) => {
+export default (options: any) => {
   var emojies = options.defs,
       shortcuts;
 
   // Filter emojies by whitelist, if needed
   if (options.enabled.length) {
-    emojies = Object.keys(emojies).reduce(function (acc, key) {
+    emojies = Object.keys(emojies).reduce(function (acc: any, key) {
       if (options.enabled.indexOf(key) >= 0) {
         acc[key] = emojies[key];
       }
@@ -24,18 +19,22 @@ export default (options) => {
   }
 
   // Flatten shortcuts to simple object: { alias: emoji_name }
-  shortcuts = Object.keys(options.shortcuts).reduce(function (acc, key) {
+  shortcuts = Object.keys(options.shortcuts).reduce(function (acc: any, key) {
     // Skip aliases for filtered emojies, to reduce regexp
-    if (!emojies[key]) { return acc; }
-
-    if (Array.isArray(options.shortcuts[key])) {
-      options.shortcuts[key].forEach(function (alias) {
-        acc[alias] = key;
-      });
-      return acc;
+    if (!emojies[key]) {
+      return acc
     }
 
-    acc[options.shortcuts[key]] = key;
+    if (Array.isArray(options.shortcuts[key])) {
+      options.shortcuts[key].forEach(function (alias: any) {
+        acc[alias] = key
+      })
+
+      return acc
+    }
+
+    acc[options.shortcuts[key]] = key
+
     return acc;
   }, {});
 
@@ -63,5 +62,5 @@ export default (options) => {
     shortcuts: shortcuts,
     scanRE: scanRE,
     replaceRE: replaceRE
-  };
-};
+  }
+}

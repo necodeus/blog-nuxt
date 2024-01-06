@@ -2,20 +2,20 @@ var disableCheckboxes = true;
 var useLabelWrapper = false;
 var useLabelAfter = false;
 
-export default md => {
-	md.core.ruler.after('inline', 'github-task-lists', function(state) {
+export default (md: any) => {
+	md.core.ruler.after('inline', 'github-task-lists', function (state: any) {
 		var tokens = state.tokens;
 		for (var i = 2; i < tokens.length; i++) {
 			if (isTodoItem(tokens, i)) {
 				todoify(tokens[i], state.Token);
-				attrSet(tokens[i-2], 'class', 'task-list-item' + (!disableCheckboxes ? ' enabled' : ''));
-				attrSet(tokens[parentToken(tokens, i-2)], 'class', 'contains-task-list');
+				attrSet(tokens[i - 2], 'class', 'task-list-item' + (!disableCheckboxes ? ' enabled' : ''));
+				attrSet(tokens[parentToken(tokens, i - 2)], 'class', 'contains-task-list');
 			}
 		}
 	});
 };
 
-function attrSet(token, name, value) {
+function attrSet(token: any, name: any, value: any) {
 	var index = token.attrIndex(name);
 	var attr = [name, value];
 
@@ -26,7 +26,7 @@ function attrSet(token, name, value) {
 	}
 }
 
-function parentToken(tokens, index) {
+function parentToken(tokens: any, index: any) {
 	var targetLevel = tokens[index].level - 1;
 	for (var i = index - 1; i >= 0; i--) {
 		if (tokens[i].level === targetLevel) {
@@ -36,14 +36,14 @@ function parentToken(tokens, index) {
 	return -1;
 }
 
-function isTodoItem(tokens, index) {
+function isTodoItem(tokens: any, index: any) {
 	return isInline(tokens[index]) &&
-	       isParagraph(tokens[index - 1]) &&
-	       isListItem(tokens[index - 2]) &&
-	       startsWithTodoMarkdown(tokens[index]);
+		isParagraph(tokens[index - 1]) &&
+		isListItem(tokens[index - 2]) &&
+		startsWithTodoMarkdown(tokens[index]);
 }
 
-function todoify(token, TokenConstructor) {
+function todoify(token: any, TokenConstructor: any) {
 	token.children.unshift(makeCheckbox(token, TokenConstructor));
 	token.children[1].content = token.children[1].content.slice(3);
 	token.content = token.content.slice(3);
@@ -63,7 +63,7 @@ function todoify(token, TokenConstructor) {
 	}
 }
 
-function makeCheckbox(token, TokenConstructor) {
+function makeCheckbox(token: any, TokenConstructor: any) {
 	var checkbox = new TokenConstructor('html_inline', '', 0);
 	var disabledAttr = disableCheckboxes ? ' disabled="" ' : '';
 	if (token.content.indexOf('[ ] ') === 0) {
@@ -74,32 +74,40 @@ function makeCheckbox(token, TokenConstructor) {
 	return checkbox;
 }
 
-// these next two functions are kind of hacky; probably should really be a
-// true block-level token with .tag=='label'
-function beginLabel(TokenConstructor) {
+// Next two functions are kind of hacky; probably should really be a true block-level token with .tag == 'label'
+
+function beginLabel(TokenConstructor: any) {
 	var token = new TokenConstructor('html_inline', '', 0);
 	token.content = '<label>';
 	return token;
 }
 
-function endLabel(TokenConstructor) {
+function endLabel(TokenConstructor: any) {
 	var token = new TokenConstructor('html_inline', '', 0);
 	token.content = '</label>';
 	return token;
 }
 
-function afterLabel(content, id, TokenConstructor) {
+function afterLabel(content: any, id: any, TokenConstructor: any) {
 	var token = new TokenConstructor('html_inline', '', 0);
 	token.content = '<label class="task-list-item-label" for="' + id + '">' + content + '</label>';
-	token.attrs = [{for: id}];
+	token.attrs = [{ for: id }];
 	return token;
 }
 
-function isInline(token) { return token.type === 'inline'; }
-function isParagraph(token) { return token.type === 'paragraph_open'; }
-function isListItem(token) { return token.type === 'list_item_open'; }
+function isInline(token: any) {
+	return token.type === 'inline';
+}
 
-function startsWithTodoMarkdown(token) {
-	// leading whitespace in a list item is already trimmed off by markdown-it
+function isParagraph(token: any) {
+	return token.type === 'paragraph_open'
+}
+
+function isListItem(token: any) {
+	return token.type === 'list_item_open';
+}
+
+function startsWithTodoMarkdown(token: any) {
+	// Leading whitespace in a list item is already trimmed off by markdown-it
 	return token.content.indexOf('[ ] ') === 0 || token.content.indexOf('[x] ') === 0 || token.content.indexOf('[X] ') === 0;
 }

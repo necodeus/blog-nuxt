@@ -1,21 +1,14 @@
-// Emojies & shortcuts replacement logic.
-//
-// Note: In theory, it could be faster to parse :smile: in inline chain and
-// leave only shortcuts here. But, who care...
-//
-
 'use strict';
 
-
-export default (md, emojies, shortcuts, scanRE, replaceRE) => {
+export default (md: any, emojies: any, shortcuts: any, scanRE: any, replaceRE: any) => {
   var arrayReplaceAt = md.utils.arrayReplaceAt,
-      ucm = md.utils.lib.ucmicro,
-      ZPCc = new RegExp([ ucm.Z.source, ucm.P.source, ucm.Cc.source ].join('|'));
+    ucm = md.utils.lib.ucmicro,
+    ZPCc = new RegExp([ucm.Z.source, ucm.P.source, ucm.Cc.source].join('|'));
 
-  function splitTextToken(text, level, Token) {
+  function splitTextToken(text: any, level: any, Token: any) {
     var token, last_pos = 0, nodes = [];
 
-    text.replace(replaceRE, function (match, offset, src) {
+    text.replace(replaceRE, function (match: any, offset: any, src: any) {
       var emoji_name;
       // Validate emoji name
       if (shortcuts.hasOwnProperty(match)) {
@@ -37,13 +30,13 @@ export default (md, emojies, shortcuts, scanRE, replaceRE) => {
 
       // Add new tokens to pending list
       if (offset > last_pos) {
-        token         = new Token('text', '', 0);
+        token = new Token('text', '', 0);
         token.content = text.slice(last_pos, offset);
         nodes.push(token);
       }
 
-      token         = new Token('emoji', '', 0);
-      token.markup  = emoji_name;
+      token = new Token('emoji', '', 0);
+      token.markup = emoji_name;
       token.content = emojies[emoji_name];
       nodes.push(token);
 
@@ -51,7 +44,7 @@ export default (md, emojies, shortcuts, scanRE, replaceRE) => {
     });
 
     if (last_pos < text.length) {
-      token         = new Token('text', '', 0);
+      token = new Token('text', '', 0);
       token.content = text.slice(last_pos);
       nodes.push(token);
     }
@@ -59,31 +52,33 @@ export default (md, emojies, shortcuts, scanRE, replaceRE) => {
     return nodes;
   }
 
-  return function emoji_replace(state) {
-    var i, j, l, tokens, token,
-        blockTokens = state.tokens,
-        autolinkLevel = 0;
+  return function emoji_replace(state: any) {
+    var i, j, l, tokens, token, blockTokens = state.tokens, autolinkLevel = 0;
 
     for (j = 0, l = blockTokens.length; j < l; j++) {
-      if (blockTokens[j].type !== 'inline') { continue; }
+      if (blockTokens[j].type !== 'inline') {
+        continue;
+      }
+
       tokens = blockTokens[j].children;
 
-      // We scan from the end, to keep position when new tags added.
-      // Use reversed logic in links start/end match
+      // We scan from the end, to keep position when new tags added. Use reversed logic in links start/end match
       for (i = tokens.length - 1; i >= 0; i--) {
-        token = tokens[i];
+        token = tokens[i]
 
         if (token.type === 'link_open' || token.type === 'link_close') {
-          if (token.info === 'auto') { autolinkLevel -= token.nesting; }
+          if (token.info === 'auto') {
+            autolinkLevel -= token.nesting;
+          }
         }
 
         if (token.type === 'text' && autolinkLevel === 0 && scanRE.test(token.content)) {
-          // replace current node
+          // Replace current node
           blockTokens[j].children = tokens = arrayReplaceAt(
             tokens, i, splitTextToken(token.content, token.level, state.Token)
           );
         }
       }
     }
-  };
-};
+  }
+}

@@ -1,27 +1,27 @@
 'use strict';
 
-export default md => {
+export default (md: any) => {
     var defaultRender = md.renderer.rules.fence,
         unescapeAll = md.utils.unescapeAll,
         // [group:tab], :tab is optional
         re = /\[(\w*)(?::([\w ]*))?\]/;
 
-    function getInfo(token) {
+    function getInfo(token: any) {
         return token.info ? unescapeAll(token.info).trim() : '';
     }
 
-    function getGroupAndTab(token) {
+    function getGroupAndTab(token: any) {
         var info = getInfo(token),
             [group = null, tab = ''] = (re.exec(info) || []).slice(1);
         return [group, tab];
     }
 
-    function getLangName(token) {
+    function getLangName(token: any) {
         var info = getInfo(token);
         return info ? info.split(/(\s+)/g)[0] : '';
     }
 
-    function fenceGroup(tokens, idx, options, env, slf) {
+    function fenceGroup(tokens: any, idx: any, options: any, env: any, slf: any) {
         if (tokens[idx].hidden) { return ''; }
 
         const [GROUP, _] = getGroupAndTab(tokens[idx]);

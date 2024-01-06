@@ -137,13 +137,6 @@
   </div>
 </template>
 
-<script setup>
-onMounted(() => {
-  const scroll = document.querySelector(".simplebar-content-wrapper");
-  scroll?.scrollTo(0, 0);
-});
-</script>
-
 <style>
 .privacy-policy p {
   line-height: 35px;

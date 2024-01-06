@@ -12,8 +12,6 @@
   "devDependencies": {
     "@commitlint/cli": "^18.4.3",
     "@commitlint/config-conventional": "^18.4.3",
-    "@formkit/nuxt": "^1.4.0",
-    "@formkit/themes": "^1.4.0",
     "@nuxtjs/partytown": "^1.4.0",
     "@nuxtjs/tailwindcss": "^6.10.1",
     "@semantic-release/changelog": "^6.0.3",
@@ -23,6 +21,7 @@
     "@semantic-release/release-notes-generator": "^12.1.0",
     "@types/markdown-it": "^13.0.7",
     "@types/node": "^20.9.0",
+    "@types/uuid": "^9.0.7",
     "highlight.js": "^11.9.0",
     "husky": "^8.0.3",
     "markdown-it": "^14.0.0",

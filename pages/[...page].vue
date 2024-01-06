@@ -50,8 +50,5 @@ const route = useRoute();
 
 const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`);
 
-// onMounted(() => {
-//   const scroll = document.querySelector(".simplebar-content-wrapper");
-//   scroll?.scrollTo(0, 0);
-// });
+const nuxtApp = useNuxtApp()
 </script>

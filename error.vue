@@ -19,8 +19,8 @@
 </template>
 
 <script setup>
-import simplebar from "simplebar-vue";
-import "simplebar/dist/simplebar.min.css";
+import simplebar from 'simplebar-vue';
+import 'simplebar/dist/simplebar.min.css';
 
 defineProps({
     error: {

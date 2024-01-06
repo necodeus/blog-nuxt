@@ -3,9 +3,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return;
     }
 
-    // przydałoby się wysyłać zapytanie po listę wpisów (w zakładce "inne artykuły")
-
-    // może robić to na etapie głównego komponentu aplikacji?
     const { data: r1 } = await useFetch(`/api/pages?url=${to.path}`) as any
 
     const { data: { page } } = unref(r1)
@@ -16,6 +13,8 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             message: 'Coś poszło nie tak!',
         })
     }
+
+    to.meta.content_type = page.content_type
 
     switch (page.content_type) {
         case 'POST':

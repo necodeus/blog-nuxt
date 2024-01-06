@@ -25,15 +25,4 @@ import "simplebar/dist/simplebar.min.css";
 const router = useRouter();
 
 const isHomePage = computed(() => router.currentRoute.value.path === "/");
-
-watch(
-    () => router.currentRoute.value,
-    () => {
-        const simplebarElement = document.querySelector(".simplebar-content-wrapper");
-
-        if (simplebarElement) {
-            simplebarElement.scrollTop = 0;
-        }
-    }
-);
 </script>

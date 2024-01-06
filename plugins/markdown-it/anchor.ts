@@ -1,15 +1,15 @@
 import * as permalink from './permalink'
 
-const slugify = (s) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'))
+const slugify = (s: any) => encodeURIComponent(String(s).trim().toLowerCase().replace(/\s+/g, '-'))
 
-function getTokensText (tokens) {
+function getTokensText (tokens: any) {
   return tokens
-    .filter(t => ['text', 'code_inline'].includes(t.type))
-    .map(t => t.content)
+    .filter((t: any) => ['text', 'code_inline'].includes(t.type))
+    .map((t: any) => t.content)
     .join('')
 }
 
-function uniqueSlug (slug, slugs, failOnNonUnique, startIndex) {
+function uniqueSlug (slug: any, slugs: any, failOnNonUnique: any, startIndex: any) {
   let uniq = slug
   let i = startIndex
 
@@ -27,13 +27,13 @@ function uniqueSlug (slug, slugs, failOnNonUnique, startIndex) {
   return uniq
 }
 
-const isLevelSelectedNumber = selection => level => level >= selection
-const isLevelSelectedArray = selection => level => selection.includes(level)
+const isLevelSelectedNumber = (selection: any) => (level: any) => level >= selection
+const isLevelSelectedArray = (selection: any) => (level: any) => selection.includes(level)
 
-function anchor (md, opts) {
+const anchor = function (md: any, opts: any) {
   opts = Object.assign({}, anchor.defaults, opts)
 
-  md.core.ruler.push('anchor', state => {
+  md.core.ruler.push('anchor', (state: any) => {
     const slugs = {}
     const tokens = state.tokens
 
@@ -101,9 +101,9 @@ anchor.defaults = {
   permalink: false,
   renderPermalink: permalink.legacy,
   permalinkClass: permalink.ariaHidden.defaults.class,
-  permalinkSpace: permalink.ariaHidden.defaults.space,
+  permalinkSpace: (permalink.ariaHidden.defaults as any).space,
   permalinkSymbol: '¶',
-  permalinkBefore: permalink.ariaHidden.defaults.placement === 'before',
+  permalinkBefore: (permalink.ariaHidden.defaults as any).placement === 'before',
   permalinkHref: permalink.ariaHidden.defaults.renderHref,
   permalinkAttrs: permalink.ariaHidden.defaults.renderAttrs
 }

@@ -205,8 +205,6 @@ const submitComment = async (commentId = '') => {
     });
 
     const data = await response.json();
-
-    console.log(data);
 };
 
 const upvoteCommentById = async (postId, commentId) => {
@@ -218,8 +216,6 @@ const upvoteCommentById = async (postId, commentId) => {
     });
 
     const data = await response.json();
-
-    console.log(data);
 };
 
 const downvoteCommentById = async (postId, commentId) => {
@@ -231,8 +227,6 @@ const downvoteCommentById = async (postId, commentId) => {
     });
 
     const data = await response.json();
-
-    console.log(data);
 };
 
 const visibilityChanged = async (isVisible, disconnectObserver) => {
