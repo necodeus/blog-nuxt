@@ -80,7 +80,7 @@ const fillWidth = (star) => {
 }
 </script>
 
-<style>
+<style scoped>
 .star-rating {
     display: flex;
     align-items: center;

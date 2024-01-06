@@ -236,7 +236,7 @@ const visibilityChanged = async (isVisible, disconnectObserver) => {
 };
 </script>
 
-<style>
+<style  scoped>
 .div-separator {
     background-color: #b3b3b3;
     border-radius: 999px;

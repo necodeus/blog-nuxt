@@ -1,14 +1,15 @@
 <template>
-    <ul class="font-jost">
-        <li class="block relative p-[30px] m-[5px]" v-for="(post, p) in posts" v-bind:key="p">
-            <h1 class="flex mb-[30px]">
+    <ul class="font-jost inline-flex flex-col">
+        <li class="list relative" v-for="post in posts" v-bind:key="post.id">
+            <div class="flex items-center">
+                <span class="text-[16px]"><b class="font-semibold">John Doe</b></span>
+                <div class="div-separator"></div>
+                <span class="text-[16px]">{{ moment(post.modified_at).fromNow() }}</span>
+            </div>
+
+            <h1 class="flex mt-[10px]">
                 <span class="text-[38px]">{{ post.title }}</span>
             </h1>
-
-            <div class="flex items-center mt-[30px]">
-                <span class="text-[16px]"><b class="font-semibold">Dawid</b></span>
-                <span class="text-[16px]">, {{ moment(post.created_at).fromNow() }}</span>
-            </div>
 
             <NuxtLink :to="post.slug" class="w-full h-full top-0 bottom-0 right-0 left-0 absolute"></NuxtLink>
         </li>
@@ -26,3 +27,23 @@ defineProps({
     },
 })
 </script>
+
+<style styled>
+.list:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.div-separator {
+    background-color: black;
+    border-radius: 999px;
+    width: 3px;
+    height: 3px;
+    min-width: 3px;
+    min-height: 3px;
+    max-width: 3px;
+    max-height: 3px;
+    margin: 0 10px;
+    display: flex;
+    opacity: 0.5;
+}
+</style>

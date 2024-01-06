@@ -111,6 +111,7 @@ const props = defineProps({
     display: block;
     object-fit: cover;
 }
+
 .div-separator {
     background-color: black;
     border-radius: 999px;

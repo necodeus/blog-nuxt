@@ -1,18 +1,15 @@
 <template>
-    <ul class="font-jost">
-        <li class="block p-[40px] m-[5px]" v-for="p in repeats" :key="p">
-            <h1 class="flex mb-[40px]">
+    <ul class="font-jost inline-flex flex-col">
+        <li class="list relative" v-for="p in repeats" :key="p">
+            <div class="flex items-center">
+                <div class="text-[16px] animated-background"><b class="font-semibold">Anonim</b></div>
+                <div class="div-separator"></div>
+                <div class="text-[16px] animated-background">nieznany czas temu</div>
+            </div>
+
+            <h1 class="flex mt-[10px]">
                 <span class="text-[38px] animated-background">Mauris sed pulvinar ipsum.</span>
             </h1>
-
-            <div class="flex items-center mt-[40px]">
-                <div class="text-[16px] animated-background">Anonim</div>
-                <div class="text-[16px] animated-background ml-[5px]">nieznany czas temu</div>
-            </div>
-
-            <div class="flex my-[10px]">
-                <span class="text-[22px] tracking-[1px] animated-background">Neque eos at et non aut. Aut sed qui rerum.</span>
-            </div>
         </li>
     </ul>
 </template>
@@ -27,7 +24,7 @@ const props = defineProps({
 })
 </script>
 
-<style>
+<style scoped>
 @keyframes placeHolderShimmer {
     0% {
         background-position: -800px 0
@@ -50,5 +47,23 @@ const props = defineProps({
     border-radius: 4px;
     color: transparent;
     display: inline-block !important;
+}
+
+.list:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+.div-separator {
+    background-color: black;
+    border-radius: 999px;
+    width: 3px;
+    height: 3px;
+    min-width: 3px;
+    min-height: 3px;
+    max-width: 3px;
+    max-height: 3px;
+    margin: 0 10px;
+    display: flex;
+    opacity: 0.5;
 }
 </style>

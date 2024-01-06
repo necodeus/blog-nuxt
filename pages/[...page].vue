@@ -19,7 +19,7 @@
   <PostHeader v-else
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"
-    :timeAgo="data?.post?.created_at || '2023-01-01 03:37:37'"
+    :timeAgo="data?.post?.modified_at"
     :teaser="data?.post?.teaser ?? ''"
     :authorName="data?.postAuthor?.display_name ?? ''"
     :authorPhoto="'https://images.necodeo.com/' + data?.postAuthor?.image_id_avatar ?? ''"
