@@ -1,3 +1,16 @@
+# [1.17.0](https://github.com/necodeus/blog-nuxt/compare/v1.16.4...v1.17.0) (2024-01-06)
+
+
+### Bug Fixes
+
+* **0:** scroll to top ([466d213](https://github.com/necodeus/blog-nuxt/commit/466d213f037a81674e3686250713945c40d50b24))
+
+
+### Features
+
+* **0:** remove unnecessary scroll up on mount ([419e170](https://github.com/necodeus/blog-nuxt/commit/419e170f0de622c691048b5968559b5e626c28ad))
+* **0:** scroll up on route change ([3935547](https://github.com/necodeus/blog-nuxt/commit/393554734a81c8a075c2b271d5cb5330f41e75c1))
+
 ## [1.16.4](https://github.com/necodeus/blog-nuxt/compare/v1.16.3...v1.16.4) (2024-01-05)
 
 
