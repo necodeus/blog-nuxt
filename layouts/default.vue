@@ -5,12 +5,12 @@
     <div class="wrapper">
         <div></div>
         <div>
-            <simplebar class="component-border-vertical" style="height: 100%">
+            <simplebar class="component-border-vertical h-full">
                 <NuxtPage />
             </simplebar>
         </div>
         <div>
-            <simplebar class="component-border-vertical" style="height: 100%">
+            <simplebar class="component-border-vertical h-full">
                 <OtherPosts v-if="!isHomePage" />
                 <ExternalLinks />
             </simplebar>
@@ -25,4 +25,15 @@ import "simplebar/dist/simplebar.min.css";
 const router = useRouter();
 
 const isHomePage = computed(() => router.currentRoute.value.path === "/");
+
+watch(
+    () => router.currentRoute.value,
+    () => {
+        const simplebarElement = document.querySelector(".simplebar-content");
+
+        if (simplebarElement) {
+            simplebarElement.scrollTop = 0;
+        }
+    }
+);
 </script>
