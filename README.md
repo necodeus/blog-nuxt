@@ -8,8 +8,9 @@
 
 ## Requirements
 
--  [api-php](https://github.com/necodeus/api-php)
--  [acp-nuxt](https://github.com/necodeus/acp-nuxt)
+-  [api-php](https://github.com/necodeus/api-php) (API)
+-  [acp-nuxt](https://github.com/necodeus/acp-nuxt) (Nuxt App)
+-  [blog-wss](https://github.com/necodeus/blog-ws) (WebSocket Server)
 
 ## Installation
 
