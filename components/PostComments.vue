@@ -236,7 +236,6 @@ const visibilityChanged = async (isVisible, disconnectObserver) => {
     disconnectObserver();
 
     const { data } = await useLazyFetch(`/api/posts/${props.postId}/comments`);
-    console.log(data);
     comments.value = data.value
 };
 </script>

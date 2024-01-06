@@ -57,8 +57,6 @@ const setRating = async (newRating) => {
 
         if (postId === props.postId) {
             rating.value = average;
-
-            console.log('Invalidating cache for post', props.postId);
         }
     }
 
