@@ -3,7 +3,9 @@
         class="bg-[black] text-[white] border-[#dfdfdf] w-full border-[0px] rounded-[16px] px-[22px] py-[14px] font-medium justify-center flex items-center relative"
         v-on:click.prevent="handleButtonClick">
         Wyślij
-        <svg style="width: 18px; height: 18px; min-width: 18px; min-height: 18px" class="ml-2" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+        <svg
+            class="ml-2 w-[18px] h-[18px] min-w-[18px] min-h-[18px]"
+            xmlns="http://www.w3.org/2000/svg" width="24" height="24"
             viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
             stroke-linejoin="round">
             <line x1="22" y1="2" x2="11" y2="13"></line>

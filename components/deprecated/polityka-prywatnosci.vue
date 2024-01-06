@@ -1,12 +1,9 @@
 <template>
-  <div
-    class="privacy-policy component-padding component-border-horizontal"
-    style="font-family: 'Jost', sans-serif"
-  >
+  <div class="privacy-policy component-padding component-border-horizontal font-jost">
     <SectionTitle><b>Polityka</b> prywatności</SectionTitle>
     <div>
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px">Wstęp</span>
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Wstęp</span>
       </div>
       <p>
         Niniejsza polityka prywatności wyjaśnia zasady i zakres przetwarzania danych
@@ -14,25 +11,19 @@
         tych danych, a także informuje o używaniu ciasteczek.
       </p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Podstawa prawna przetwarzania danych osobowych</span
-        >
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Podstawa prawna przetwarzania danych osobowych</span>
       </div>
       <p>
         Dane osobowe są przetwarzane zgodnie z przepisami Rozporządzenia Parlamentu
         Europejskiego i Rady (UE) 2016/679 z dnia 27 kwietnia 2016 r. w sprawie ochrony
         osób fizycznych w związku z przetwarzaniem danych osobowych i w sprawie swobodnego
         przepływu takich danych oraz uchylenia dyrektywy 95/46/WE (ogólne rozporządzenie
-        o ochronie danych), OJ L 119, 4.5.2016, p. 1–88, dalej zwane: „<span
-          >rozporządzenie RODO</span
-        >".
+        o ochronie danych), OJ L 119, 4.5.2016, p. 1–88, dalej zwane: „<span>rozporządzenie RODO</span>".
       </p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Administrator danych osobowych</span
-        >
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Administrator danych osobowych</span>
       </div>
       <p>
         Dawid Smulewicz<br />
@@ -40,10 +31,8 @@
         88-190 Barcin<br />
       </p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Warunki przetwarzania danych osobowych</span
-        >
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Warunki przetwarzania danych osobowych</span>
       </div>
       <p>
         Administrator przetwarza dane osobowe wyłącznie po uprzednim uzyskaniu zgody
@@ -51,10 +40,8 @@
       </p>
       <p>Wyrażenie zgody na przetwarzanie danych osobowych jest całkowicie dobrowolne.</p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Dane użytkownika i cele ich przetwarzania</span
-        >
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Dane użytkownika i cele ich przetwarzania</span>
       </div>
       <p>
         Ta strona internetowa umożliwia użytkownikom wysyłanie wiadomości za pośrednictwem
@@ -78,8 +65,8 @@
         i nie łączą się z informacjami osobistymi użytkowników.
       </p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px">O ciasteczkach</span>
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">O ciasteczkach</span>
       </div>
 
       <p>
@@ -92,44 +79,42 @@
         dostosowania strony internetowej do indywidualnych potrzeb użytkownika.
       </p>
 
-      <div style="margin-bottom: 20px">
-        <span style="font-weight: 600; font-size: 20px"
-          >Lista wykorzystywanych ciasteczek</span
-        >
+      <div class="mb-[20px]">
+        <span class="font-semibold text-[20px]">Lista wykorzystywanych ciasteczek</span>
       </div>
 
-      <table style="margin-top: 20px">
+      <table class="mt-[20px]">
         <thead>
           <tr>
-            <th align="left" style="padding: 15px 25px 15px 0; font-weight: 600">
+            <th class="p-[15px_25px_15px_0] font-semibold" align="left">
               Nazwa
             </th>
-            <th align="left" style="padding: 15px 25px 15px 0; font-weight: 600">Cel</th>
-            <th align="right" style="padding: 15px 25px 15px 0; font-weight: 600">
+            <th class="p-[15px_25px_15px_0] font-semibold" align="left">Cel</th>
+            <th class="p-[15px_25px_15px_0] font-semibold" align="right">
               Żywotność
             </th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td style="padding: 10px 25px 10px 0">__gads</td>
-            <td style="padding: 10px 25px 10px 0">reklama</td>
-            <td style="padding: 10px 25px 10px 0" align="right">13 miesięcy</td>
+            <td class="p-[10px_25px_10px_0]">__gads</td>
+            <td class="p-[10px_25px_10px_0]">reklama</td>
+            <td class="p-[10px_25px_10px_0]" align="right">13 miesięcy</td>
           </tr>
           <tr>
-            <td style="padding: 10px 25px 10px 0">__gpi</td>
-            <td style="padding: 10px 25px 10px 0">reklama</td>
-            <td style="padding: 10px 25px 10px 0" align="right">13 miesięcy</td>
+            <td class="p-[10px_25px_10px_0]">__gpi</td>
+            <td class="p-[10px_25px_10px_0]">reklama</td>
+            <td class="p-[10px_25px_10px_0]" align="right">13 miesięcy</td>
           </tr>
           <tr>
-            <td style="padding: 10px 25px 10px 0">_ga</td>
-            <td style="padding: 10px 25px 10px 0">analityka</td>
-            <td style="padding: 10px 25px 10px 0" align="right">2 lata</td>
+            <td class="p-[10px_25px_10px_0]">_ga</td>
+            <td class="p-[10px_25px_10px_0]">analityka</td>
+            <td class="p-[10px_25px_10px_0]" align="right">2 lata</td>
           </tr>
           <tr>
-            <td style="padding: 10px 25px 10px 0">_ga_&lt;wpid&gt;</td>
-            <td style="padding: 10px 25px 10px 0">analityka</td>
-            <td style="padding: 10px 25px 10px 0" align="right">2 lata</td>
+            <td class="p-[10px_25px_10px_0]">_ga_&lt;wpid&gt;</td>
+            <td class="p-[10px_25px_10px_0]">analityka</td>
+            <td class="p-[10px_25px_10px_0]" align="right">2 lata</td>
           </tr>
         </tbody>
       </table>
@@ -137,7 +122,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .privacy-policy p {
   line-height: 35px;
   font-size: 20px;

@@ -13,12 +13,9 @@
         <div class="mb-2 mx-[30px]">Dodaj komentarz</div>
 
         <div class="mb-[30px] mx-[9px]">
-            <textarea
-                v-model="commentContents['']"
+            <textarea v-model="commentContents['']"
                 class="w-full h-[180px] p-[20px] border-[#dfdfdf] border-solid border-[1px] rounded-[14px] resize-none block mb-2"
-                placeholder="Treść komentarza"
-                @keydown.enter.prevent="() => { submitComment() }"
-            ></textarea>
+                placeholder="Treść komentarza" @keydown.enter.prevent="() => { submitComment() }"></textarea>
 
             <div class="flex items-center justify-between flex-col">
                 <FormButton :onClick="() => { submitComment() }" />
@@ -43,7 +40,8 @@
                         class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] bg-cover bg-center !rounded-full bg-[#eee] mr-3">
                         <picture>
                             <source media="(min-width: 768px)" :srcset="getGravatarURL(comment.author_name, 40)" />
-                            <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)" class="rounded-full" loading="lazy" />
+                            <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)"
+                                class="rounded-full" loading="lazy" />
                         </picture>
                     </div>
                     <div class="flex items-center">
@@ -91,7 +89,8 @@
                             class="min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-cover bg-center !rounded-[50%] bg-[#eee] mr-2">
                             <picture>
                                 <source media="(min-width: 768px)" :srcset="getGravatarURL(reply.author_name, 20)" />
-                                <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)" class="rounded-[50%]" loading="lazy" />
+                                <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)"
+                                    class="rounded-[50%]" loading="lazy" />
                             </picture>
                         </div>
                         <div class="flex items-center">
@@ -121,20 +120,17 @@
                 </div>
 
                 <div class="mt-1 relative" v-if="activeReplyCommentId === comment.id">
-                    <input
-                        v-model="commentContents[comment.id]"
+                    <input v-model="commentContents[comment.id]"
                         class="w-full pl-[10px] pr-[93.61px] py-[12px] border-[#dfdfdf] border-solid border-[1px] rounded-[7px] resize-none block text-[15px]"
-                        placeholder="Treść komentarza"
-                        @keydown.enter.prevent="() => { submitComment(comment.id) }"
-                    />
+                        placeholder="Treść komentarza" @keydown.enter.prevent="() => { submitComment(comment.id) }" />
                     <button
                         class="rounded-[7px] px-3 text-[15px] absolute right-[4px] bg-[black] top-[4px] bottom-[4px] flex items-center justify-center text-[white]"
                         :onClick="() => { submitComment(comment.id) }">
                         Wyślij
 
-                        <svg style="margin-left: 5px; width: 16px; height: 16px; min-width: 16px; min-height: 16px"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <svg class="ml-[5px] w-[16px] h-[16px] min-w-[16px] min-h-[16px]" xmlns="http://www.w3.org/2000/svg"
+                            width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                            stroke-linecap="round" stroke-linejoin="round">
                             <line x1="22" y1="2" x2="11" y2="13"></line>
                             <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
                         </svg>

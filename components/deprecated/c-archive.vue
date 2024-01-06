@@ -1,5 +1,5 @@
 <template>
-	<div class="c-archive component-padding component-border-horizontal" style="font-family: 'Jost', sans-serif;">
+	<div class="c-archive component-padding component-border-horizontal font-jost">
 		<SectionTitle><b>Archive</b> of posts</SectionTitle>
 		<ul>
 			<li>
@@ -17,7 +17,7 @@
 
 <script>
 export default {
-	
+
 };
 </script>
 

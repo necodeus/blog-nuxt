@@ -2,7 +2,6 @@
     <div class="flex items-center">
         <div
             class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee] animated-background"
-            :style="`background-size: 800px 104px`"
         ></div>
         <div class="ml-[20px] pr-[20px]">
             <div class="uppercase text-[20px] tracking-[1px] font-medium animated-background">John Doe</div>

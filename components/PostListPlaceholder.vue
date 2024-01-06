@@ -1,6 +1,6 @@
 <template>
     <ul class="font-jost">
-        <li style="margin: 5px" class="block p-[40px]" v-for="p in repeats" :key="p">
+        <li class="block p-[40px] m-[5px]" v-for="p in repeats" :key="p">
             <h1 class="flex mb-[40px]">
                 <span class="text-[38px] animated-background">Mauris sed pulvinar ipsum.</span>
             </h1>

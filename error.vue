@@ -5,12 +5,12 @@
     <div class="wrapper">
         <div></div>
         <div>
-            <simplebar class="component-border-vertical" style="height: 100%">
+            <simplebar class="component-border-vertical h-full">
                 <ErrorHeader :code="error?.statusCode" :message="error?.message" />
             </simplebar>
         </div>
         <div>
-            <simplebar class="component-border-vertical" style="height: 100%">
+            <simplebar class="component-border-vertical h-full">
                 <OtherPosts />
                 <ExternalLinks />
             </simplebar>

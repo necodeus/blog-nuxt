@@ -4,7 +4,7 @@
     <Meta name="description" content="Blog" />
   </Head>
 
-  <section class="component-padding component-border-horizontal" style="margin: 0; padding: 0;">
+  <section class="component-padding component-border-horizontal m-0 p-0">
     <PostListPlaceholder v-if="pending" :repeats="1" />
     <PostList v-if="!pending" :posts="data?.posts" />
   </section>

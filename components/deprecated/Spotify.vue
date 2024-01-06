@@ -1,99 +1,57 @@
 <template>
-    <div v-if="data" v-for="(song, song_index) of data.player" v-bind:key="song_index">
+  <div v-if="false" v-for="(song, song_index) of []" v-bind:key="song_index">
+    <div class="opacity-[0.5] flex items-center mb-[30px]" v-if="song.type === 'history'">
       <div
-        style="opacity: 0.5; display: flex; align-items: center; margin-bottom: 30px"
-        v-if="song.type === 'history'"
-      >
-        <div
-          :style="{
-            width: '60px',
-            height: '60px',
-            minWidth: '60px',
-            minHeight: '60px',
-            backgroundColor: 'black',
-            backgroundImage: `url(${song?.images[0]?.url})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            marginRight: '10px',
-          }"
-        ></div>
-        <div style="display: flex; flex-direction: column; justify-column: center">
-          <div style="display: flex; align-items: center">
-            <div
-              style="
-                line-height: 1.2;
-                font-weight: 700;
-                font-size: 10px;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-              "
-            >
-              {{ moment(song.played_at).fromNow() }}
-            </div>
-          </div>
-          <div>
-            <div style="line-height: 1.6; font-weight: 600; font-size: 16px">
-              {{ song.name }}
-            </div>
-            <div style="line-height: 1.2; font-weight: 500; font-size: 14px">
-              {{ song.artists }}
-            </div>
+        class="w-[60px] h-[60px] min-w-[60px] min-h-[60px] bg-[black] bg-center bg-cover mr-[10px]"
+        :style="`background-image: url(${song?.images?.[0]?.url})`"
+      ></div>
+      <div class="flex flex-col justify-center">
+        <div class="flex items-center">
+          <div class="leading-[1.2] font-bold text-[10px] uppercase tracking-[2px]">
+            {{ moment(song.played_at).fromNow() }}
           </div>
         </div>
-      </div>
-      <div
-        style="display: flex; align-items: center; margin-bottom: 30px"
-        v-if="song.type === 'current'"
-      >
-        <div
-          :style="{
-            width: '60px',
-            height: '60px',
-            minWidth: '60px',
-            minHeight: '60px',
-            backgroundColor: 'black',
-            backgroundImage: `url(${song?.images?.slice(-1).pop()?.url})`,
-            backgroundPosition: 'center',
-            backgroundSize: 'cover',
-            marginRight: '10px',
-          }"
-        ></div>
-        <div style="display: flex; flex-direction: column; justify-column: center">
-          <div style="display: flex; align-items: center">
-            <div
-              style="
-                line-height: 1.2;
-                font-weight: 700;
-                font-size: 10px;
-                text-transform: uppercase;
-                letter-spacing: 2px;
-              "
-            >
-              Teraz
-            </div>
-            <div
-              style="
-                border-radius: 999px;
-                background-color: #42a200;
-                width: 4px;
-                height: 4px;
-                margin-left: 5px;
-              "
-            ></div>
+        <div>
+          <div class="leading-[1.6] font-semibold text-[16px]">
+            {{ song.name }}
           </div>
-          <div>
-            <div style="line-height: 1.6; font-weight: 600; font-size: 16px">
-              {{ song.name }}
-            </div>
-            <div style="line-height: 1.2; font-weight: 500; font-size: 14px">
-              {{ song.artists }}
-            </div>
+          <div class="leading-[1.2] font-medium text-[14px]">
+            {{ song.artists }}
           </div>
         </div>
       </div>
     </div>
+    <div class="flex items-center mb-[30px]" v-if="song.type === 'current'">
+      <div class="w-[60px] h-[60px] min-w-[60px] min-h-[60px] bg-[black] bg-center bg-cover mr-[10px]"
+        :style="`background-image: url(${song?.images?.slice(-1).pop()?.url})`"></div>
+      <div class="flex flex-col justify-center">
+        <div class="flex items-center">
+          <div class="leading-[1.2] font-bold text-[10px] uppercase tracking-[2px]">
+            Teraz
+          </div>
+          <div class="rounded-full bg-[#42a200] w-[4px] h-[4px] ml-[5px]"></div>
+        </div>
+        <div>
+          <div class="font-semibold text-[16px] leading-[1.6]">
+            {{ song.name }}
+          </div>
+          <div class="font-medium text-[14px] leading-[1.2]">
+            {{ song.artists }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
-let data = ref(null);
+import moment from "moment/min/moment-with-locales";
+moment.locale("pl");
+
+defineProps({
+  songs: {
+    default: () => [],
+    required: true,
+  },
+})
 </script>

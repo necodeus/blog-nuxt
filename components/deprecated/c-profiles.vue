@@ -1,7 +1,7 @@
 <template>
-	<div class="profiles component-padding component-border-horizontal" style="font-family: 'Jost', sans-serif;">
+	<div class="profiles component-padding component-border-horizontal font-jost">
 		<SectionTitle><b>Profile</b> społecznościowe</SectionTitle>
-		<div class="ul" style="font-size: 20px;">
+		<div class="ul text-[20px]">
 			<div class="social-link">
 				<a
 					target="_blank"
@@ -10,11 +10,11 @@
 				>
 				<div
 					class="social-image"
-					:style="{ 'background-image': 'url(/uploads/linkedin.png)' }"
+					style="background-image: url(/uploads/linkedin.png)"
 				></div>
-				<div style="display: flex; flex-direction: column">
+				<div class="flex flex-col">
 					<div>LinkedIn</div>
-					<div style="font-size: 17px">Odwiedź mój profil zawodowy</div>
+					<div class="text-[17px]">Odwiedź mój profil zawodowy</div>
 				</div>
 				</a>
 				<a
@@ -24,11 +24,11 @@
 				>
 				<div
 					class="social-image"
-					:style="{ 'background-image': 'url(/uploads/github.png)' }"
+					style="background-image: url(/uploads/github.png)"
 				></div>
-				<div style="display: flex; flex-direction: column">
+				<div class="flex flex-col">
 					<div>GitHub</div>
-					<div style="font-size: 17px">Stwórz coś ze mną</div>
+					<div class="text-[17px]">Stwórz coś ze mną</div>
 				</div>
 				</a>
 				<a
@@ -38,11 +38,11 @@
 				>
 				<div
 					class="social-image"
-					:style="{ 'background-image': 'url(/uploads/spotify.png)' }"
+					style="background-image: url(/uploads/spotify.png)"
 				></div>
-				<div style="display: flex; flex-direction: column">
+				<div class="flex flex-col">
 					<div>Spotify</div>
-					<div style="font-size: 17px">Posłuchaj moich playlist</div>
+					<div class="text-[17px]">Posłuchaj moich playlist</div>
 				</div>
 				</a>
 			</div>
@@ -50,7 +50,7 @@
 	</div>
 </template>
 
-<style>
+<style scoped>
 @media (max-width: 900px) {
 	.profiles {
 		height: auto;
