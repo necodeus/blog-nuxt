@@ -1,9 +1,9 @@
 <template>
-	<div class="component-padding component-border-horizontal font-jost">
+	<div class="component-padding component-border-horizontal font-jost relative">
 		<SectionTitle><b>Inne</b> wpisy</SectionTitle>
 		<ul>
-			<li class="text-[20px] indent-[-20px] ml-[20px] list" v-for="(post, p) in posts" v-bind:key="p">
-				<NuxtLink class="block p-[5px_0]" :to="post.slug">{{ post.title }}</NuxtLink>
+			<li class="list" v-for="(post, p) in posts" v-bind:key="post.id">
+				<NuxtLink class="text-[20px] indent-[-20px] ml-[20px] block p-[5px_0]" :to="post.slug">{{ post.title }}</NuxtLink>
 			</li>
 		</ul>
 	</div>

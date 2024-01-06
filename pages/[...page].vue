@@ -35,7 +35,7 @@
     <PostAuthorFilled :profile="data.postAuthor" />
   </div>
 
-  <PostComments v-if="!pendingPost" :postId="data?.post?.id" />
+  <!-- <PostComments v-if="!pendingPost" :postId="data?.post?.id" /> -->
 </template>
 
 <script setup>
@@ -49,6 +49,4 @@ definePageMeta({
 const route = useRoute();
 
 const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`);
-
-const nuxtApp = useNuxtApp()
 </script>

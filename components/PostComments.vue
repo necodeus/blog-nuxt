@@ -1,7 +1,7 @@
 <template>
     <div class="component-border-horizontal font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
         <div class="mx-[30px]">
-            <SectionTitle v-if="isLoading">
+            <SectionTitle v-if="comments === null">
                 <div class="mb-2 font-bold">Komentarze</div>
             </SectionTitle>
             <SectionTitle v-else>
@@ -26,7 +26,7 @@
         </div>
 
         <!-- Comment List Placeholder -->
-        <div class="mx-[30px]" v-if="isLoading">
+        <div class="mx-[30px]" v-if="comments === null">
             <div>ID: loading...</div>
             <div>Autor: loading...</div>
             <div>Data utworzenia: loading...</div>
@@ -164,11 +164,10 @@ function getGravatarURL(name, size = 40) {
     return `https://www.gravatar.com/avatar/${hash}?s=${size}&d=identicon&r=g`;
 }
 
-const comments = ref([]);
+const comments = ref(null);
 const commentContents = ref({});
-const isLoading = ref(true);
 
-const formAuthorName = ref('anonim');
+// const formAuthorName = ref('anonim');
 
 const activeReplyCommentId = ref(null);
 
@@ -189,44 +188,44 @@ const toggleReply = (commentId = null) => {
 };
 
 const submitComment = async (commentId = '') => {
-    const content = commentContents.value[commentId] || '';
+    // const content = commentContents.value[commentId] || '';
 
-    commentContents.value[commentId] = '';
+    // commentContents.value[commentId] = '';
 
-    const response = await fetch(`/api/posts/${props.postId}/comments/${commentId}`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            author_name: formAuthorName.value,
-            content,
-        }),
-    });
+    // const response = await fetch(`/api/posts/${props.postId}/comments/${commentId}`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    //     body: JSON.stringify({
+    //         author_name: formAuthorName.value,
+    //         content,
+    //     }),
+    // });
 
-    const data = await response.json();
+    // const data = await response.json();
 };
 
 const upvoteCommentById = async (postId, commentId) => {
-    const response = await fetch(`/api/posts/${postId}/comments/${commentId}/upvote`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    // const response = await fetch(`/api/posts/${postId}/comments/${commentId}/upvote`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    // });
 
-    const data = await response.json();
+    // const data = await response.json();
 };
 
 const downvoteCommentById = async (postId, commentId) => {
-    const response = await fetch(`/api/posts/${postId}/comments/${commentId}/downvote`, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-    });
+    // const response = await fetch(`/api/posts/${postId}/comments/${commentId}/downvote`, {
+    //     method: 'POST',
+    //     headers: {
+    //         'Content-Type': 'application/json',
+    //     },
+    // });
 
-    const data = await response.json();
+    // const data = await response.json();
 };
 
 const visibilityChanged = async (isVisible, disconnectObserver) => {
@@ -234,14 +233,11 @@ const visibilityChanged = async (isVisible, disconnectObserver) => {
         return;
     }
 
-    const response = fetch(`/api/posts/${props.postId}/comments`);
-    const responseAwaited = await response;
-    const data = await responseAwaited.json();
-
-    comments.value = data;
-    isLoading.value = false;
-
     disconnectObserver();
+
+    const { data } = await useLazyFetch(`/api/posts/${props.postId}/comments`);
+    console.log(data);
+    comments.value = data.value
 };
 </script>
 

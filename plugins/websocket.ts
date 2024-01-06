@@ -5,18 +5,11 @@ function initWebSocket() {
 
     const connection = new WebSocket(env.public.WEBSOCKET_ADDRESS as string);
 
-    connection.onopen = function () {
-        console.log('Connected to the server.');
-    };
-
     connection.onerror = function (error: any) {
-        console.log('An error occurred: ' + (error.message || 'Unknown Error'));
+        console.error(error);
     };
 
-    connection.onclose = function () {
-        console.log('Connection closed. Attempting to reconnect...');
-        setTimeout(initWebSocket, 1000);
-    };
+    connection.onclose = initWebSocket;
 
     ws.value = connection;
 }

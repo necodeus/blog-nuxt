@@ -3,25 +3,24 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return;
     }
 
-    const { data: r1 } = await useFetch(`/api/pages?url=${to.path}`) as any
+    const { data } = await useFetch(`/api/pages?url=${to.path}`) as any
 
-    const { data: { page } } = unref(r1)
-
-    if (!page) {
+    if (!data.value.page) {
         throw createError({
             statusCode: 500,
             message: 'Coś poszło nie tak!',
         })
     }
 
-    to.meta.content_type = page.content_type
+    to.meta.content_type = data.value.page.content_type
 
-    switch (page.content_type) {
+    switch (data.value.page.content_type) {
         case 'POST':
-            to.meta.content_id = page.content_id
+            to.meta.content_id = data.value.page.content_id
             return;
         case 'REDIRECTION':
-            const { data: r2 } = await useFetch(`/api/redirections/${page.content_id}`) as any
+            to.meta.content_id = data.value.page.content_id
+            const { data: r2 } = await useFetch(`/api/redirections/${to.meta.content_id}`) as any
             const { data: { redirection } } = unref(r2)
 
             const { link, code, is_external } = redirection
