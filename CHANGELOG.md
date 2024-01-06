@@ -1,3 +1,10 @@
+# [1.18.0](https://github.com/necodeus/blog-nuxt/compare/v1.17.0...v1.18.0) (2024-01-06)
+
+
+### Features
+
+* **0:** pinia & getting post rating via ws ([f119b73](https://github.com/necodeus/blog-nuxt/commit/f119b733126886a744208fd7022cf713fabea440))
+
 # [1.17.0](https://github.com/necodeus/blog-nuxt/compare/v1.16.4...v1.17.0) (2024-01-06)
 
 
