@@ -29,7 +29,7 @@ const isHomePage = computed(() => router.currentRoute.value.path === "/");
 watch(
     () => router.currentRoute.value,
     () => {
-        const simplebarElement = document.querySelector(".simplebar-content");
+        const simplebarElement = document.querySelector(".simplebar-content-wrapper");
 
         if (simplebarElement) {
             simplebarElement.scrollTop = 0;

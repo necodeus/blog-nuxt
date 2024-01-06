@@ -13,8 +13,8 @@
 <script setup>
 const { data, pending } = useFetch(`/api/posts`);
 
-onMounted(() => {
-  const scroll = document?.querySelector(".simplebar-content-wrapper");
-  scroll?.scrollTo(0, 0);
-});
+// onMounted(() => {
+//   const scroll = document?.querySelector(".simplebar-content-wrapper");
+//   scroll?.scrollTo(0, 0);
+// });
 </script>
