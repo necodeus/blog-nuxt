@@ -1,3 +1,10 @@
+## [1.18.1](https://github.com/necodeus/blog-nuxt/compare/v1.18.0...v1.18.1) (2024-01-06)
+
+
+### Bug Fixes
+
+* **0:** index placeholder ([f5e3e17](https://github.com/necodeus/blog-nuxt/commit/f5e3e17cb3d2dbf512c2e004c09b7407a3edfa6f))
+
 # [1.18.0](https://github.com/necodeus/blog-nuxt/compare/v1.17.0...v1.18.0) (2024-01-06)
 
 
