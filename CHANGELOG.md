@@ -1,3 +1,10 @@
+# [1.19.0](https://github.com/necodeus/blog-nuxt/compare/v1.18.1...v1.19.0) (2024-01-07)
+
+
+### Features
+
+* **0:** websocket comments ([913d171](https://github.com/necodeus/blog-nuxt/commit/913d171f11909541bec5023b2ca7efd1bcbb9b35))
+
 ## [1.18.1](https://github.com/necodeus/blog-nuxt/compare/v1.18.0...v1.18.1) (2024-01-06)
 
 
