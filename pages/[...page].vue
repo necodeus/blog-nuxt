@@ -1,22 +1,11 @@
 <template>
-  <Head v-if="!pendingPost">
+  <Head v-if="!pendingPost && data?.post?.id">
     <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
     <Meta name="description" :content="data?.post?.teaser" />
   </Head>
 
-  <HeaderPlaceholder
-    v-if="pendingPost"
-    image=""
-    name="Aliquam erat volutpat"
-    timeAgo="2024-01-01 03:37:37"
-    teaser="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies ultrices, nisl nisl ultricies nisl, nec ultricies"
-    authorName="John Doe"
-    authorPhoto=""
-    postId=""
-    :averageRating="0"
-    :numberOfComments="0"
-  />
-  <Header v-else
+  <Header
+    v-if="!pendingPost && data?.post?.id"
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"
     :timeAgo="data?.post?.modified_at ?? ''"
@@ -27,12 +16,25 @@
     :averageRating="data?.post?.rating_average ?? 0"
     :numberOfComments="data?.post?.comments_count"
   />
+  <HeaderPlaceholder
+    v-else
+    image=""
+    name="Aliquam erat volutpat"
+    timeAgo="2024-01-01 03:37:37"
+    teaser="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec euismod, nisl eget ultricies ultrices, nisl nisl ultricies nisl, nec ultricies"
+    authorName="John Doe"
+    authorPhoto=""
+    postId=""
+    :averageRating="0"
+    :numberOfComments="0"
+  />
 
-  <ContentPlaceholder v-if="pendingPost" />
-  <Content v-else :content="data?.post?.content ?? ''" />
+  <Content v-if="!pendingPost && data?.post?.id" :content="data?.post?.content ?? ''" />
+  <ContentPlaceholder v-else />
 
-  <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
-    <PostAuthorFilled :profile="data.postAuthor" />
+  <div class="component-border-horizontal font-jost p-[30px]">
+    <PostAuthor v-if="!pendingPost && data?.post?.id" :profile="data.postAuthor" />
+    <PostAuthorPlaceholder v-else />
   </div>
 
   <Comments id="comments" :postId="data?.post?.id" />
@@ -92,6 +94,10 @@ watch(router.currentRoute, () => {
     if (!simpleContentWrapper) {
       return
     }
+
+    comments.scrollIntoView({
+      behavior: 'smooth',
+    })
 
     simpleContentWrapper.scrollTo({
       top: comments.offsetTop,

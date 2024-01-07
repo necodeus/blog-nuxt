@@ -1,16 +1,22 @@
 <template>
-    <div class="flex items-center">
+    <div class="flex items-center text-[20px]">
         <div
             class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee] animated-background"
         ></div>
         <div class="ml-[20px] pr-[20px]">
-            <div class="uppercase text-[20px] tracking-[1px] font-medium animated-background">John Doe</div>
-            <div v-if="!descriptionBelow" class="mobile-description text-[17px]">
-                <div class="animated-background">{{ description }}</div>
+            <div class="tracking-[1px] font-medium inline-block animated-background">
+                necodeus
+            </div>
+            <div class="mobile-description" v-if="!descriptionBelow">
+                <div class="animated-background">
+                    software development, anime, music, weekend trips
+                </div>
             </div>
         </div>
     </div>
-    <div v-if="descriptionBelow" class="mobile-description text-[17px] animated-background">{{ description }}</div>
+    <div class="text-[20px] mobile-description animated-background" v-if="descriptionBelow">
+        software development, anime, music, weekend trips
+    </div>
 </template>
 
 <script lang="ts" setup>
@@ -18,11 +24,9 @@ defineProps({
     descriptionBelow: {
         type: Boolean,
         default: false,
-        required: true,
+        required: false,
     },
 })
-
-const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, iaculis sit amet ante a, convallis dignissim magna. Morbi aliquet consequat bibendum."
 </script>
 
 <style scoped>
@@ -51,16 +55,17 @@ const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, ia
     color: transparent;
 }
 
-@media (max-width: 900px) {
-    .mobile-photo {
-        min-width: 35px !important;
-        max-width: 35px !important;
-        min-height: 35px !important;
-        max-height: 35px !important;
-    }
+.mobile-description {
+    margin-top: 5px;
 }
 
 @media (max-width: 500px) {
+    .mobile-description {
+        margin-top: 10px !important;
+    }
+}
+
+@media (max-width: 900px) {
     .mobile-description {
         margin-top: 20px !important;
     }

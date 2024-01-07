@@ -116,4 +116,28 @@ const props = defineProps({
     display: flex;
     opacity: 0.5;
 }
+
+@keyframes placeHolderShimmer {
+    0% {
+        background-position: -800px 0
+    }
+    100% {
+        background-position: 800px 0
+    }
+}
+
+.animated-background {
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+    animation-iteration-count: infinite;
+    animation-name: placeHolderShimmer;
+    animation-timing-function: linear;
+    background: linear-gradient(to right, #eee 8%, #fff 18%, #eee 33%);
+    background-size: 800px 104px;
+    position: relative;
+    background-color: #eee;
+    border-radius: 4px;
+    color: transparent;
+    display: inline-block !important;
+}
 </style>
