@@ -34,39 +34,39 @@ const ImprovedNoise = function () {
     178, 185, 112, 104, 218, 246, 97, 228, 251, 34, 242, 193, 238, 210, 144, 12, 191, 179, 162, 241, 81, 51, 145, 235, 249,
     14, 239, 107, 49, 192, 214, 31, 181, 199, 106, 157, 184, 84, 204, 176, 115, 121, 50, 45, 127, 4, 150, 254, 138, 236, 205,
     93, 222, 114, 67, 29, 24, 72, 243, 141, 128, 195, 78, 66, 215, 61, 156, 180
-  ];
+  ]
 
   for (var i = 0; i < 256; i++) {
-    p[256 + i] = p[i];
+    p[256 + i] = p[i]
   }
 
   function fade(t) {
-    return t * t * t * (t * (t * 6 - 15) + 10);
+    return t * t * t * (t * (t * 6 - 15) + 10)
   }
 
   function lerp(t, a, b) {
-    return a + t * (b - a);
+    return a + t * (b - a)
   }
 
   function grad(hash, x, y, z) {
-    let h = hash & 15;
-    let u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z;
+    let h = hash & 15
+    let u = h < 8 ? x : y, v = h < 4 ? y : h == 12 || h == 14 ? x : z
 
-    return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v);
+    return ((h & 1) == 0 ? u : -u) + ((h & 2) == 0 ? v : -v)
   }
 
   return {
     noise: function (x, y, z) {
-      let floorX = Math.floor(x), floorY = Math.floor(y), floorZ = Math.floor(z);
-      let X = floorX & 255, Y = floorY & 255, Z = floorZ & 255;
+      let floorX = Math.floor(x), floorY = Math.floor(y), floorZ = Math.floor(z)
+      let X = floorX & 255, Y = floorY & 255, Z = floorZ & 255
 
-      x -= floorX;
-      y -= floorY;
-      z -= floorZ;
+      x -= floorX
+      y -= floorY
+      z -= floorZ
 
-      let xMinus1 = x - 1, yMinus1 = y - 1, zMinus1 = z - 1;
-      let u = fade(x), v = fade(y), w = fade(z);
-      let A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z;
+      let xMinus1 = x - 1, yMinus1 = y - 1, zMinus1 = z - 1
+      let u = fade(x), v = fade(y), w = fade(z)
+      let A = p[X] + Y, AA = p[A] + Z, AB = p[A + 1] + Z, B = p[X + 1] + Y, BA = p[B] + Z, BB = p[B + 1] + Z
 
       return lerp(
         w,
@@ -96,7 +96,7 @@ const ImprovedNoise = function () {
             grad(p[BB + 1], xMinus1, yMinus1, zMinus1),
           ),
         ),
-      );
+      )
     },
   }
 }
@@ -120,7 +120,7 @@ void main() {
 
   gl_Position = projectionMatrix * mvPosition;
 }
-`;
+`
 
 const fragmentShader = `
 precision highp float;
@@ -201,28 +201,20 @@ void main(){
   vec4 ac = vec4( base, 0.0 );
 
   for ( float t = bounds.x; t < bounds.y; t += delta ) {
-
     float d = sample1( p + 0.5 );
-
     d = smoothstep( threshold - range, threshold + range, d ) * opacity;
-
     float col = shading( p + 0.5 ) * 3.0 + ( ( p.x + p.y ) * 0.25 ) + 0.2;
-
     ac.rgb += ( 1.0 - ac.a ) * d * col;
-
     ac.a += ( 1.0 - ac.a ) * d;
-
     if ( ac.a >= 0.95 ) break;
-
     p += rayDir * delta;
-
   }
 
   color = ac;
 
   if ( color.a == 0.0 ) discard;
 }
-`;
+`
 
 const background = ref(null)
 let renderer
@@ -230,7 +222,7 @@ let renderer
 function setRenderer() {
   if (background.value) {
     renderer = new WebGLRenderer({ canvas: background.value })
-    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.setPixelRatio(window.devicePixelRatio)
     renderer.setSize(window.innerWidth, window.innerHeight)
     renderer.render(scene, camera)
     animate()
@@ -241,52 +233,52 @@ const scene = new Scene()
 const camera = new PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 100)
 camera.position.set(0, 0.00001, 0.15)
 scene.add(camera)
-const canvas = document.createElement("canvas");
-canvas.width = 1;
-canvas.height = 32;
-const context = canvas.getContext("2d");
-const gradient = context.createLinearGradient(0, 0, 0, 32);
-gradient.addColorStop(0.0, "#ffffff");
-gradient.addColorStop(0.5, "#ffffff");
-gradient.addColorStop(1.0, "#ffffff");
-context.fillStyle = gradient;
-context.fillRect(0, 0, 1, 32);
+const canvas = document.createElement("canvas")
+canvas.width = 1
+canvas.height = 32
+const context = canvas.getContext("2d")
+const gradient = context.createLinearGradient(0, 0, 0, 32)
+gradient.addColorStop(0.0, "#ffffff")
+gradient.addColorStop(0.5, "#ffffff")
+gradient.addColorStop(1.0, "#ffffff")
+context.fillStyle = gradient
+context.fillRect(0, 0, 1, 32)
 const sky = new Mesh(
   new SphereGeometry(10),
   new MeshBasicMaterial({
     map: new CanvasTexture(canvas),
     side: BackSide,
   })
-);
-scene.add(sky);
+)
+scene.add(sky)
 
-const size = 128;
+const size = 128
 
-const data = new Uint8Array(size * size * size);
+const data = new Uint8Array(size * size * size)
 
-let i = 0;
-const scale = 0.05;
-const perlin = new ImprovedNoise();
-const vector = new Vector3();
+let i = 0
+const scale = 0.05
+const perlin = new ImprovedNoise()
+const vector = new Vector3()
 
 for (let z = 0; z < size; z++) {
   for (let y = 0; y < size; y++) {
     for (let x = 0; x < size; x++) {
-      const d = 1.0 - vector.set(x, y, z).subScalar(size / 2).divideScalar(size).length();
-      data[i] = (128 + 128 * perlin.noise((x * scale) / 1.5, y * scale, (z * scale) / 1.5)) * d * d;
-      i++;
+      const d = 1.0 - vector.set(x, y, z).subScalar(size / 2).divideScalar(size).length()
+      data[i] = (128 + 128 * perlin.noise((x * scale) / 1.5, y * scale, (z * scale) / 1.5)) * d * d
+      i++
     }
   }
 }
 
-const texture = new Data3DTexture(data, size, size, size);
-texture.format = RedFormat;
-texture.minFilter = LinearFilter;
-texture.magFilter = LinearFilter;
-texture.unpackAlignment = 1;
-texture.needsUpdate = true;
+const texture = new Data3DTexture(data, size, size, size)
+texture.format = RedFormat
+texture.minFilter = LinearFilter
+texture.magFilter = LinearFilter
+texture.unpackAlignment = 1
+texture.needsUpdate = true
 
-const geometry = new BoxGeometry(1, 1, 1);
+const geometry = new BoxGeometry(1, 1, 1)
 
 const material = new RawShaderMaterial({
   glslVersion: GLSL3,
@@ -308,36 +300,37 @@ const material = new RawShaderMaterial({
   fragmentShader,
   side: BackSide,
   transparent: true,
-});
-material.uniforms.threshold.value = 0.55;
-material.uniforms.opacity.value = 0.64;
-material.uniforms.range.value = 0.23;
-material.uniforms.steps.value = 136;
+})
 
-const mesh = new Mesh(geometry, material);
-scene.add(mesh);
+material.uniforms.threshold.value = 0.55
+material.uniforms.opacity.value = 0.64
+material.uniforms.range.value = 0.23
+material.uniforms.steps.value = 136
+
+const mesh = new Mesh(geometry, material)
+scene.add(mesh)
 
 function animate() {
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animate)
 
-  mesh.material.uniforms.cameraPos.value.copy(camera.position);
-  mesh.rotation.y = -performance.now() / 7500;
+  mesh.material.uniforms.cameraPos.value.copy(camera.position)
+  mesh.rotation.y = -performance.now() / 7500
 
-  mesh.material.uniforms.frame.value++;
+  mesh.material.uniforms.frame.value++
 
-  renderer?.render(scene, camera);
+  renderer?.render(scene, camera)
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / window.innerHeight;
-  camera.updateProjectionMatrix();
+  camera.aspect = window.innerWidth / window.innerHeight
+  camera.updateProjectionMatrix()
 
-  renderer?.setSize(window.innerWidth, window.innerHeight);
+  renderer?.setSize(window.innerWidth, window.innerHeight)
 }
 
 onMounted(() => {
   setRenderer()
 
-  window.addEventListener("resize", onWindowResize);
+  window.addEventListener("resize", onWindowResize)
 })
 </script>

@@ -17,8 +17,8 @@
 </template>
 
 <script setup>
-const config = useRuntimeConfig();
-const IMAGES_URL = config.public.IMAGES_URL;
+const config = useRuntimeConfig()
+const IMAGES_URL = config.public.IMAGES_URL
 
 defineProps({
     profile: {
@@ -29,7 +29,7 @@ defineProps({
         type: Boolean,
         required: true,
     },
-});
+})
 </script>
 
 <style scoped>

@@ -15,41 +15,48 @@
 <script setup>
 const { onClick } = defineProps({
     onClick: Function,
-});
+})
 
 const handleButtonClick = (event) => {
-    createRipple(event);
-    onClick();
-};
+    createRipple(event)
+    onClick()
+}
 
 const createRipple = (event) => {
-    const button = event.currentTarget;
+    const button = event.currentTarget
 
-    const rect = button.getBoundingClientRect();
+    const rect = button.getBoundingClientRect()
 
-    const circle = document.createElement("span");
-    const diameter = Math.max(button.clientWidth, button.clientHeight);
-    const radius = diameter / 2;
+    const circle = document.createElement("span")
+    const diameter = Math.max(button.clientWidth, button.clientHeight)
+    const radius = diameter / 2
 
-    const buttonPosX = event.clientX - rect.left;
-    const buttonPosY = event.clientY - rect.top;
+    const buttonPosX = event.clientX - rect.left
+    const buttonPosY = event.clientY - rect.top
 
-    circle.style.width = circle.style.height = `${diameter}px`;
-    circle.style.left = `${buttonPosX - radius}px`;
-    circle.style.top = `${buttonPosY - radius}px`;
-    circle.classList.add("ripple");
+    circle.style.width = circle.style.height = `${diameter}px`
+    circle.style.left = `${buttonPosX - radius}px`
+    circle.style.top = `${buttonPosY - radius}px`
+    circle.classList.add("ripple")
 
-    const ripple = button.getElementsByClassName("ripple")[0];
+    const ripple = button.getElementsByClassName("ripple")[0]
 
     if (ripple) {
-        ripple.remove();
+        ripple.remove()
     }
 
-    button.appendChild(circle);
-};
+    button.appendChild(circle)
+}
 </script>
 
-<style scoped>
+<style>
+@keyframes ripple-animation {
+    to {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
+
 .ripple {
     position: absolute;
     border-radius: 50%;
@@ -58,14 +65,9 @@ const createRipple = (event) => {
     background: radial-gradient(circle, rgba(200, 200, 200, 0.7) 0%, rgba(200, 200, 200, 0) 50%);
     pointer-events: none;
 }
+</style>
 
-@keyframes ripple-animation {
-    to {
-        transform: scale(4);
-        opacity: 0;
-    }
-}
-
+<style scoped>
 button {
     position: relative;
     overflow: hidden;

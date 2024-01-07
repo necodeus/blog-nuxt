@@ -1,10 +1,10 @@
 <template>
   <Head v-if="!pendingPost">
-    <Title>{{ data.post.title }} - blog.necodeo.com</Title>
-    <Meta name="description" :content="data.post.teaser" />
+    <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
+    <Meta name="description" :content="data?.post?.teaser" />
   </Head>
 
-  <PostHeaderPlaceholder
+  <HeaderPlaceholder
     v-if="pendingPost"
     image=""
     name="Aliquam erat volutpat"
@@ -16,10 +16,10 @@
     :averageRating="0"
     :numberOfComments="0"
   />
-  <PostHeader v-else
+  <Header v-else
     :image="data?.post?.main_image_url ?? ''"
     :name="data?.post?.title ?? ''"
-    :timeAgo="data?.post?.modified_at"
+    :timeAgo="data?.post?.modified_at ?? ''"
     :teaser="data?.post?.teaser ?? ''"
     :authorName="data?.postAuthor?.display_name ?? ''"
     :authorPhoto="'https://images.necodeo.com/' + data?.postAuthor?.image_id_avatar ?? ''"
@@ -28,42 +28,77 @@
     :numberOfComments="data?.post?.comments_count"
   />
 
-  <PostContentPlaceholder v-if="pendingPost" />
-  <PostContent v-else :content="data?.post?.content ?? ''" />
+  <ContentPlaceholder v-if="pendingPost" />
+  <Content v-else :content="data?.post?.content ?? ''" />
 
   <div class="component-border-horizontal font-jost p-[30px]" v-if="!pendingPost && data?.postAuthor">
     <PostAuthorFilled :profile="data.postAuthor" />
   </div>
+
+  <Comments id="comments" :postId="data?.post?.id" />
 </template>
 
-<script setup>
-import moment from "moment/min/moment-with-locales";
-moment.locale("pl");
+<script lang="ts" setup>
+import moment from "moment/min/moment-with-locales"
+moment.locale("pl")
 
 definePageMeta({
     middleware: ['links'],
 })
 
-const route = useRoute();
+const route = useRoute()
 
-const { data, pending: pendingPost } = useFetch(`/api/posts/${route.meta.content_id}`)
+const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)
 
-import { usePostsStore } from '../store/posts'
-const { getConnection } = usePostsStore()
+import { useGlobalStore } from '../store/global'
+const { getConnection } = useGlobalStore()
 
 onMounted(() => {
-  getConnection().onopen = () => {
-    getConnection().send(JSON.stringify({
+  const connection = getConnection()
+
+  if (!connection) {
+    return
+  }
+
+  connection.onopen = () => {
+    connection.send(JSON.stringify({
       type: 'GET_POST_RATING',
       postId: route.meta.content_id,
     }))
   }
 
-  if (getConnection().readyState === 1) {
-    getConnection().send(JSON.stringify({
+  if (connection.readyState === WebSocket.OPEN) {
+    connection.send(JSON.stringify({
       type: 'GET_POST_RATING',
       postId: route.meta.content_id,
     }))
   }
+})
+
+const router = useRouter()
+
+watch(router.currentRoute, () => {
+  if (route.hash === '#comments') {
+    window.location.hash = ''
+
+    const comments = document.getElementById('comments')
+
+    if (!comments) {
+      return
+    }
+
+    const simpleContentWrapper = document.querySelector('.simplebar-content-wrapper')
+
+    if (!simpleContentWrapper) {
+      return
+    }
+
+    simpleContentWrapper.scrollTo({
+      top: comments.offsetTop,
+      behavior: 'smooth',
+    })
+  }
+}, {
+  immediate: true,
 })
 </script>

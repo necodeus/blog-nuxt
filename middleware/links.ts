@@ -1,6 +1,6 @@
 export default defineNuxtRouteMiddleware(async (to, from) => {
     if (to.path.startsWith('/api/')) {
-        return;
+        return
     }
 
     const { data } = await useFetch(`/api/pages?url=${to.path}`) as any
@@ -17,7 +17,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     switch (data.value.page.content_type) {
         case 'POST':
             to.meta.content_id = data.value.page.content_id
-            return;
+            return
         case 'REDIRECTION':
             to.meta.content_id = data.value.page.content_id
             const { data: r2 } = await useFetch(`/api/redirections/${to.meta.content_id}`) as any
@@ -28,7 +28,7 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
             return navigateTo(link, {
                 redirectCode: code,
                 external: is_external,
-            });
+            })
         default:
             throw createError({
                 statusCode: 404,

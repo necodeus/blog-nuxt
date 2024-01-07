@@ -1,30 +1,36 @@
-import { usePostsStore } from '../store/posts';
+import { useGlobalStore } from '../store/global'
 
 export default defineNuxtPlugin((nuxtApp) => {
     if (!process.client) {
-        return;
+        return
     }
 
-    const pinia = usePinia();
+    const pinia = usePinia()
 
-    const { addPostRating, setConnection } = usePostsStore(pinia)
+    const { setConnection, addPostRating, setPostComments } = useGlobalStore(pinia)
 
-    const ws = new WebSocket(useRuntimeConfig().public.WEBSOCKET_ADDRESS);
-    setConnection(ws);
+    const ws = new WebSocket(useRuntimeConfig().public.WEBSOCKET_ADDRESS)
+
+    setConnection(ws)
 
     ws.onerror = function (error) {
-        console.error(error);
-    };
+        console.error('error', error)
+    }
 
     ws.onmessage = function (messageEvent: WebSocketEventMap['message']) {
         try {
-            const data = JSON.parse(messageEvent.data);
+            const data = JSON.parse(messageEvent.data)
 
-            if (data.type === 'RATINGS_AVERAGE') {
-                addPostRating(data.postId, data.average);
+            switch (data.type) {
+                case 'RATINGS_AVERAGE':
+                    addPostRating(data.postId, data.average)
+                    break
+                case 'POST_COMMENTS':
+                    setPostComments(data.postId, data.comments)
+                    break
             }
         } catch (error) {
-            console.error(error);
+            console.error('UNKNOWN ERROR', error)
         }
-    };
-});
+    }
+})

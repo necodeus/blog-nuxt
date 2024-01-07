@@ -34,9 +34,9 @@
                     :postId="''"
                 />
                 <div class="div-separator"></div>
-                <div class="animated-background text-[transparent]">{{ numberOfComments }} komentarzy</div>
+                <div class="animated-background text-[transparent] font-medium w-[100px]">{{ numberOfComments }} komentarzy</div>
             </div>
-            <span class="text-[20px] tracking-[1px] animated-background text-[transparent]">{{ teaser }}</span>
+            <span class="text-[20px] tracking-[1px] animated-background text-[transparent] leading-[35px]">{{ teaser }}</span>
         </div>
     </div>
 </template>

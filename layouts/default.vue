@@ -19,10 +19,10 @@
 </template>
 
 <script setup>
-import simplebar from "simplebar-vue";
-import "simplebar/dist/simplebar.min.css";
+import simplebar from "simplebar-vue"
+import "simplebar/dist/simplebar.min.css"
 
-const router = useRouter();
+const router = useRouter()
 
-const isHomePage = computed(() => router.currentRoute.value.path === "/");
+const isHomePage = computed(() => router.currentRoute.value.path === "/")
 </script>

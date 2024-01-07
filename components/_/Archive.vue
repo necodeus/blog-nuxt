@@ -15,12 +15,6 @@
 	</div>
 </template>
 
-<script>
-export default {
-
-};
-</script>
-
 <style scoped>
 .c-archive ul > li:not(:last-child) {
 	margin-bottom: 15px;

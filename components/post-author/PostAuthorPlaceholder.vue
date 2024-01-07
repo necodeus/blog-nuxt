@@ -22,7 +22,7 @@ defineProps({
     },
 })
 
-const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, iaculis sit amet ante a, convallis dignissim magna. Morbi aliquet consequat bibendum.";
+const description = "Nunc dignissim malesuada tincidunt. Morbi ligula lectus, iaculis sit amet ante a, convallis dignissim magna. Morbi aliquet consequat bibendum."
 </script>
 
 <style scoped>

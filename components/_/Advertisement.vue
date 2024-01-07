@@ -1,5 +1,5 @@
 <script>
-import { h } from 'vue';
+import { h } from 'vue'
 
 export default {
     data () {
@@ -11,28 +11,28 @@ export default {
     watch: {
         '$route' (to, from) {
             if (this.$el && !this.$el.isConnected) {
-                return;
+                return
             }
 
             if (to.fullPath === from.fullPath) {
-                return;
+                return
             }
 
             if (to.path !== from.path) {
                 if (this.isServer) {
                     return
                 }
-                this.show = false;
-                this.$nextTick(this.showAd);
+                this.show = false
+                this.$nextTick(this.showAd)
             }
         }
     },
     mounted () {
-        this.showAd();
+        this.showAd()
     },
     methods: {
         showAd () {
-            this.show = true;
+            this.show = true
 
             setTimeout(() => {
                 if (this.$el.innerHTML) {

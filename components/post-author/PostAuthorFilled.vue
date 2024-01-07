@@ -24,7 +24,7 @@ export default {
     data() {
         return {
             descriptionBelow: false,
-        };
+        }
     },
     methods: {
         isMobile(width = 900) {
@@ -33,10 +33,10 @@ export default {
     },
     async mounted() {
         window.addEventListener("resize", () => {
-            this.descriptionBelow = this.isMobile(900);
-        });
+            this.descriptionBelow = this.isMobile(900)
+        })
 
-        this.descriptionBelow = this.isMobile(900);
+        this.descriptionBelow = this.isMobile(900)
     },
-};
+}
 </script>

@@ -4,7 +4,7 @@ User
         <div class="flex absolute">
             <div
                 class="star"
-                @click="() => { setRating(star); }"
+                @click="() => { setRating(star) }"
                 v-for="star in 5"
                 :key="star"
             >
@@ -25,7 +25,7 @@ User
         <div class="flex">
             <div
                 class="star relative"
-                @click="() => { setRating(star); }"
+                @click="() => { setRating(star) }"
                 v-for="star in 5"
                 :key="star"
             >
@@ -46,14 +46,14 @@ User
                 </svg>
             </div>
         </div>
-        <p v-if="postRating === null" class="animated-background">0.00</p>
-        <p v-else>{{ postRating }}</p>
+        <p v-if="postRating === null" class="animated-background min-w-[35px] text-center">0.00</p>
+        <p v-else class="min-w-[35px] text-center">{{ postRating }}</p>
     </div>
 </template>
 
 <script setup>
-import { usePostsStore } from '../store/posts'
-const { getPostRating, getConnection } = usePostsStore()
+import { useGlobalStore } from '../store/global'
+const { getPostRating, getConnection } = useGlobalStore()
 
 const props = defineProps({
     initialRating: {

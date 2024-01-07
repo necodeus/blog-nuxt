@@ -10,4 +10,4 @@ module.exports = {
         'subject-max-length': [0, 'always'],
         'type-max-length': [0, 'always'],
     },
-};
+}

@@ -22,7 +22,7 @@ nuxtApp.hook("page:start", () => {
     const wrapper = document.querySelector('.wrapper')
 
     if (wrapper) {
-        wrapper.scrollTo(0, 0);
+        wrapper.scrollTo(0, 0)
     }
 })
 </script>

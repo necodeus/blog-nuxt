@@ -45,8 +45,8 @@
 </template>
 
 <script setup>
-import moment from "moment/min/moment-with-locales";
-moment.locale("pl");
+import moment from "moment/min/moment-with-locales"
+moment.locale("pl")
 
 defineProps({
   songs: {

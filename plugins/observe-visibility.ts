@@ -13,16 +13,16 @@ export default defineNuxtPlugin((nuxtApp) => {
                 })
             }, {
                 threshold: binding.arg || 0
-            } as any);
+            } as any)
 
-            observer.observe(el);
+            observer.observe(el)
 
-            el._vue_visibilityObserver = observer;
+            el._vue_visibilityObserver = observer
         },
         unmounted(el) {
             if (el._vue_visibilityObserver) {
-                el._vue_visibilityObserver.disconnect();
+                el._vue_visibilityObserver.disconnect()
             }
         }
-    });
-});
+    })
+})

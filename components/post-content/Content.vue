@@ -34,7 +34,7 @@ const md = new MarkdownIt({
     .use(anchor)
     .use(emoji)
 
-const convertMarkdownToHTML = (content) => md.render(content);
+const convertMarkdownToHTML = (content) => md.render(content)
 
 defineProps({
     content: {

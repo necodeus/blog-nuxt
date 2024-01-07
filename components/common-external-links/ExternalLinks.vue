@@ -10,7 +10,7 @@
 					href="https://github.com/necodeus/blog-nuxt"
 				>
 					<b class="font-medium">github.com/necodeus/blog-nuxt</b><br />
-					Kod źródłowy tej strony
+					<div class="mt-[10px]">Kod źródłowy tej strony</div>
 				</a>
 			</li>
 		</ul>

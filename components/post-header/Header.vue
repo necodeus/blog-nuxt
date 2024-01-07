@@ -39,9 +39,9 @@
             <div class="flex items-center mb-[10px]">
                 <Stars :initialRating="averageRating" :postId="postId" />
                 <div class="div-separator"></div>
-                <div>{{ numberOfComments }} komentarzy</div>
+                <NuxtLink :to="{ hash: '#comments' }" class="font-medium">{{ numberOfComments }} komentarzy</NuxtLink>
             </div>
-            <span class="text-[20px] tracking-[1px]">{{ teaser }}</span>
+            <span class="text-[20px] tracking-[1px] leading-[35px]">{{ teaser }}</span>
         </div>
     </div>
 </template>

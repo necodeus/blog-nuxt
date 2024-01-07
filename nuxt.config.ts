@@ -2,20 +2,25 @@ export default defineNuxtConfig({
     hooks: {
         'pages:extend'(pages) {
             if (process.env.NODE_ENV === 'development') {
-                return;
+                return
             }
 
-            const storyIndex = pages.findIndex(page => page.name === 'story');
+            const storyIndex = pages.findIndex(page => page.name === 'story')
 
             if (storyIndex !== -1) {
-                pages.splice(storyIndex, 1);
+                pages.splice(storyIndex, 1)
             }
         }
     },
     css: [
         '@/assets/css/main.css',
     ],
-    components: true,
+    components: [
+        {
+            path: '~/components',
+            pathPrefix: false,
+        },
+    ],
     plugins: [
         '~/plugins/observe-visibility.ts',
         '~/plugins/websocket.ts',
@@ -66,14 +71,14 @@ export default defineNuxtConfig({
                 {
                     hid: 'gtag-inner-script',
                     innerHTML: `
-                        window.dataLayer = window.dataLayer || [];
+                        window.dataLayer = window.dataLayer || []
 
                         function gtag() {
-                            dataLayer.push(arguments);
+                            dataLayer.push(arguments)
                         }
 
-                        gtag('js', new Date());
-                        gtag('config', 'G-3YWVF3BMBM');
+                        gtag('js', new Date())
+                        gtag('config', 'G-3YWVF3BMBM')
                     `,
                 },
             ],
@@ -97,4 +102,4 @@ export default defineNuxtConfig({
             ],
         },
     },
-});
+})
