@@ -4,11 +4,8 @@
             <div class="mb-2 flex">
                 <div
                     class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] bg-cover bg-center !rounded-full bg-[#eee] mr-3">
-                    <picture>
-                        <source media="(min-width: 768px)" :srcset="getGravatarURL(comment.author_name, 40)" />
-                        <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)" class="rounded-full"
-                            loading="lazy" />
-                    </picture>
+                    <img width="40px" height="40px" :src="getGravatarURL(comment.author_name, 40)" class="rounded-full"
+                        loading="lazy" />
                 </div>
                 <div class="flex items-center">
                     <div class="flex items-center">

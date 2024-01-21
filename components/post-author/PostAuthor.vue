@@ -1,9 +1,14 @@
 <template>
     <div class="flex items-center text-[20px]">
-        <div
-            class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
-            :style="`background-image: url(${IMAGES_URL}/${profile.image_id_avatar})`"
-        ></div>
+        <picture>
+            <source media="(min-width: 900px)" :srcset="`https://images.necodeo.com/${profile.image_id_avatar}/50x50`" />
+            <source media="(min-width: 0px)" :srcset="`https://images.necodeo.com/${profile.image_id_avatar}/35x35`" />
+            <img
+                class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee]"
+                :src="`https://images.necodeo.com/${profile.image_id_avatar}`"
+                loading="lazy"
+            />
+        </picture>
         <div class="ml-[20px] pr-[20px]">
             <div class="tracking-[1px] font-medium inline-block">
                 {{ profile.display_name }}
@@ -20,7 +25,6 @@
 
 <script lang="ts" setup>
 const config = useRuntimeConfig()
-const IMAGES_URL = config.public.IMAGES_URL
 
 defineProps({
     profile: {

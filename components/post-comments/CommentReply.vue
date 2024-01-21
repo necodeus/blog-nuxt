@@ -3,11 +3,8 @@
         <div class="flex mb-1">
             <div
                 class="min-w-[20px] max-w-[20px] min-h-[20px] max-h-[20px] bg-cover bg-center !rounded-[50%] bg-[#eee] mr-2">
-                <picture>
-                    <source media="(min-width: 768px)" :srcset="getGravatarURL(reply.author_name, 20)" />
-                    <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)"
-                        class="rounded-[50%]" loading="lazy" />
-                </picture>
+                <img width="20px" height="20px" :src="getGravatarURL(reply.author_name, 20)"
+                    class="rounded-[50%]" loading="lazy" />
             </div>
             <div class="flex items-center">
                 <div class="flex items-center font-medium">

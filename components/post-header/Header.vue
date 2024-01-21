@@ -2,7 +2,9 @@
     <div class="component-border-horizontal font-jost">
         <div class="relative">
             <picture>
-                <source media="(min-width: 768px)" :srcset="image" />
+                <source media="(min-width: 1570px)" :srcset="`${image}/1200x430`" />
+                <source media="(min-width: 900px)" :srcset="`${image}/900x430`" />
+                <source media="(min-width: 0px)" :srcset="`${image}/800x430`" />
                 <img class="background" :src="image" loading="lazy" />
             </picture>
             <div class="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
@@ -10,14 +12,11 @@
                     <Back />
                 </div>
                 <div class="component-padding relative !py-0 flex items-center mb-[10px]">
-                    <picture>
-                        <source media="(min-width: 768px)" :srcset="authorPhoto" />
-                        <img
-                            :src="authorPhoto"
-                            loading="lazy"
-                            class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
-                        />
-                    </picture>
+                    <img
+                        :src="`${authorPhoto}/25x25`"
+                        loading="lazy"
+                        class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
+                    />
                     <div class="ml-[10px] font-medium">
                         {{ authorName }}
                     </div>
