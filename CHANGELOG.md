@@ -1,3 +1,10 @@
+## [1.20.2](https://github.com/necodeus/blog-nuxt/compare/v1.20.1...v1.20.2) (2024-01-21)
+
+
+### Bug Fixes
+
+* **0:** fix thumbnails ([9222790](https://github.com/necodeus/blog-nuxt/commit/9222790a12e5648001312255d5b4ca1f23a0891d))
+
 ## [1.20.1](https://github.com/necodeus/blog-nuxt/compare/v1.20.0...v1.20.1) (2024-01-21)
 
 
