@@ -1,3 +1,10 @@
+# [1.20.0](https://github.com/necodeus/blog-nuxt/compare/v1.19.0...v1.20.0) (2024-01-21)
+
+
+### Features
+
+* **0:** use thumbnails ([341a799](https://github.com/necodeus/blog-nuxt/commit/341a799f85892b0e004d7391fa3dfd54b6d0a781))
+
 # [1.19.0](https://github.com/necodeus/blog-nuxt/compare/v1.18.1...v1.19.0) (2024-01-07)
 
 
