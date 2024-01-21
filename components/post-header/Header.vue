@@ -2,8 +2,8 @@
     <div class="component-border-horizontal font-jost">
         <div class="relative">
             <picture>
-                <source media="(min-width: 1570px)" :srcset="`${image}/1200x430`" />
-                <source media="(min-width: 900px)" :srcset="`${image}/900x430`" />
+                <source media="(min-width: 1570px)" :srcset="`${image}/900x430`" />
+                <source media="(min-width: 900px)" :srcset="`${image}/1200x430`" />
                 <source media="(min-width: 0px)" :srcset="`${image}/800x430`" />
                 <img class="background" :src="image" loading="lazy" />
             </picture>
