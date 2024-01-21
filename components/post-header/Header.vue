@@ -4,7 +4,7 @@
             <picture>
                 <source media="(min-width: 1570px)" :srcset="`${image}/900x430`" />
                 <source media="(min-width: 900px)" :srcset="`${image}/1200x430`" />
-                <source media="(min-width: 0px)" :srcset="`${image}/800x430`" />
+                <source media="(min-width: 0px)" :srcset="`${image}/900x430`" />
                 <img class="background" :src="image" loading="lazy" />
             </picture>
             <div class="!pt-[330px] relative bg-[linear-gradient(transparent_50%,white_100%)]">
