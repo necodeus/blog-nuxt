@@ -1,3 +1,11 @@
+# [1.21.0](https://github.com/necodeus/blog-nuxt/compare/v1.20.2...v1.21.0) (2024-01-25)
+
+
+### Features
+
+* **PAP-55:** comment placeholder ([a7cbd78](https://github.com/necodeus/blog-nuxt/commit/a7cbd7891da464bac1bb7d3cc73cda3320323c94))
+* **PAP-55:** comment placeholder ([0c8340e](https://github.com/necodeus/blog-nuxt/commit/0c8340e7ccc4aa59318c6080e765a35135776a21))
+
 ## [1.20.2](https://github.com/necodeus/blog-nuxt/compare/v1.20.1...v1.20.2) (2024-01-21)
 
 
