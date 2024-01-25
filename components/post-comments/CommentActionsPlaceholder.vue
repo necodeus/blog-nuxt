@@ -4,15 +4,11 @@
             <button class="flex items-center">
               <span class="animated-background">text text</span>
             </button>
-
             <div class="div-separator"></div>
-
             <button class="flex items-center">
                 <span class="animated-background">text text</span>
             </button>
-
             <div class="div-separator"></div>
-
             <button class="flex items-center font-medium animated-background ">
                 0 komentarzy
             </button>
@@ -54,5 +50,3 @@
   color: transparent;
 }
 </style>
-<script setup lang="ts">
-</script>
