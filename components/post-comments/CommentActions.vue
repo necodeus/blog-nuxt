@@ -1,5 +1,5 @@
 <template>
-    <div class="mb-2">
+    <div class="mb-2 mt-1">
         <div class="flex items-center">
             <button class="flex items-center" v-on:click.prevent="() => { actionHandler({ action: 'UPVOTE', postId, commentId }) }">
                 <LikeButton class="mr-[5px] w-[18px] h-[18px]" :is-active="isUpvoted" />
