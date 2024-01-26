@@ -1,3 +1,10 @@
+## [1.21.1](https://github.com/necodeus/blog-nuxt/compare/v1.21.0...v1.21.1) (2024-01-26)
+
+
+### Bug Fixes
+
+* **0:** comments observer ([e910fe1](https://github.com/necodeus/blog-nuxt/commit/e910fe18d8823f83912f57a50a7271594fbf77dc))
+
 # [1.21.0](https://github.com/necodeus/blog-nuxt/compare/v1.20.2...v1.21.0) (2024-01-25)
 
 
