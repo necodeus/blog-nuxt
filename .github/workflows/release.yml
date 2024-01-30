@@ -20,7 +20,9 @@ jobs:
           node-version: '20.9.0'
 
       - name: Install dependencies
-        run: ./install.sh --bun
+        run: |
+          chmod +x ./install.sh
+          ./install.sh --bun
 
       - name: Semantic Release
         run: npx semantic-release
