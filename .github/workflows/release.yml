@@ -15,7 +15,7 @@ jobs:
           bun-version: latest
 
       - name: Semantic Release
-        run: bun run semantic-release
+        run: bunx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
