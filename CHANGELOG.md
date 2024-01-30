@@ -1,3 +1,10 @@
+# [1.22.0](https://github.com/necodeus/blog-nuxt/compare/v1.21.1...v1.22.0) (2024-01-30)
+
+
+### Features
+
+* **0:** bun and shell scripts ([f4116a0](https://github.com/necodeus/blog-nuxt/commit/f4116a0e2af96fdfdd4ba2977be31ffe983e0baf))
+
 ## [1.21.1](https://github.com/necodeus/blog-nuxt/compare/v1.21.0...v1.21.1) (2024-01-26)
 
 
