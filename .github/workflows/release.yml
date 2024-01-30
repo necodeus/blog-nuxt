@@ -14,20 +14,24 @@ jobs:
         with:
           bun-version: latest
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '20.9.0'
+
+      - name: Install dependencies
+        run: npm install
+
       - name: Semantic Release
-        run: bunx semantic-release
+        run: npx semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.PAT }}
 
       - name: Install dependencies
-        run: |
-          chmod +x ./install.sh
-          ./install.sh --bun
+        run: ./install.sh --bun
 
       - name: Build
-        run: |
-          chmod +x ./build.sh
-          ./build.sh --bun
+        run: ./build.sh --bun
 
       - name: Setup Environment Variables for Artifacts
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
