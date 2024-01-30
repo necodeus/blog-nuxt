@@ -24,13 +24,10 @@ jobs:
           chmod +x ./install.sh
           ./install.sh --bun
 
-      - name: Semantic Release
-        run: npx semantic-release
-        env:
-          GITHUB_TOKEN: ${{ secrets.PAT }}
-
       - name: Build
-        run: ./build.sh --bun
+        run: |
+          chmod +x ./build.sh
+          ./build.sh --bun
 
       - name: Setup Environment Variables for Artifacts
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV
@@ -41,7 +38,12 @@ jobs:
           tar -czf ../${{ env.ARCHIVE_NAME }} *
           cd ..
 
-      - name: Get Release Upload URL
+      - name: Semantic Release
+        run: npx semantic-release
+        env:
+          GITHUB_TOKEN: ${{ secrets.PAT }}
+
+      - name: Get Latest Release Upload
         id: get_upload_url
         run: |
           URL=$(curl -H "Authorization: token ${{ secrets.PAT }}" \
