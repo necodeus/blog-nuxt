@@ -3,16 +3,20 @@
         <Meta name="theme-color" content="#fff" />
     </Head>
     <div class="wrapper">
-        <div></div>
+        <div>
+          <baner-left/>
+        </div>
         <div>
             <simplebar class="component-border-vertical h-full">
                 <NuxtPage />
             </simplebar>
         </div>
         <div>
-            <simplebar class="component-border-vertical h-full">
+            <simplebar class="component-border-vertical h-full ">
+              <section class="fixed">
                 <OtherPosts v-if="!isHomePage" />
                 <ExternalLinks />
+              </section>
             </simplebar>
         </div>
     </div>
