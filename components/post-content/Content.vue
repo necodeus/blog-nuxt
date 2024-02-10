@@ -19,14 +19,14 @@ import hljs from 'highlight.js'
 import 'highlight.js/styles/atom-one-dark-reasonable.css'
 
 const md = new MarkdownIt({
-  highlight: function (str, lang) {
-    const code = hljs.highlight(str, {
-        language: lang,
-        ignoreIllegals: true,
-    }).value
+    highlight: function (str, lang) {
+        const code = hljs.highlight(str, {
+            language: lang,
+            ignoreIllegals: true,
+        }).value
 
-    return `<pre class="hljs icon-${lang}"><code>${code}</code></pre>`
-  }
+        return `<pre class="hljs icon-${lang}"><code>${code}</code></pre>`
+    }
 })
     .use(highlightLines)
     .use(codetabs)
