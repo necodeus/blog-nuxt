@@ -4,11 +4,12 @@
     <Meta name="description" :content="data?.post?.teaser" />
   </Head>
 
-  <SectionWrapper width="var(--desktop-main-content-width)">
+  <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="topAdVisible">
     <template #aside>
       <StickySection width="340px">
         <div class="background m-[7px]">
-          <AdPlaceholder />
+          <Advertisement v-if="isTopAdVisible" />
+          <AdPlaceholder v-else />
         </div>
       </StickySection>
     </template>
@@ -72,11 +73,12 @@
     </BasicSection>
   </SectionWrapper>
 
-  <SectionWrapper width="var(--desktop-main-content-width)">
+  <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible">
     <template #aside>
       <StickySection width="340px">
         <div class="m-[7px]">
-          <AdPlaceholder />
+          <Advertisement v-if="isBottomAdVisible" />
+          <AdPlaceholder v-else/>
         </div>
       </StickySection>
     </template>
@@ -96,6 +98,27 @@ definePageMeta({
 })
 
 const route = useRoute()
+
+const isBottomAdVisible = ref(false)
+const isTopAdVisible = ref(false)
+
+const topAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
+  if (!isVisible) {
+    isTopAdVisible.value = false
+    return
+  }
+
+  isTopAdVisible.value = true
+}
+
+const bottomAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
+  if (!isVisible) {
+    isBottomAdVisible.value = false
+    return
+  }
+
+  isBottomAdVisible.value = true
+}
 
 const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)
 

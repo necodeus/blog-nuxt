@@ -53,7 +53,11 @@ export default {
             {
                 class: ['adsbygoogle'],
                 style: {
-                    display: 'block',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    width: '320px',
+                    height: '250px',
                 },
                 'data-ad-client': 'ca-google',
                 'data-ad-slot': null,

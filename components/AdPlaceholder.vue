@@ -4,7 +4,8 @@
 
 <style scoped>
 .ad-placeholder {
-    height: 286px;
+    width: 320px;
+    min-height: 250px;
     background-color: #eee;
     border-radius: 7px;
     display: flex;
