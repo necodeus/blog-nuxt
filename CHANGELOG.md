@@ -1,3 +1,10 @@
+# [1.24.0](https://github.com/necodeus/blog-nuxt/compare/v1.23.0...v1.24.0) (2024-02-11)
+
+
+### Features
+
+* pap-10 add content navigation component ([3de2b5c](https://github.com/necodeus/blog-nuxt/commit/3de2b5c3690764442e94e2e84f020deb02e7782d))
+
 # [1.23.0](https://github.com/necodeus/blog-nuxt/compare/v1.22.0...v1.23.0) (2024-02-11)
 
 
