@@ -56,8 +56,8 @@
       </StickySection>
     </template>
 
-    <BasicSection width="var(--main-width)" class="not-desktop">
-      <div class="m-[7px]" v-if="extractMarkdownHeadersWithIds(data?.post?.content ?? '').length">
+    <BasicSection width="var(--main-width)" class="not-desktop" v-if="extractMarkdownHeadersWithIds(data?.post?.content ?? '').length">
+      <div class="m-[7px]">
         <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
       </div>
     </BasicSection>
