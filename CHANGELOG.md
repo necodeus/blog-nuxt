@@ -1,3 +1,10 @@
+# [1.23.0](https://github.com/necodeus/blog-nuxt/compare/v1.22.0...v1.23.0) (2024-02-11)
+
+
+### Features
+
+* PAP-10 rebuild layout grid, add websocket reconnection, refine the design of comment actions, add sticky section ([e112767](https://github.com/necodeus/blog-nuxt/commit/e1127675ecb46ea82b1f124bc591a33c3ec1cddc))
+
 # [1.22.0](https://github.com/necodeus/blog-nuxt/compare/v1.21.1...v1.22.0) (2024-01-30)
 
 
