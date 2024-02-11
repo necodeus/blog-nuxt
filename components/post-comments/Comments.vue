@@ -36,20 +36,15 @@ const actionHandler = (payload) => {
 }
 
 import { useGlobalStore } from '../../store/global'
-const { send, getPostComments, getConnection } = useGlobalStore()
+const { send, getPostComments } = useGlobalStore()
 
 const visibilityChanged = async (isVisible, disconnectObserver) => {
-    const connection = getConnection()
-
-    if (!isVisible || !connection) {
-        return
+    if (isVisible) {
+        console.log('Get comments for post', props.postId)
+        send({
+            type: 'GET_POST_COMMENTS',
+            postId: props.postId,
+        })
     }
-
-    send({
-        type: 'GET_POST_COMMENTS',
-        postId: props.postId,
-    })
-
-    disconnectObserver()
 }
 </script>
