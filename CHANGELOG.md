@@ -1,3 +1,10 @@
+## [1.25.1](https://github.com/necodeus/blog-nuxt/compare/v1.25.0...v1.25.1) (2024-02-11)
+
+
+### Bug Fixes
+
+* commets ([2cd077d](https://github.com/necodeus/blog-nuxt/commit/2cd077dc66d97bce2cde6f256fbb4bee2703dd52))
+
 # [1.25.0](https://github.com/necodeus/blog-nuxt/compare/v1.24.3...v1.25.0) (2024-02-11)
 
 
