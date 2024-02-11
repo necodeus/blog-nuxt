@@ -14,17 +14,25 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return
     }
 
+    // TODO: Taka obsługa hashów nie wygląda zbyt dobrze.
+    // Do poprawy w przyszłości.
     if (to.hash !== from.hash && to.hash !== '') {
-        const hashEl = document.getElementById(to.hash.slice(1))
-        const mainContainerEl = document.querySelector('.main-container')
+        if (to.hash !== '#comments') {
+            const hashEl = document.getElementById(to.hash.slice(1))
 
-        if (hashEl && mainContainerEl && to.hash !== '#comments') {
-            const hashParentOffset = hashEl?.parentElement?.offsetTop || 0
+            if (!hashEl) {
+                return
+            }
 
-            mainContainerEl.scrollTo({
-                top: hashEl.offsetTop + hashParentOffset,
-                behavior: 'smooth',
-            })
+            const parent = findLongestScrollableParent(hashEl)
+
+            setTimeout(() => {
+                parent.scrollTo({
+                    top: hashEl.offsetTop + (hashEl?.parentElement?.offsetTop || 0),
+                    behavior: 'smooth',
+                })
+            }, 10);
+
             return;
         }
 
