@@ -1,5 +1,5 @@
 <template>
-    <div class="component-border-horizontal font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
+    <div class="font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
         <CommentHeading :comments-count="comments?.length" />
         <CommentInput
             :action-handler="actionHandler"

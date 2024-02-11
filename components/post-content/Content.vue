@@ -1,6 +1,6 @@
 <template>
     <div
-        class="c-content text-[20px] font-jost relative border-b-[1px] border-solid border-[#eee]"
+        class="c-content text-[20px] font-jost relative border-b-[1px] border-solid border-transparent"
         v-html="convertMarkdownToHTML(content)"
     ></div>
 </template>
@@ -301,7 +301,7 @@ defineProps({
 
 .c-content blockquote {
     margin: 0;
-    background-color: #c4c4c41a;
+    background-color: #eee;
     border-radius: 14px;
     font-style: italic;
     margin: 7px;
@@ -322,7 +322,7 @@ defineProps({
         }
     }
 
-    &::before {
+    /* &::before {
         content: '„';
         position: absolute;
         bottom: -40px;
@@ -342,6 +342,6 @@ defineProps({
         font-size: 100px;
         font-family: monospace;
         color: #ececec;
-    }
+    } */
 }
 </style>

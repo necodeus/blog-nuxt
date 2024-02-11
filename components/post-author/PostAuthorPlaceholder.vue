@@ -4,7 +4,7 @@
             class="mobile-photo min-w-[50px] max-w-[50px] min-h-[50px] max-h-[50px] bg-cover bg-center !rounded-[50%] bg-[#eee] animated-background"
         ></div>
         <div class="ml-[20px] pr-[20px]">
-            <div class="tracking-[1px] font-medium inline-block animated-background">
+            <div class="font-medium inline-block animated-background">
                 necodeus
             </div>
             <div class="mobile-description" v-if="!descriptionBelow">

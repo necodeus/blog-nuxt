@@ -570,47 +570,6 @@
     U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
 
-.wrapper {
-    position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    overflow: auto;
-}
-
-.wrapper > *:nth-child(2) {
-    width: 800px;
-}
-
-.wrapper > *:nth-child(3) {
-    width: calc(50% - 800px / 2);
-}
-
-@media (max-width: 1570px) {
-    .wrapper > *:nth-child(2) {
-        width: calc(100% - 385px);
-    }
-    .wrapper > *:nth-child(3) {
-        width: 385px;
-    }
-}
-
-@media (max-width: 900px) {
-    .wrapper {
-        flex-direction: column;
-        justify-content: flex-start;
-    }
-    .wrapper > *:nth-child(2) {
-        width: 100%;
-    }
-    .wrapper > *:nth-child(3) {
-        width: 100%;
-    }
-}
-
 .component-padding {
     padding: 30px;
 }
@@ -619,14 +578,59 @@
     border-left: 1px solid #d1d1d1;
 }
 
-.component-border-horizontal {
+.component-border-right {
+    border-right: 1px solid #d1d1d1;
+}
+
+.component-border-top {
+    border-top: 1px solid #e1e1e1;
+}
+
+.component-border-bottom {
     border-bottom: 1px solid #e1e1e1;
 }
 
-.simplebar-scrollbar::before {
-    background-color: rgba(0, 0, 0, 0.25) !important;
+:root {
+    --desktop-main-position: fixed;
+    --desktop-main-height: 100vh;
+    --desktop-main-width: calc(100vw - (100vw - 800px) / 2);
+    --desktop-main-content-width: calc((100vw - 800px) / 2);
+    
+    --desktop-aside-position: fixed;
+    --desktop-aside-height: 100vh;
+    --desktop-aside-width: calc((100vw - 800px) / 2);
+    
+    --main-width: 800px;
+    --aside-width: 340px;
 }
 
-.simplebar-track.simplebar-vertical {
-    width: 8px !important;
+.not-desktop {
+    display: none;
+}
+
+@media (max-width: calc(800px + 340px + 340px - 1px)) {
+    .desktop {
+        display: none !important;
+    }
+    .not-desktop {
+        display: block;
+    }
+    :root {
+        --main-width: 100%;
+        --desktop-main-width: calc(100vw - 340px);
+        --desktop-main-content-width: 100%;
+        --desktop-aside-width: 340px;
+    }
+}
+
+@media (max-width: calc(800px - 1px)) {
+    :root {
+        --desktop-main-position: relative;
+        --desktop-main-height: auto;
+        --desktop-main-width: 100%;
+
+        --desktop-aside-position: relative;
+        --desktop-aside-height: auto;
+        --desktop-aside-width: 100%;
+    }
 }

@@ -1,6 +1,6 @@
 <template>
-    <div class="inline-block mb-2 animated-background">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse malesuada dolor dui, sed mollis tellus facilisis at. Maecenas non ante eget dui sollicitudin pretium.
+    <div class="inline-block mb-2 animated-background !text-[#ccc] px-[5px]">
+      .-.. --- .-. . -- / .. .--. ... ..- -- / -.. --- .-.. --- .-. / ... .. - / .- -- . - --..-- / -.-. --- -. ... . -.-. - . - ..- .-. / .- -.. .. .--. .. ... -.-. .. -. --. / . .-.. .. - .-.-.-
     </div>
 </template>
 
@@ -13,6 +13,7 @@
   margin: 0 10px;
   display: flex;
 }
+
 @keyframes placeHolderShimmer {
   0% {
     background-position: -800px 0;
@@ -37,5 +38,4 @@
   border-radius: 4px;
   color: transparent;
 }
-
 </style>

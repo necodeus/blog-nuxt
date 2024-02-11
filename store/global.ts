@@ -27,7 +27,25 @@ export const useGlobalStore = defineStore('globalStore', () => {
             return
         }
 
+        if (connection.value.readyState !== WebSocket.OPEN) {
+            reconnect()
+            return
+        }
+
         connection.value.send(JSON.stringify(payload))
+    }
+
+    const reconnect = () => {
+        const nuxtApp = useNuxtApp()
+        
+        console.log('[DEBUG] Current Page CID', nuxtApp?._route?.meta?.content_id)
+
+        if (connection.value) {
+            connection.value.close()
+        }
+
+        const newConnection = new WebSocket(useRuntimeConfig().public.WEBSOCKET_ADDRESS)
+        setConnection(newConnection)
     }
 
     // Ratings
@@ -80,6 +98,7 @@ export const useGlobalStore = defineStore('globalStore', () => {
         // WebSocket
         setConnection, getConnection, connection,
         send,
+        reconnect,
         // Ratings
         addPostRating, getPostRating, postRatings,
         // Comments

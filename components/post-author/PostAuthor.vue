@@ -10,7 +10,7 @@
             />
         </picture>
         <div class="ml-[20px] pr-[20px]">
-            <div class="tracking-[1px] font-medium inline-block">
+            <div class="font-medium inline-block">
                 {{ profile.display_name }}
             </div>
             <div class="mobile-description" v-if="!descriptionBelow">

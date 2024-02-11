@@ -1,5 +1,5 @@
 <template>
-    <div class="component-border-horizontal font-jost">
+    <div class="component-border-top font-jost">
         <div class="relative">
             <div class="bg-[linear-gradient(transparent_25%,white_50%)]">
 
@@ -36,7 +36,7 @@
                 <div class="div-separator"></div>
                 <div class="animated-background text-[transparent] font-medium w-[100px]">{{ numberOfComments }} komentarzy</div>
             </div>
-            <span class="text-[20px] tracking-[1px] animated-background text-[transparent] leading-[35px]">{{ teaser }}</span>
+            <span class="text-[20px] animated-background text-[transparent] leading-[35px]">{{ teaser }}</span>
         </div>
     </div>
 </template>

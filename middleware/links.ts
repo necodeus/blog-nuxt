@@ -1,5 +1,52 @@
+const findLongestScrollableParent = (el: HTMLElement) => {
+    let parent = el.parentElement
+    while (parent) {
+        if (parent.scrollHeight > parent.clientHeight) {
+            return parent
+        }
+        parent = parent.parentElement
+    }
+    return document.documentElement
+}
+
 export default defineNuxtRouteMiddleware(async (to, from) => {
     if (to.path.startsWith('/api/')) {
+        return
+    }
+
+    if (to.hash !== from.hash && to.hash !== '') {
+        const hashEl = document.getElementById(to.hash.slice(1))
+        const mainContainerEl = document.querySelector('.main-container')
+
+        if (hashEl && mainContainerEl && to.hash !== '#comments') {
+            const hashParentOffset = hashEl?.parentElement?.offsetTop || 0
+
+            mainContainerEl.scrollTo({
+                top: hashEl.offsetTop + hashParentOffset,
+                behavior: 'smooth',
+            })
+            return;
+        }
+
+        if (to.hash === '#comments') {
+            const commentsEl = document.getElementById('comments')
+
+            if (!commentsEl) {
+                return
+            }
+
+            const parent = findLongestScrollableParent(commentsEl)
+
+            setTimeout(() => {
+                parent.scrollTo({
+                    top: commentsEl?.offsetTop,
+                    behavior: 'smooth',
+                });
+            }, 10);
+        }
+    }
+
+    if (to.hash !== from.hash) {
         return
     }
 

@@ -1,5 +1,5 @@
 <template>
-	<div class="profiles component-padding component-border-horizontal font-jost">
+	<div class="profiles component-padding font-jost">
 		<SectionTitle><b>Profile</b> społecznościowe</SectionTitle>
 		<div class="ul text-[20px]">
 			<div class="social-link">

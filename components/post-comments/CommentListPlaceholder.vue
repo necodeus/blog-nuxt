@@ -1,22 +1,23 @@
 <template>
   <div>
-    <div class="mx-[30px] mt-[15px]" v-for="a in 1">
+    <div class="mx-[30px] mt-[15px]">
       <div class="mb-2 flex">
         <div class="min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] bg-cover bg-center !rounded-full mr-3">
           <span class="animated-background block min-w-[40px] max-w-[40px] min-h-[40px] max-h-[40px] !rounded-full"></span>
         </div>
         <div class="flex items-center">
           <div class="flex items-center">
-            <div class="flex items-center font-medium animated-background ">Johne Doe</div>
+            <div class="flex items-center font-medium animated-background !text-[#ccc] px-[5px]">TimeTravel_0</div>
           </div>
 
           <div class="div-separator"></div>
 
-          <div class="flex items-center placeholder-components animated-background">00.00.0000</div>
+          <div class="flex items-center placeholder-components animated-background !text-[#ccc] px-[5px]">2036-01-01</div>
         </div>
       </div>
 
       <CommentContentPlaceholder />
+      
       <CommentActionsPlaceholder />
     </div>
   </div>
@@ -32,6 +33,7 @@
   margin: 0 10px;
   display: flex;
 }
+
 @keyframes placeHolderShimmer {
   0% {
     background-position: -800px 0;
@@ -56,5 +58,4 @@
   border-radius: 4px;
   color: transparent;
 }
-
 </style>
