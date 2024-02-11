@@ -1,5 +1,5 @@
 <template>
-	<div class="external-links component-padding component-border-horizontal font-jost">
+	<div class="external-links component-padding font-jost">
 		<SectionTitle><b>Linki</b> zewnętrzne</SectionTitle>
 		<ul class="flex flex-col">
 			<li>

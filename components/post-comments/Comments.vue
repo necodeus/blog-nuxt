@@ -1,5 +1,5 @@
 <template>
-    <div class="component-border-horizontal font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
+    <div class="font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
         <CommentHeading :comments-count="comments?.length" />
         <CommentInput
             :action-handler="actionHandler"
@@ -36,20 +36,20 @@ const actionHandler = (payload) => {
 }
 
 import { useGlobalStore } from '../../store/global'
-const { send, getPostComments } = useGlobalStore()
+const { send, getPostComments, getConnection } = useGlobalStore()
 
 const visibilityChanged = async (isVisible, disconnectObserver) => {
-    if (!isVisible) {
+    const connection = getConnection()
+
+    if (!isVisible || !connection) {
         return
     }
-
-    disconnectObserver()
-
-    // await new Promise(resolve => setTimeout(resolve, 3000))
 
     send({
         type: 'GET_POST_COMMENTS',
         postId: props.postId,
     })
+
+    disconnectObserver()
 }
 </script>

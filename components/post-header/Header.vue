@@ -1,5 +1,5 @@
 <template>
-    <div class="component-border-horizontal font-jost">
+    <div class="component-border-top font-jost">
         <div class="relative">
             <picture>
                 <source media="(min-width: 1570px)" :srcset="`${image}/900x430`" />
@@ -40,7 +40,7 @@
                 <div class="div-separator"></div>
                 <NuxtLink :to="{ hash: '#comments' }" class="font-medium">{{ numberOfComments }} komentarzy</NuxtLink>
             </div>
-            <span class="text-[20px] tracking-[1px] leading-[35px]">{{ teaser }}</span>
+            <span class="text-[20px] leading-[35px]">{{ teaser }}</span>
         </div>
     </div>
 </template>

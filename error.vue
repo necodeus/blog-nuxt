@@ -2,26 +2,26 @@
     <Head>
         <Meta name="theme-color" content="#fff" />
     </Head>
-    <div class="wrapper">
-        <div></div>
-        <div>
-            <simplebar class="component-border-vertical h-full">
+
+    <MainContainer>
+        <SectionWrapper width="var(--desktop-main-content-width)">
+            <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
                 <ErrorHeader :code="error?.statusCode" :message="error?.message" />
-            </simplebar>
-        </div>
-        <div>
-            <simplebar class="component-border-vertical h-full">
-                <OtherPosts />
-                <ExternalLinks />
-            </simplebar>
-        </div>
-    </div>
+            </BasicSection>
+        </SectionWrapper>
+    </MainContainer>
+
+    <AsideContainer class="component-border-vertical">
+        <BasicSection v-if="!isHomePage">
+            <OtherPosts />
+        </BasicSection>
+        <BasicSection>
+            <ExternalLinks />
+        </BasicSection>
+    </AsideContainer>
 </template>
 
 <script setup>
-import simplebar from 'simplebar-vue'
-import 'simplebar/dist/simplebar.min.css'
-
 defineProps({
     error: {
         type: Object,

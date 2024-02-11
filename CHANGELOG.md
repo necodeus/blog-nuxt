@@ -1,3 +1,32 @@
+# [1.23.0](https://github.com/necodeus/blog-nuxt/compare/v1.22.0...v1.23.0) (2024-02-11)
+
+
+### Features
+
+* PAP-10 rebuild layout grid, add websocket reconnection, refine the design of comment actions, add sticky section ([e112767](https://github.com/necodeus/blog-nuxt/commit/e1127675ecb46ea82b1f124bc591a33c3ec1cddc))
+
+# [1.22.0](https://github.com/necodeus/blog-nuxt/compare/v1.21.1...v1.22.0) (2024-01-30)
+
+
+### Features
+
+* **0:** bun and shell scripts ([f4116a0](https://github.com/necodeus/blog-nuxt/commit/f4116a0e2af96fdfdd4ba2977be31ffe983e0baf))
+
+## [1.21.1](https://github.com/necodeus/blog-nuxt/compare/v1.21.0...v1.21.1) (2024-01-26)
+
+
+### Bug Fixes
+
+* **0:** comments observer ([e910fe1](https://github.com/necodeus/blog-nuxt/commit/e910fe18d8823f83912f57a50a7271594fbf77dc))
+
+# [1.21.0](https://github.com/necodeus/blog-nuxt/compare/v1.20.2...v1.21.0) (2024-01-25)
+
+
+### Features
+
+* **PAP-55:** comment placeholder ([a7cbd78](https://github.com/necodeus/blog-nuxt/commit/a7cbd7891da464bac1bb7d3cc73cda3320323c94))
+* **PAP-55:** comment placeholder ([0c8340e](https://github.com/necodeus/blog-nuxt/commit/0c8340e7ccc4aa59318c6080e765a35135776a21))
+
 ## [1.20.2](https://github.com/necodeus/blog-nuxt/compare/v1.20.1...v1.20.2) (2024-01-21)
 
 

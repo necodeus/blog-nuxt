@@ -1,5 +1,5 @@
 <template>
-	<div class="c-archive component-padding component-border-horizontal font-jost">
+	<div class="c-archive component-padding font-jost">
 		<SectionTitle><b>Archive</b> of posts</SectionTitle>
 		<ul>
 			<li>

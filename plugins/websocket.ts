@@ -1,5 +1,8 @@
 import { useGlobalStore } from '../store/global'
 
+// TODO: Rozważyć przeniesienie tego pliku do store/global.ts
+// ponieważ i tak potrzebujemy store z Pinia
+
 export default defineNuxtPlugin((nuxtApp) => {
     if (!process.client) {
         return
@@ -7,7 +10,7 @@ export default defineNuxtPlugin((nuxtApp) => {
 
     const pinia = usePinia()
 
-    const { setConnection, addPostRating, setPostComments } = useGlobalStore(pinia)
+    const { setConnection, addPostRating, setPostComments, reconnect } = useGlobalStore(pinia)
 
     const ws = new WebSocket(useRuntimeConfig().public.WEBSOCKET_ADDRESS)
 
@@ -32,5 +35,23 @@ export default defineNuxtPlugin((nuxtApp) => {
         } catch (error) {
             console.error('UNKNOWN ERROR', error)
         }
+    }
+
+    ws.onopen = () => {
+        console.log(nuxtApp._route.meta.content_id);
+
+        ws.send(JSON.stringify({
+            type: 'GET_POST_RATING',
+            postId: nuxtApp._route.meta.content_id,
+        }))
+    }
+    
+    ws.onclose = function () {
+        console.log(nuxtApp._route.meta.content_id);
+
+        console.log('WebSocket connection closed. Reconnecting...')
+        setTimeout(() => {
+            reconnect()
+        }, 1000);
     }
 })

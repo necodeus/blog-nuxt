@@ -1,5 +1,5 @@
 <template>
-	<div class="component-padding component-border-horizontal font-jost relative">
+	<div class="component-padding font-jost relative">
 		<SectionTitle><b>Inne</b> wpisy</SectionTitle>
 		<ul>
 			<li class="list" v-for="(post, p) in posts" v-bind:key="post.id">

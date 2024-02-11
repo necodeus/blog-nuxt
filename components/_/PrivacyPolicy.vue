@@ -1,5 +1,5 @@
 <template>
-  <div class="privacy-policy component-padding component-border-horizontal font-jost">
+  <div class="privacy-policy component-padding font-jost">
     <SectionTitle><b>Polityka</b> prywatności</SectionTitle>
     <div>
       <div class="mb-[20px]">

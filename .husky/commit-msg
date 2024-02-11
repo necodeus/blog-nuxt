@@ -1,4 +1,12 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npx commitlint --edit $1
+if command -v bun &> /dev/null
+then
+    bun commitlint --edit $1
+elif command -v node &> /dev/null
+then
+    npx commitlint --edit $1
+else
+    echo "Please install either bun or node"
+fi

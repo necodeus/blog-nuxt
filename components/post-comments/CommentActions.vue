@@ -15,9 +15,9 @@
 
             <div class="div-separator"></div>
 
-            <button class="flex items-center font-medium" v-on:click.prevent="() => { actionHandler({ action: 'EXPAND', commentId }) }"
-                :style="{ transition: 'opacity 0.15s ease-in-out', opacity: isExpanded ? 1 : 0.5 }">
-                {{ repliesCount }} {{ repliesCount === 1 ? 'odpowiedź' : 'odpowiedzi' }}
+            <button class="flex items-center font-medium" v-on:click.prevent="() => { actionHandler({ action: 'EXPAND', commentId }) }" :style="{ transition: 'opacity 0.15s ease-in-out', opacity: isExpanded ? 1 : 0.5 }">
+                <RepliesButton class="mr-[5px] w-[18px] h-[18px]" :is-active="isExpanded" />
+                {{ repliesCount }}
             </button>
         </div>
     </div>
