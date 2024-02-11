@@ -1,3 +1,10 @@
+## [1.24.3](https://github.com/necodeus/blog-nuxt/compare/v1.24.2...v1.24.3) (2024-02-11)
+
+
+### Bug Fixes
+
+* pap-10 hide empty section ([ecaa84a](https://github.com/necodeus/blog-nuxt/commit/ecaa84a002e786f6799b43e4b90d64b0f677247a))
+
 ## [1.24.2](https://github.com/necodeus/blog-nuxt/compare/v1.24.1...v1.24.2) (2024-02-11)
 
 
