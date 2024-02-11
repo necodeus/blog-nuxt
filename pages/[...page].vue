@@ -57,7 +57,7 @@
     </template>
 
     <BasicSection width="var(--main-width)" class="not-desktop">
-      <div class="m-[7px]">
+      <div class="m-[7px]" v-if="extractMarkdownHeadersWithIds(data?.post?.content ?? '').length">
         <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
       </div>
     </BasicSection>
