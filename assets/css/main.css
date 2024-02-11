@@ -601,14 +601,14 @@
     --desktop-aside-width: calc((100vw - 800px) / 2);
     
     --main-width: 800px;
-    --aside-width: 340px;
+    --aside-width: 334px;
 }
 
 .not-desktop {
     display: none;
 }
 
-@media (max-width: calc(800px + 340px + 340px - 1px)) {
+@media (max-width: calc(800px + 334px + 334px - 1px)) {
     .desktop {
         display: none !important;
     }
@@ -617,9 +617,9 @@
     }
     :root {
         --main-width: 100%;
-        --desktop-main-width: calc(100vw - 340px);
+        --desktop-main-width: calc(100vw - 334px);
         --desktop-main-content-width: 100%;
-        --desktop-aside-width: 340px;
+        --desktop-aside-width: 334px;
     }
 }
 

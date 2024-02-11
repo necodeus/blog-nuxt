@@ -6,10 +6,10 @@
 
   <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="topAdVisible">
     <template #aside>
-      <StickySection width="340px">
+      <StickySection width="334px">
         <div class="background m-[7px]">
+          <AdPlaceholder class="absolute" />
           <Advertisement v-if="isTopAdVisible" />
-          <AdPlaceholder v-else />
         </div>
       </StickySection>
     </template>
@@ -50,7 +50,7 @@
 
   <SectionWrapper width="var(--desktop-main-content-width)">
     <template #aside>
-      <StickySection width="340px">
+      <StickySection width="334px">
         <div class="m-[7px]">
           <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
         </div>
@@ -75,10 +75,10 @@
 
   <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible">
     <template #aside>
-      <StickySection width="340px">
+      <StickySection width="334px">
         <div class="m-[7px]">
+          <AdPlaceholder class="absolute" />
           <Advertisement v-if="isBottomAdVisible" />
-          <AdPlaceholder v-else/>
         </div>
       </StickySection>
     </template>
