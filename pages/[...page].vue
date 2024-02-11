@@ -51,27 +51,16 @@
     <template #aside>
       <StickySection width="340px">
         <div class="m-[7px]">
-          <ContentNav :items="[
-            {
-              title: 'Integer ornare efficitur risus quis placerat',
-              url: '#integer-ornare-efficitur-risus-quis-placerat',
-            },
-            // {
-            //   title: 'Ut mollis commodo mi, sed rutrum ipsum fringilla at',
-            //   url: '#ut-mollis-commodo-mi%2C-sed-rutrum-ipsum-fringilla-at',
-            // },
-            {
-              title: 'Orci varius',
-              url: '#orci-varius',
-            },
-          ]"/>
+          <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
         </div>
       </StickySection>
     </template>
 
-    <!-- <BasicSection width="var(--main-width)" class="not-desktop">
-      TabletContentNav
-    </BasicSection> -->
+    <BasicSection width="var(--main-width)" class="not-desktop">
+      <div class="component-padding">
+        <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
+      </div>
+    </BasicSection>
 
     <BasicSection width="var(--main-width)" class="component-border-vertical">
       <Content v-if="!pendingPost && data?.post?.id" :content="data?.post?.content ?? ''" />
@@ -109,6 +98,16 @@ definePageMeta({
 const route = useRoute()
 
 const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)
+
+function extractMarkdownHeadersWithIds(markdownText: any) {
+  const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, '');
+
+  return [...cleanedMarkdownText.matchAll(/^(#+)\s*(.*)$/gm)].map(match => {
+    const title = match[2].trim();
+    const id = encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'));
+    return { title, id };
+  });
+}
 
 import { useGlobalStore } from '../store/global'
 const { getConnection, reconnect } = useGlobalStore()

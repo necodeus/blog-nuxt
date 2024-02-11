@@ -1,7 +1,7 @@
 <template>
     <ul class="content-nav" v-if="items.length">
         <li v-for="(item, i) in items" :key="i">
-            <NuxtLink :to="{ hash: item.url}">
+            <NuxtLink :to="{ hash: '#' + item.id}">
                 {{ item.title }}
             </NuxtLink>
         </li>
