@@ -1,3 +1,10 @@
+# [1.25.0](https://github.com/necodeus/blog-nuxt/compare/v1.24.3...v1.25.0) (2024-02-11)
+
+
+### Features
+
+* **pap-0:** ads ([20b250f](https://github.com/necodeus/blog-nuxt/commit/20b250f8a60a0cfadef2bf619a18e63e9918ed18))
+
 ## [1.24.3](https://github.com/necodeus/blog-nuxt/compare/v1.24.2...v1.24.3) (2024-02-11)
 
 
