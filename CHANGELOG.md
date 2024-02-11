@@ -1,3 +1,10 @@
+## [1.24.1](https://github.com/necodeus/blog-nuxt/compare/v1.24.0...v1.24.1) (2024-02-11)
+
+
+### Bug Fixes
+
+* pap-10 fix content navigation links ([f81c23d](https://github.com/necodeus/blog-nuxt/commit/f81c23df79f86e320896a98c93162e15a44b069d))
+
 # [1.24.0](https://github.com/necodeus/blog-nuxt/compare/v1.23.0...v1.24.0) (2024-02-11)
 
 
