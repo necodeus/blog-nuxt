@@ -57,7 +57,7 @@
     </template>
 
     <BasicSection width="var(--main-width)" class="not-desktop">
-      <div class="component-padding">
+      <div class="m-[7px]">
         <ContentNav :items="extractMarkdownHeadersWithIds(data?.post?.content ?? '')"/>
       </div>
     </BasicSection>

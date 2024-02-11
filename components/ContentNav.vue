@@ -1,9 +1,7 @@
 <template>
     <ul class="content-nav" v-if="items.length">
         <li v-for="(item, i) in items" :key="i">
-            <NuxtLink :to="{ hash: '#' + item.id}">
-                {{ item.title }}
-            </NuxtLink>
+            <ContentLink :id="item.id">{{ item.title }}</ContentLink>
         </li>
     </ul>
 </template>
@@ -38,11 +36,11 @@ defineProps({
     position: relative;
 }
 
-.content-nav li a::before {
+.content-nav li > *::before {
     content: counter(item) '. ';
 }
 
-.content-nav li a {
+.content-nav li > * {
     display: block;
 }
 </style>

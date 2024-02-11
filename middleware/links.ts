@@ -1,4 +1,4 @@
-const findLongestScrollableParent = (el: HTMLElement) => {
+const findLongestScrollableParent = (el: any) => {
     let parent = el.parentElement
     while (parent) {
         if (parent.scrollHeight > parent.clientHeight) {
@@ -17,25 +17,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
     // TODO: Taka obsługa hashów nie wygląda zbyt dobrze.
     // Do poprawy w przyszłości.
     if (to.hash !== from.hash && to.hash !== '') {
-        if (to.hash !== '#comments') {
-            const hashEl = document.getElementById(to.hash.slice(1))
-
-            if (!hashEl) {
-                return
-            }
-
-            const parent = findLongestScrollableParent(hashEl)
-
-            setTimeout(() => {
-                parent.scrollTo({
-                    top: hashEl.offsetTop + (hashEl?.parentElement?.offsetTop || 0),
-                    behavior: 'smooth',
-                })
-            }, 10);
-
-            return;
-        }
-
         if (to.hash === '#comments') {
             const commentsEl = document.getElementById('comments')
 
