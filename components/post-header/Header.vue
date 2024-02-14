@@ -36,7 +36,7 @@
         </div>
         <div class="component-padding relative !pt-[10px] bg-white">
             <div class="flex items-center mb-[10px]">
-                <Stars :initialRating="averageRating" :postId="postId" />
+                <Stars :postId="postId" />
                 <div class="div-separator"></div>
                 <CommentLink id="comments" class="font-medium">{{ numberOfComments }} komentarzy</CommentLink>
             </div>
@@ -79,11 +79,6 @@ const props = defineProps({
         type: String,
         required: false,
         default: () => ''
-    },
-    averageRating: {
-        type: Number,
-        required: false,
-        default: () => 0
     },
     numberOfComments: {
         type: Number,

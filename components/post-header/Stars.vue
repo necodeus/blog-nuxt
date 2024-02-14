@@ -56,10 +56,6 @@ import { useGlobalStore } from '../store/global'
 const { getPostRating, getConnection } = useGlobalStore()
 
 const props = defineProps({
-    initialRating: {
-        type: Number,
-        default: 0,
-    },
     postId: {
         type: String,
         required: false,
@@ -82,10 +78,6 @@ const postRating = computed(() => {
 })
 
 const selectedRating = ref(0)
-
-// watch(() => props.initialRating, (newVal) => {
-//     rating.value = newVal
-// })
 
 const setRating = async (newRating) => {
     selectedRating.value = newRating

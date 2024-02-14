@@ -28,7 +28,6 @@
           :authorName="data?.postAuthor?.display_name ?? ''"
           :authorPhoto="'https://images.necodeo.com/' + data?.postAuthor?.image_id_avatar ?? ''"
           :postId="data?.post?.id ?? ''"
-          :averageRating="data?.post?.rating_average ?? 0"
           :numberOfComments="data?.post?.comments_count"
         />
         <HeaderPlaceholder
@@ -40,7 +39,6 @@
           authorName="John Doe"
           authorPhoto=""
           postId=""
-          :averageRating="0"
           :numberOfComments="0"
         />
       </div>
