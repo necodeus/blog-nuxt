@@ -1,3 +1,10 @@
+## [1.25.3](https://github.com/necodeus/blog-nuxt/compare/v1.25.2...v1.25.3) (2024-02-14)
+
+
+### Bug Fixes
+
+* test clientonly component ([f1a538d](https://github.com/necodeus/blog-nuxt/commit/f1a538ddf26546c35df572d05565534ce040ace8))
+
 ## [1.25.2](https://github.com/necodeus/blog-nuxt/compare/v1.25.1...v1.25.2) (2024-02-14)
 
 
