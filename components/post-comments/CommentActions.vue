@@ -1,14 +1,14 @@
 <template>
     <div class="mb-2 mt-1">
         <div class="flex items-center">
-            <button class="flex items-center" v-on:click.prevent="() => { actionHandler({ action: 'UPVOTE', postId, commentId }) }">
+            <button class="flex items-center font-medium" v-on:click.prevent="() => { actionHandler({ action: 'UPVOTE', postId, commentId }) }">
                 <LikeButton class="mr-[5px] w-[18px] h-[18px]" :is-active="isUpvoted" />
                 {{ upvotes }}
             </button>
 
             <div class="div-separator"></div>
 
-            <button class="flex items-center" v-on:click.prevent="() => { actionHandler({ action: 'DOWNVOTE', postId, commentId }) }">
+            <button class="flex items-center font-medium" v-on:click.prevent="() => { actionHandler({ action: 'DOWNVOTE', postId, commentId }) }">
                 <DislikeButton class="mr-[5px] w-[18px] h-[18px]" :is-active="isDownvoted" />
                 {{ downvotes }}
             </button>

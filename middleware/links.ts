@@ -14,27 +14,6 @@ export default defineNuxtRouteMiddleware(async (to, from) => {
         return
     }
 
-    // TODO: Taka obsługa hashów nie wygląda zbyt dobrze.
-    // Do poprawy w przyszłości.
-    if (to.hash !== from.hash && to.hash !== '') {
-        if (to.hash === '#comments') {
-            const commentsEl = document.getElementById('comments')
-
-            if (!commentsEl) {
-                return
-            }
-
-            const parent = findLongestScrollableParent(commentsEl)
-
-            setTimeout(() => {
-                parent.scrollTo({
-                    top: commentsEl?.offsetTop,
-                    behavior: 'smooth',
-                });
-            }, 10);
-        }
-    }
-
     if (to.hash !== from.hash) {
         return
     }

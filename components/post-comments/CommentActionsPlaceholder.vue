@@ -2,21 +2,21 @@
     <div class="mb-2 mt-1">
         <div class="flex items-center">
             <button class="flex items-center">
-              <div class="animated-background-2">
+              <div class="animated-background-2 font-medium">
                 <LikeButton class="mr-[5px] w-[18px] h-[18px] text-[#ccc]" :is-active="false" />
                 <div class="text-[#ccc]">?</div>
               </div>
             </button>
             <div class="div-separator"></div>
             <button class="flex items-center">
-              <div class="animated-background-2">
+              <div class="animated-background-2 font-medium">
                 <DislikeButton class="mr-[5px] w-[18px] h-[18px] text-[#ccc]" :is-active="false" />
                 <div class="text-[#ccc]">?</div>
               </div>
             </button>
             <div class="div-separator"></div>
             <button class="flex items-center">
-              <div class="animated-background-2">
+              <div class="animated-background-2 font-medium">
                 <RepliesButton class="mr-[5px] w-[18px] h-[18px] text-[#ccc]" :is-active="false" />
                 <div class="text-[#ccc]">?</div>
               </div>
