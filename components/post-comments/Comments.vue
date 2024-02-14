@@ -12,7 +12,12 @@
 </template>
 
 <script setup>
-const comments = computed(() => getPostComments(props.postId))
+import { useBlogStore } from '../../stores/blogStore'
+
+const { 
+    fetchCommentsForPost,
+    getCommentsForPost,
+} = useBlogStore()
 
 const props = defineProps({
     postId: {
@@ -22,21 +27,21 @@ const props = defineProps({
     },
 })
 
+const comments = computed(() => getCommentsForPost(props.postId))
+
 const actionHandler = (payload) => {
     switch (payload.action) {
         case 'COMMENT':
-            send({
-                type: 'ADD_COMMENT',
-                postId: props.postId,
-                commentId: null,
-                commentText: payload.commentText,
-            })
+            console.log('COMMENT', payload.commentText)
+            // send({
+            //     type: 'ADD_COMMENT',
+            //     postId: props.postId,
+            //     commentId: null,
+            //     commentText: payload.commentText,
+            // })
             break
     }
 }
-
-import { useGlobalStore } from '../../store/global'
-const { send, getPostComments } = useGlobalStore()
 
 const isCommentsVisible = ref(false)
 
@@ -46,10 +51,8 @@ const commentsVisibility = async (isVisible) => {
     if (isVisible && !(isCommentsVisible.value && comments.value !== null)) {
         isCommentsVisible.value = true
 
-        send({
-            type: 'GET_POST_COMMENTS',
-            postId: props.postId,
-        })
+        console.log('Fetching comments for post', props.postId)
+        fetchCommentsForPost(props.postId)
     }
 }
 </script>

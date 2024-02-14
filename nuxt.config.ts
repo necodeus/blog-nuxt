@@ -23,7 +23,6 @@ export default defineNuxtConfig({
     ],
     plugins: [
         '~/plugins/observe-visibility.ts',
-        '~/plugins/websocket.ts',
     ],
     modules: [
         '@nuxtjs/tailwindcss',

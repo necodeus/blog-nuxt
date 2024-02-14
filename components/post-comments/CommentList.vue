@@ -56,8 +56,8 @@
 import moment from 'moment/min/moment-with-locales'
 import sha256 from 'js-sha256'
 
-import { useGlobalStore } from '../../store/global'
-const { send } = useGlobalStore()
+// import { useBlogStore } from '../../stores/blogStore'
+// const { send } = useBlogStore()
 
 function getGravatarURL(name: any, size = 40) {
     const lowercaseName = String(name).trim().toLowerCase()
@@ -81,37 +81,37 @@ const actionHandler = (payload: any) => {
         case 'EXPAND':
             expandReplies(payload.commentId)
             // TODO: Pobierz odpowiedzi do komentarza
-            send({
-                action: 'GET_COMMENT_REPLIES',
-                postId: payload.postId,
-                commentId: payload.commentId,
-            })
+            // send({
+            //     action: 'GET_COMMENT_REPLIES',
+            //     postId: payload.postId,
+            //     commentId: payload.commentId,
+            // })
             break
         case 'COMMENT':
             // TODO: Wyślij komentarz
-            send({
-                ...payload,
-                action: 'ADD_COMMENT',
-            })
+            // send({
+            //     ...payload,
+            //     action: 'ADD_COMMENT',
+            // })
             break
         case 'REPLY':
             // TODO: Wyślij komentarz
-            send({
-                ...payload,
-                action: 'ADD_REPLY',
-            })
+            // send({
+            //     ...payload,
+            //     action: 'ADD_REPLY',
+            // })
             break
         case 'UPVOTE':
-            send({
-                ...payload,
-                action: 'UPVOTE_COMMENT',
-            })
+            // send({
+            //     ...payload,
+            //     action: 'UPVOTE_COMMENT',
+            // })
             break
         case 'DOWNVOTE':
-            send({
-                ...payload,
-                action: 'DOWNVOTE_COMMENT',
-            })
+            // send({
+            //     ...payload,
+            //     action: 'DOWNVOTE_COMMENT',
+            // })
             break
     }
 }

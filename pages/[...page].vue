@@ -124,26 +124,13 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
   });
 }
 
-import { useGlobalStore } from '../store/global'
-const { getConnection, reconnect } = useGlobalStore()
+import { useBlogStore } from '../stores/blogStore';
 
-onMounted(() => {
-  const connection = getConnection()
+const blogStore = useBlogStore();
 
-  if (!connection || connection.readyState !== WebSocket.OPEN) {
-    reconnect()
-  }
-
-  if (!connection) {
-    console.error('Connection failed!')
-    return
-  }
-
-  connection.send(JSON.stringify({
-      type: 'GET_POST_RATING',
-      postId: route.meta.content_id,
-  }))
-  
+onMounted(async () => {
+    await blogStore.init();
+    blogStore.fetchPostRating(route.meta.content_id);
 })
 
 const router = useRouter()

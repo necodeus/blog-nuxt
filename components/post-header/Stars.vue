@@ -46,14 +46,17 @@ User
                 </svg>
             </div>
         </div>
-        <p v-if="postRating === null" class="animated-background min-w-[35px] text-center">0.00</p>
-        <p v-else class="min-w-[35px] text-center">{{ postRating }}</p>
+        <p v-if="formattedPostRating === null" class="animated-background min-w-[35px] text-center">0.00</p>
+        <p v-else class="min-w-[35px] text-center">{{ formattedPostRating }}</p>
     </div>
 </template>
 
 <script setup>
-import { useGlobalStore } from '../store/global'
-const { getPostRating, getConnection } = useGlobalStore()
+import { useBlogStore } from '../../stores/blogStore'
+const {
+    getRatingForPost,
+    updatePostRating,
+} = useBlogStore()
 
 const props = defineProps({
     postId: {
@@ -65,8 +68,8 @@ const props = defineProps({
 
 const rating = ref(null)
 
-const postRating = computed(() => {
-    const rt = getPostRating(props.postId)
+const formattedPostRating = computed(() => {
+    const rt = getRatingForPost(props.postId)
 
     rating.value = rt
 
@@ -82,11 +85,7 @@ const selectedRating = ref(0)
 const setRating = async (newRating) => {
     selectedRating.value = newRating
 
-    getConnection().send(JSON.stringify({
-        type: 'UPDATE_POST_RATING',
-        postId: props.postId,
-        value: newRating,
-    }))
+    updatePostRating(props.postId, newRating);
 }
 
 const fillWidth = (star) => {

@@ -36,7 +36,7 @@
         </div>
         <div class="component-padding relative !pt-[10px] bg-white">
             <div class="flex items-center mb-[10px]">
-                <Stars :postId="postId" />
+                <Stars :postId="postId" /> 
                 <div class="div-separator"></div>
                 <CommentLink id="comments" class="font-medium">{{ numberOfComments }} komentarzy</CommentLink>
             </div>
