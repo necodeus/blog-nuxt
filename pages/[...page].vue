@@ -8,7 +8,6 @@
     <template #aside>
       <StickySection width="334px">
         <div class="background m-[7px]">
-          <AdPlaceholder class="absolute" />
           <Advertisement v-if="isTopAdVisible" />
         </div>
       </StickySection>
@@ -77,7 +76,6 @@
     <template #aside>
       <StickySection width="334px">
         <div class="m-[7px]">
-          <AdPlaceholder class="absolute" />
           <Advertisement v-if="isBottomAdVisible" />
         </div>
       </StickySection>
@@ -109,6 +107,7 @@ const topAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
   }
 
   isTopAdVisible.value = true
+  disconnectObserver()
 }
 
 const bottomAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
@@ -118,6 +117,7 @@ const bottomAdVisible = (isVisible: boolean, disconnectObserver: () => void) => 
   }
 
   isBottomAdVisible.value = true
+  disconnectObserver()
 }
 
 const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)
