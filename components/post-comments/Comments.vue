@@ -5,11 +5,9 @@
             :action-handler="actionHandler"
             :clear-on-action="true"
         />
-        <ClientOnly>
-            <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
-            <CommentListPlaceholder v-else />
-            <CommentListEmpty v-if="comments?.length === 0" />
-        </ClientOnly>
+        <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
+        <CommentListPlaceholder v-if="!isCommentsVisible || comments == null" />
+        <CommentListEmpty v-if="comments?.length === 0" />
     </div>
 </template>
 
@@ -45,15 +43,13 @@ const isCommentsVisible = ref(false)
 const commentsVisibility = async (isVisible) => {
     console.log('commentsVisibility', isVisible)
 
-    if (isVisible && !isCommentsVisible.value) {
-        console.log('GET_POST_COMMENTS', props.postId)
+    if (isVisible && !(isCommentsVisible.value && comments.value !== null)) {
+        isCommentsVisible.value = true
 
         send({
             type: 'GET_POST_COMMENTS',
             postId: props.postId,
         })
-
-        isCommentsVisible.value = true
     }
 }
 </script>
