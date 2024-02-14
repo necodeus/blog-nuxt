@@ -7,7 +7,7 @@
         />
         <ClientOnly>
             <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
-            <CommentListPlaceholder v-if="!isCommentsVisible || comments === null" />
+            <CommentListPlaceholder v-else />
             <CommentListEmpty v-if="comments?.length === 0" />
         </ClientOnly>
     </div>
@@ -43,7 +43,11 @@ const { send, getPostComments } = useGlobalStore()
 const isCommentsVisible = ref(false)
 
 const commentsVisibility = async (isVisible) => {
+    console.log('commentsVisibility', isVisible)
+
     if (isVisible && !isCommentsVisible.value) {
+        console.log('GET_POST_COMMENTS', props.postId)
+
         send({
             type: 'GET_POST_COMMENTS',
             postId: props.postId,
