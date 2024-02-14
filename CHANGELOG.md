@@ -1,3 +1,10 @@
+## [1.25.7](https://github.com/necodeus/blog-nuxt/compare/v1.25.6...v1.25.7) (2024-02-14)
+
+
+### Bug Fixes
+
+* websockets ([65a9ecc](https://github.com/necodeus/blog-nuxt/commit/65a9eccabf8536b4a21f8185f103ce2d795cfaa9))
+
 ## [1.25.6](https://github.com/necodeus/blog-nuxt/compare/v1.25.5...v1.25.6) (2024-02-14)
 
 
