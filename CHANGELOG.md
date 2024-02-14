@@ -1,3 +1,13 @@
+## [1.25.2](https://github.com/necodeus/blog-nuxt/compare/v1.25.1...v1.25.2) (2024-02-14)
+
+
+### Bug Fixes
+
+* bring node 20.9.0 back ([ad4c465](https://github.com/necodeus/blog-nuxt/commit/ad4c4658c6dcfc887f4a3e2e6e55fcfeec51c312))
+* bump packages ([5c422b1](https://github.com/necodeus/blog-nuxt/commit/5c422b10730c2f127516b009ae38067ed1e1cea3))
+* bump packages ([a92ae15](https://github.com/necodeus/blog-nuxt/commit/a92ae15598cb7312b2664941582d4cdae687f133))
+* bump packages ([72a4abd](https://github.com/necodeus/blog-nuxt/commit/72a4abdaa5c537117ff3ab54660abe8915dc8512))
+
 ## [1.25.1](https://github.com/necodeus/blog-nuxt/compare/v1.25.0...v1.25.1) (2024-02-11)
 
 
