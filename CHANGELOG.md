@@ -1,3 +1,10 @@
+## [1.25.8](https://github.com/necodeus/blog-nuxt/compare/v1.25.7...v1.25.8) (2024-02-14)
+
+
+### Bug Fixes
+
+* production websocket address ([fad760f](https://github.com/necodeus/blog-nuxt/commit/fad760f85bf32aa015ac1b9655ffb0b63ad42948))
+
 ## [1.25.7](https://github.com/necodeus/blog-nuxt/compare/v1.25.6...v1.25.7) (2024-02-14)
 
 
