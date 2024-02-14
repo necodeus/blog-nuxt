@@ -5,9 +5,11 @@
             :action-handler="actionHandler"
             :clear-on-action="true"
         />
-        <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
-        <CommentListPlaceholder v-if="!isCommentsVisible || comments === null" />
-        <CommentListEmpty v-if="comments?.length === 0" />
+        <ClientOnly>
+            <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
+            <CommentListPlaceholder v-if="!isCommentsVisible || comments === null" />
+            <CommentListEmpty v-if="comments?.length === 0" />
+        </ClientOnly>
     </div>
 </template>
 
