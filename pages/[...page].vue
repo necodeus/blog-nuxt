@@ -101,23 +101,17 @@ const isBottomAdVisible = ref(false)
 const isTopAdVisible = ref(false)
 
 const topAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
-  if (!isVisible) {
-    isTopAdVisible.value = false
+  if (isVisible) {
+    isTopAdVisible.value = true
     return
   }
-
-  isTopAdVisible.value = true
-  disconnectObserver()
 }
 
 const bottomAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
-  if (!isVisible) {
-    isBottomAdVisible.value = false
+  if (isVisible) {
+    isBottomAdVisible.value = true
     return
   }
-
-  isBottomAdVisible.value = true
-  disconnectObserver()
 }
 
 const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)

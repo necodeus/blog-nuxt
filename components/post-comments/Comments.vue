@@ -1,12 +1,12 @@
 <template>
-    <div class="font-jost py-[30px] text-[17px]" v-observe-visibility="visibilityChanged">
+    <div class="font-jost py-[30px] text-[17px]" v-observe-visibility="commentsVisibility">
         <CommentHeading :comments-count="comments?.length" />
         <CommentInput
             :action-handler="actionHandler"
             :clear-on-action="true"
         />
-        <CommentListPlaceholder v-if="comments === null" />
-        <CommentList v-else :post-id="postId" :comments="comments" />
+        <CommentList v-if="isCommentsVisible" :post-id="postId" :comments="comments" />
+        <CommentListPlaceholder v-if="!isCommentsVisible || comments === null" />
         <CommentListEmpty v-if="comments?.length === 0" />
     </div>
 </template>
@@ -38,13 +38,16 @@ const actionHandler = (payload) => {
 import { useGlobalStore } from '../../store/global'
 const { send, getPostComments } = useGlobalStore()
 
-const visibilityChanged = async (isVisible, disconnectObserver) => {
-    if (isVisible) {
-        console.log('Get comments for post', props.postId)
+const isCommentsVisible = ref(false)
+
+const commentsVisibility = async (isVisible) => {
+    if (isVisible && !isCommentsVisible.value) {
         send({
             type: 'GET_POST_COMMENTS',
             postId: props.postId,
         })
+
+        isCommentsVisible.value = true
     }
 }
 </script>
