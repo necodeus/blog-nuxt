@@ -11,8 +11,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - uses: oven-sh/setup-bun@v1
-        with:
-          bun-version: latest
+        # with:
+        #   bun-version: latest
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -22,12 +22,12 @@ jobs:
       - name: Install dependencies
         run: |
           chmod +x ./install.sh
-          ./install.sh --bun
+          ./install.sh --node
 
       - name: Build
         run: |
           chmod +x ./build.sh
-          ./build.sh --bun
+          ./build.sh --node
 
       - name: Setup Environment Variables for Artifacts
         run: echo "ARCHIVE_NAME=production_output_$(date +%s).tar.gz" >> $GITHUB_ENV

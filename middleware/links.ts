@@ -1,15 +1,4 @@
-const findLongestScrollableParent = (el: any) => {
-    let parent = el.parentElement
-    while (parent) {
-        if (parent.scrollHeight > parent.clientHeight) {
-            return parent
-        }
-        parent = parent.parentElement
-    }
-    return document.documentElement
-}
-
-export default defineNuxtRouteMiddleware(async (to, from) => {
+export default defineNuxtRouteMiddleware(async (to: any, from: any) => {
     if (to.path.startsWith('/api/')) {
         return
     }
