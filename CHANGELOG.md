@@ -1,3 +1,10 @@
+## [1.25.6](https://github.com/necodeus/blog-nuxt/compare/v1.25.5...v1.25.6) (2024-02-14)
+
+
+### Bug Fixes
+
+* comments test ([848da68](https://github.com/necodeus/blog-nuxt/commit/848da688106b418bc40785eedb40505a7f5a4f0f))
+
 ## [1.25.5](https://github.com/necodeus/blog-nuxt/compare/v1.25.4...v1.25.5) (2024-02-14)
 
 
