@@ -1,3 +1,10 @@
+## [1.25.4](https://github.com/necodeus/blog-nuxt/compare/v1.25.3...v1.25.4) (2024-02-14)
+
+
+### Bug Fixes
+
+* add console logs ([e992479](https://github.com/necodeus/blog-nuxt/commit/e992479c90378d93961127550ce827091edc9436))
+
 ## [1.25.3](https://github.com/necodeus/blog-nuxt/compare/v1.25.2...v1.25.3) (2024-02-14)
 
 
