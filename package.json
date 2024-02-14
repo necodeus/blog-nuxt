@@ -11,7 +11,7 @@
     "upgrade": "nuxi upgrade --force"
   },
   "devDependencies": {
-    "@commitlint/cli": "^18.6.1",
+    "@commitlint/cli": "^18.6.0",
     "@commitlint/config-conventional": "^18.6.2",
     "@nuxtjs/partytown": "^1.4.0",
     "@nuxtjs/tailwindcss": "^6.11.4",
