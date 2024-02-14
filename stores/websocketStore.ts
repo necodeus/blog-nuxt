@@ -9,7 +9,9 @@ export const useWebSocketStore = defineStore('websocket', () => {
     function connect() {
         return new Promise((resolve, reject) => {
             if (!isConnected.value && !websocket) {
-                websocket = new WebSocket('ws://localhost:8090');
+                const websocketAddress = useRuntimeConfig().public.WEBSOCKET_ADDRESS;
+
+                websocket = new WebSocket(websocketAddress);
     
                 websocket.onopen = () => {
                     isConnected.value = true;
