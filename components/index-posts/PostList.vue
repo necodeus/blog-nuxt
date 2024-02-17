@@ -4,7 +4,7 @@
             <div class="flex items-center">
                 <picture>
                     <img 
-                        :src="post?.author_avatar_url"
+                        :src="`${post?.author_avatar_url}/25x25`"
                         loading="lazy"
                         class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"
                     />
