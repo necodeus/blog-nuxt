@@ -63,7 +63,7 @@
     <BasicSection width="var(--main-width)" class="component-border-vertical">
       <Content v-if="!pendingPost && data?.post?.id" :content="data?.post?.content ?? ''" />
       <ContentPlaceholder v-else />
-      <div class="component-border-top font-jost p-[30px]">
+      <div class="component-border-top p-[7px]">
         <PostAuthor v-if="!pendingPost && data?.post?.id" :profile="data.postAuthor" />
         <PostAuthorPlaceholder v-else />
       </div>
