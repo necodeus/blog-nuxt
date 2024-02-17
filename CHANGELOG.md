@@ -1,3 +1,10 @@
+## [1.27.1](https://github.com/necodeus/blog-nuxt/compare/v1.27.0...v1.27.1) (2024-02-17)
+
+
+### Bug Fixes
+
+* use 25x25 thumbnail for author avatar ([6396e97](https://github.com/necodeus/blog-nuxt/commit/6396e97a51f4f8889ae25945dd2f89786ad02a79))
+
 # [1.27.0](https://github.com/necodeus/blog-nuxt/compare/v1.26.0...v1.27.0) (2024-02-17)
 
 
