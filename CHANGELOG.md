@@ -1,3 +1,10 @@
+# [1.26.0](https://github.com/necodeus/blog-nuxt/compare/v1.25.8...v1.26.0) (2024-02-17)
+
+
+### Features
+
+* refine post author component ([c787191](https://github.com/necodeus/blog-nuxt/commit/c7871915fb943950f3f1a94a6ad8d426079a36d1))
+
 ## [1.25.8](https://github.com/necodeus/blog-nuxt/compare/v1.25.7...v1.25.8) (2024-02-14)
 
 
