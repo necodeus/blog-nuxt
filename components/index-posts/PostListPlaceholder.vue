@@ -2,13 +2,13 @@
     <ul class="font-jost inline-flex flex-col">
         <li class="list relative" v-for="p in repeats" :key="p">
             <div class="flex items-center">
-                <div class="text-[16px] animated-background"><b class="font-semibold">Anonim</b></div>
+                <div class="min-w-[25px] max-w-[25px] min-h-[25px] max-h-[25px] bg-cover bg-center !rounded-[50%] bg-[#eee] object-cover"></div>
+                <div class="ml-[10px] text-[16px] animated-background"><b class="font-semibold">John Doe</b></div>
                 <div class="div-separator"></div>
                 <div class="text-[16px] animated-background">nieznany czas temu</div>
             </div>
-
             <h1 class="flex mt-[10px]">
-                <span class="text-[38px] animated-background">Mauris sed pulvinar ipsum.</span>
+                <span class="text-[38px] animated-background">Mauris sed pulvinar ipsum</span>
             </h1>
         </li>
     </ul>
