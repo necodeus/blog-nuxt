@@ -1,3 +1,10 @@
+# [1.27.0](https://github.com/necodeus/blog-nuxt/compare/v1.26.0...v1.27.0) (2024-02-17)
+
+
+### Features
+
+* authors on hp listing ([6b202f3](https://github.com/necodeus/blog-nuxt/commit/6b202f3c5b90a2f2a36ecf5b331280fe31f65bbc))
+
 # [1.26.0](https://github.com/necodeus/blog-nuxt/compare/v1.25.8...v1.26.0) (2024-02-17)
 
 
