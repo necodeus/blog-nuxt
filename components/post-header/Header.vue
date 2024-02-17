@@ -38,7 +38,7 @@
             <div class="flex items-center mb-[10px]">
                 <Stars :postId="postId" /> 
                 <div class="div-separator"></div>
-                <CommentLink id="comments" class="font-medium">{{ numberOfComments }} komentarzy</CommentLink>
+                <CommentLink id="comments" class="font-medium">{{ numberOfComments }} {{ numberOfCommentsStringPL }}</CommentLink>
             </div>
             <span class="text-[20px] leading-[35px]">{{ teaser }}</span>
         </div>
@@ -85,6 +85,21 @@ const props = defineProps({
         required: false,
         default: () => 0
     }
+})
+
+const numberOfCommentsStringPL = computed(() => {
+    const onesDigit = props.numberOfComments % 10;
+    const tensInRange = props.numberOfComments % 100;
+
+    if (onesDigit === 1 && tensInRange !== 11) {
+        return 'komentarz';
+    }
+
+    if (onesDigit >= 2 && onesDigit <= 4 && (tensInRange < 10 || tensInRange >= 20)) {
+        return 'komentarze';
+    }
+
+    return 'komentarzy';
 })
 </script>
 
