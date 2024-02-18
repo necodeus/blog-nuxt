@@ -1,3 +1,10 @@
+## [1.27.4](https://github.com/necodeus/blog-nuxt/compare/v1.27.3...v1.27.4) (2024-02-18)
+
+
+### Bug Fixes
+
+* wrong post id passed to wss ([9de16d7](https://github.com/necodeus/blog-nuxt/commit/9de16d73fcf126be89ef524dc0a54d8fa1c6d82b))
+
 ## [1.27.3](https://github.com/necodeus/blog-nuxt/compare/v1.27.2...v1.27.3) (2024-02-18)
 
 
