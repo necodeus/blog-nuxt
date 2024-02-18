@@ -129,12 +129,12 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 onMounted(async () => {
     await blogStore.init();
 
-    if (data.value?.post?.id) {
-        blogStore.fetchPostRating(data.value?.post?.id)
-    }
+    blogStore.fetchPostRating(data.value?.post?.id)
 });
 
 watch([pending, data], ([newPending, newData]) => {
+    blogStore.fetchPostRating(data.value?.post?.id)
+
     if (!newPending && !newData?.post?.id) {
         showError({
             statusCode: 404,
