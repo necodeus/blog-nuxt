@@ -28,7 +28,7 @@
         <BasicSection width="var(--main-width)" class="component-border-vertical" v-if="!isError">
             <div>
                 <Header
-                    v-if="!isError && data?.post?.id"
+                    v-if="data?.post?.id"
                     :image="data?.post?.main_image_url ?? ''"
                     :name="data?.post?.title ?? ''"
                     :timeAgo="data?.post?.modified_at ?? ''"
@@ -42,7 +42,7 @@
                     :numberOfComments="data?.post?.comments_count"
                 />
                 <HeaderPlaceholder
-                    v-if="!isError && !data?.post?.id"
+                    v-if="!data?.post?.id"
                     image=""
                     name="Aliquam erat volutpat"
                     timeAgo="2024-01-01 03:37:37"
