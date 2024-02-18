@@ -1,3 +1,10 @@
+## [1.27.5](https://github.com/necodeus/blog-nuxt/compare/v1.27.4...v1.27.5) (2024-02-18)
+
+
+### Bug Fixes
+
+* error handling ([44b41bc](https://github.com/necodeus/blog-nuxt/commit/44b41bc394fc987ec3d3da49fa6ee92f985612bf))
+
 ## [1.27.4](https://github.com/necodeus/blog-nuxt/compare/v1.27.3...v1.27.4) (2024-02-18)
 
 
