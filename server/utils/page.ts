@@ -5,6 +5,11 @@ export const getPageData = cachedFunction(async (slug: string) => {
     console.log(`${PAPER_API_URL}/page?slug=${slug}`)
 
     return await $fetch(`${PAPER_API_URL}/page?slug=${slug}`)
+        .catch(() => {
+            return {
+                error: true,
+            }
+        })
 }, {
     maxAge: 3,
     name: 'getPageData',

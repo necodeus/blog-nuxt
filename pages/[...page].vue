@@ -1,5 +1,5 @@
 <template>
-    <Head v-if="!pending">
+    <Head v-if="!pending && data?.post">
         <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
         <Meta name="description" :content="data?.post?.teaser" />
     </Head>
@@ -127,6 +127,15 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 }
 
 onMounted(async () => {
+    if (data?.value?.error) {
+        showError({
+            statusCode: 404,
+            message: 'Strona nie znaleziona',
+        });
+
+        return
+    }
+
     await blogStore.init();
 
     if (data.value?.post?.id) {
@@ -139,15 +148,6 @@ watch([pending, data], ([newPending, newData]) => {
     // When data is loaded, fetch post rating
     if (!newPending && newData?.post?.id) {
         blogStore.fetchPostRating(newData?.post?.id)
-    }
-
-    // When data is loaded and there is no post, show 404
-    if (!newPending && !newData?.post?.id) {
-        showError({
-            statusCode: 404,
-
-            message: 'Strona nie znaleziona',
-        });
     }
 });
 
