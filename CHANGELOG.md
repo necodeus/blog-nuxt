@@ -1,3 +1,10 @@
+## [1.27.2](https://github.com/necodeus/blog-nuxt/compare/v1.27.1...v1.27.2) (2024-02-17)
+
+
+### Bug Fixes
+
+* add dynamic comment count text generation ([e3ba453](https://github.com/necodeus/blog-nuxt/commit/e3ba4536afb27ca5bc064d77701074fe66630367))
+
 ## [1.27.1](https://github.com/necodeus/blog-nuxt/compare/v1.27.0...v1.27.1) (2024-02-17)
 
 
