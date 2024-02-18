@@ -27,6 +27,12 @@ export const useBlogStore = defineStore('blog', () => {
         });
     }
 
+    function getConnection() {
+        const websocketStore = useWebSocketStore();
+
+        return websocketStore.isConnected;
+    }
+
     function fetchPostRating(postId: any) {
         const websocketStore = useWebSocketStore();
 
@@ -109,7 +115,7 @@ export const useBlogStore = defineStore('blog', () => {
     return {
         clientsCount,
         postRatings, postComments,
-        init,
+        init, getConnection,
         fetchPostRating, updatePostRating, fetchCommentsForPost,
         addComment, upvoteComment, downvoteComment,
         getRatingForPost, getCommentsForPost,

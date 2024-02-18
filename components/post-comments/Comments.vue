@@ -13,11 +13,13 @@
 
 <script setup>
 import { useBlogStore } from '../../stores/blogStore'
+import { useWebSocketStore } from '../../stores/websocketStore';
 
 const {
     fetchCommentsForPost,
     getCommentsForPost,
     addComment,
+    getConnection,
 } = useBlogStore()
 
 const props = defineProps({
@@ -42,10 +44,8 @@ const actionHandler = (payload) => {
 const isCommentsVisible = ref(false)
 
 const commentsVisibility = (isVisible) => {
-    console.log('commentsVisibility', isVisible)
-
-    if (!isCommentsVisible.value && isVisible) {
-        console.log('Fetching comments')
+    if (!isCommentsVisible.value && isVisible && getConnection()) {
+        console.log('Fetching comments for post', props.postId)
 
         fetchCommentsForPost(props.postId)
         isCommentsVisible.value = true
