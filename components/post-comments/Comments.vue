@@ -44,7 +44,7 @@ const isCommentsVisible = ref(false)
 const commentsVisibility = (isVisible) => {
     console.log('commentsVisibility', isVisible)
 
-    if (!isCommentsVisible.value) {
+    if (!isCommentsVisible.value && isVisible) {
         console.log('Fetching comments')
 
         fetchCommentsForPost(props.postId)
