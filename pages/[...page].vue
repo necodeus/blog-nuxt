@@ -129,12 +129,19 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 onMounted(async () => {
     await blogStore.init();
 
-    blogStore.fetchPostRating(data.value?.post?.id)
+    if (data.value?.post?.id) {
+        blogStore.fetchPostRating(data.value?.post?.id)
+    }
 });
 
+// Handle pending and data changes
 watch([pending, data], ([newPending, newData]) => {
-    blogStore.fetchPostRating(data.value?.post?.id)
+    // When data is loaded, fetch post rating
+    if (!newPending && newData?.post?.id) {
+        blogStore.fetchPostRating(newData?.post?.id)
+    }
 
+    // When data is loaded and there is no post, show 404
     if (!newPending && !newData?.post?.id) {
         showError({
             statusCode: 404,
@@ -144,13 +151,16 @@ watch([pending, data], ([newPending, newData]) => {
     }
 });
 
+// Handle hash change
 watch(
     router.currentRoute,
     () => {
+        // Do nothing if there is no hash
         if (!router.currentRoute.value.hash) {
             return
         }
 
+        // When there is a hash, remove it from the URL
         router.replace(router.currentRoute.value.path)
     },
     {
