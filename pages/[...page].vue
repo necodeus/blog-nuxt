@@ -95,7 +95,13 @@ const router = useRouter()
 const isBottomAdVisible = ref(false)
 const isTopAdVisible = ref(false)
 
-const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`)
+const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`, {
+  onResponse: (response) => {
+    if (response.status === 404) {
+      throw new Error('Not found')
+    }
+  },
+})
 
 const topAdVisible = (isVisible: boolean) => {
   if (isVisible) {
@@ -123,7 +129,7 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 
 onMounted(async () => {
     await blogStore.init();
-    blogStore.fetchPostRating(data?.post?.id);
+    blogStore.fetchPostRating(data.value?.post?.id);
 })
 
 watch(router.currentRoute, () => {
