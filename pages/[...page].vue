@@ -142,12 +142,11 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 }
 
 onMounted(async () => {
-    if (isError) {
-        return
-    }
-
     await blogStore.init();
-    blogStore.fetchPostRating(data.value?.post?.id)
+
+    if (data.value?.post?.id) {
+        blogStore.fetchPostRating(data.value?.post?.id)
+    }
 });
 
 watch(
