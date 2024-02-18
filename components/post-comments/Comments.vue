@@ -44,7 +44,7 @@ const actionHandler = (payload) => {
 const isCommentsVisible = ref(false)
 
 const commentsVisibility = (isVisible) => {
-    if (!isCommentsVisible.value && isVisible && getConnection()) {
+    if (!isCommentsVisible.value && isVisible && getConnection() && props.postId && props.postId.length > 0) {
         console.log('Fetching comments for post', props.postId)
 
         fetchCommentsForPost(props.postId)
