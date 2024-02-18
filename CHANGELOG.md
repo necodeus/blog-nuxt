@@ -1,3 +1,10 @@
+## [1.27.6](https://github.com/necodeus/blog-nuxt/compare/v1.27.5...v1.27.6) (2024-02-18)
+
+
+### Bug Fixes
+
+* data in websocket & handling pending state ([e0d4b7c](https://github.com/necodeus/blog-nuxt/commit/e0d4b7c8dc9e68f80e37a8c5bd641b1731b2bd21))
+
 ## [1.27.5](https://github.com/necodeus/blog-nuxt/compare/v1.27.4...v1.27.5) (2024-02-18)
 
 
