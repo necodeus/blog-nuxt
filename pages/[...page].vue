@@ -70,7 +70,10 @@
     </BasicSection>
   </SectionWrapper>
 
-  <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible">
+  <SectionWrapper
+    width="var(--desktop-main-content-width)"
+    v-observe-visibility="bottomAdVisible"
+  >
     <template #aside>
       <StickySection width="334px">
         <div class="m-[7px]">
@@ -86,59 +89,63 @@
 </template>
 
 <script lang="ts" setup>
-import { useBlogStore } from '../stores/blogStore';
+import { useBlogStore } from "../stores/blogStore";
 const blogStore = useBlogStore();
 
-const route = useRoute()
-const router = useRouter()
+const router = useRouter();
 
-const isBottomAdVisible = ref(false)
-const isTopAdVisible = ref(false)
+const isBottomAdVisible = ref(false);
+const isTopAdVisible = ref(false);
 
-const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`, {
-  onResponse: (response) => {
-    if (response.status === 404) {
-      throw new Error('Not found')
-    }
-  },
-})
+const $store = useNuxtApp();
+
+const data = $store.$requestData;
+const pending = $store.$requestDataPending;
+
+definePageMeta({
+  middleware: ["page"],
+});
 
 const topAdVisible = (isVisible: boolean) => {
   if (isVisible) {
-    isTopAdVisible.value = true
-    return
+    isTopAdVisible.value = true;
+    return;
   }
-}
+};
 
 const bottomAdVisible = (isVisible: boolean) => {
   if (isVisible) {
-    isBottomAdVisible.value = true
-    return
+    isBottomAdVisible.value = true;
+    return;
   }
-}
+};
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
-  const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, '');
+  const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, "");
 
-  return [...cleanedMarkdownText.matchAll(/^(#+)\s*(.*)$/gm)].map(match => {
+  return [...cleanedMarkdownText.matchAll(/^(#+)\s*(.*)$/gm)].map((match) => {
     const title = match[2].trim();
-    const id = encodeURIComponent(title.toLowerCase().replace(/\s+/g, '-'));
+    const id = encodeURIComponent(title.toLowerCase().replace(/\s+/g, "-"));
     return { title, id };
   });
 }
 
 onMounted(async () => {
-    await blogStore.init();
-    blogStore.fetchPostRating(data.value?.post?.id);
-})
+  await blogStore.init();
+  blogStore.fetchPostRating(data.value?.post?.id);
+});
 
-watch(router.currentRoute, () => {
-  if (!router.currentRoute.value.hash) {
-    return
+watch(
+  router.currentRoute,
+  () => {
+    if (!router.currentRoute.value.hash) {
+      return;
+    }
+
+    router.replace(router.currentRoute.value.path);
+  },
+  {
+    immediate: true,
   }
-
-  router.replace(router.currentRoute.value.path)
-}, {
-  immediate: true,
-})
+);
 </script>
