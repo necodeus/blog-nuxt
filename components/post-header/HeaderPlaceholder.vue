@@ -74,10 +74,6 @@ const props = defineProps({
         type: String,
         required: true
     },
-    averageRating: {
-        type: Number,
-        required: true
-    },
     numberOfComments: {
         type: Number,
         required: true

@@ -12,9 +12,9 @@
     </MainContainer>
 
     <AsideContainer class="component-border-vertical">
-        <BasicSection v-if="!isHomePage">
+        <!-- <BasicSection>
             <OtherPosts />
-        </BasicSection>
+        </BasicSection> -->
         <BasicSection>
             <ExternalLinks />
         </BasicSection>

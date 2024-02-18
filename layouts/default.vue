@@ -2,7 +2,7 @@
     <Head>
         <Meta name="theme-color" content="#fff" />
     </Head>
-    
+
     <MainContainer>
         <NuxtPage />
     </MainContainer>

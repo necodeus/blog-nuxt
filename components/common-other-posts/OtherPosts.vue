@@ -12,5 +12,5 @@ const getData = (posts = []) => {
 	return posts?.filter((post) => post.slug !== currentRoute) || []
 }
 
-const { data, pending } = useFetch('/api/posts')
+const { data, pending } = useFetch('/api/_index')
 </script>

@@ -1,5 +1,5 @@
 <template>
-  <Head v-if="!pendingPost && data?.post?.id">
+  <Head v-if="!pending && data?.post?.id">
     <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
     <Meta name="description" :content="data?.post?.teaser" />
   </Head>
@@ -20,7 +20,7 @@
     <BasicSection width="var(--main-width)" class="component-border-vertical">
       <div>
         <Header
-          v-if="!pendingPost && data?.post?.id"
+          v-if="!pending && data?.post?.id"
           :image="data?.post?.main_image_url ?? ''"
           :name="data?.post?.title ?? ''"
           :timeAgo="data?.post?.modified_at ?? ''"
@@ -61,10 +61,10 @@
     </BasicSection>
 
     <BasicSection width="var(--main-width)" class="component-border-vertical">
-      <Content v-if="!pendingPost && data?.post?.id" :content="data?.post?.content ?? ''" />
+      <Content v-if="!pending && data?.post?.id" :content="data?.post?.content ?? ''" />
       <ContentPlaceholder v-else />
       <div class="component-border-top p-[7px]">
-        <PostAuthor v-if="!pendingPost && data?.post?.id" :profile="data.postAuthor" />
+        <PostAuthor v-if="!pending && data?.post?.id" :profile="data.postAuthor" />
         <PostAuthorPlaceholder v-else />
       </div>
     </BasicSection>
@@ -86,33 +86,30 @@
 </template>
 
 <script lang="ts" setup>
-import moment from "moment/min/moment-with-locales"
-moment.locale("pl")
-
-definePageMeta({
-    middleware: ['links'],
-})
+import { useBlogStore } from '../stores/blogStore';
+const blogStore = useBlogStore();
 
 const route = useRoute()
+const router = useRouter()
 
 const isBottomAdVisible = ref(false)
 const isTopAdVisible = ref(false)
 
-const topAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
+const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`)
+
+const topAdVisible = (isVisible: boolean) => {
   if (isVisible) {
     isTopAdVisible.value = true
     return
   }
 }
 
-const bottomAdVisible = (isVisible: boolean, disconnectObserver: () => void) => {
+const bottomAdVisible = (isVisible: boolean) => {
   if (isVisible) {
     isBottomAdVisible.value = true
     return
   }
 }
-
-const { data, pending: pendingPost } = useFetch<any>(`/api/posts/${route.meta.content_id}`)
 
 function extractMarkdownHeadersWithIds(markdownText: any) {
   const cleanedMarkdownText = markdownText.replace(/```[\s\S]*?```/g, '');
@@ -124,16 +121,10 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
   });
 }
 
-import { useBlogStore } from '../stores/blogStore';
-
-const blogStore = useBlogStore();
-
 onMounted(async () => {
     await blogStore.init();
-    blogStore.fetchPostRating(route.meta.content_id);
+    blogStore.fetchPostRating(route.meta.pageData.post.id);
 })
-
-const router = useRouter()
 
 watch(router.currentRoute, () => {
   if (!router.currentRoute.value.hash) {
