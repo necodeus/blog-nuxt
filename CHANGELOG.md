@@ -1,3 +1,10 @@
+## [1.28.3](https://github.com/necodeus/blog-nuxt/compare/v1.28.2...v1.28.3) (2024-02-18)
+
+
+### Bug Fixes
+
+* add extra check to ensure websocket is connected ([1271f3d](https://github.com/necodeus/blog-nuxt/commit/1271f3dff2af21b8461665c296361f370a15cb2d))
+
 ## [1.28.2](https://github.com/necodeus/blog-nuxt/compare/v1.28.1...v1.28.2) (2024-02-18)
 
 
