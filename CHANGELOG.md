@@ -1,3 +1,10 @@
+## [1.28.1](https://github.com/necodeus/blog-nuxt/compare/v1.28.0...v1.28.1) (2024-02-18)
+
+
+### Bug Fixes
+
+* comments ([80fdd01](https://github.com/necodeus/blog-nuxt/commit/80fdd0181b468c8fe670ced9d27d9e40f15ae69e))
+
 # [1.28.0](https://github.com/necodeus/blog-nuxt/compare/v1.27.8...v1.28.0) (2024-02-18)
 
 
