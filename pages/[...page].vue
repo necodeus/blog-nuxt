@@ -1,5 +1,5 @@
 <template>
-    <Head v-if="!pending && data?.post?.id">
+    <Head v-if="data?.post?.id">
         <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
         <Meta name="description" :content="data?.post?.teaser" />
     </Head>
@@ -17,10 +17,18 @@
         TabletAdv
         </BasicSection> -->
 
-        <BasicSection width="var(--main-width)" class="component-border-vertical">
+        <MainContainer v-if="isError">
+            <SectionWrapper width="var(--desktop-main-content-width)">
+                <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
+                    <ErrorHeader :code="404" :message="'Strona nie została znaleziona'" />
+                </BasicSection>
+            </SectionWrapper>
+        </MainContainer>
+
+        <BasicSection width="var(--main-width)" class="component-border-vertical" v-if="!isError">
             <div>
                 <Header
-                    v-if="!pending && data?.post?.id"
+                    v-if="!isError && data?.post?.id"
                     :image="data?.post?.main_image_url ?? ''"
                     :name="data?.post?.title ?? ''"
                     :timeAgo="data?.post?.modified_at ?? ''"
@@ -34,7 +42,7 @@
                     :numberOfComments="data?.post?.comments_count"
                 />
                 <HeaderPlaceholder
-                    v-else
+                    v-if="!isError && !data?.post?.id"
                     image=""
                     name="Aliquam erat volutpat"
                     timeAgo="2024-01-01 03:37:37"
@@ -48,7 +56,7 @@
         </BasicSection>
     </SectionWrapper>
 
-    <SectionWrapper width="var(--desktop-main-content-width)">
+    <SectionWrapper width="var(--desktop-main-content-width)" v-if="!isError">
         <template #aside>
             <StickySection width="334px">
                 <div class="m-[7px]">
@@ -64,16 +72,17 @@
         </BasicSection>
 
         <BasicSection width="var(--main-width)" class="component-border-vertical">
-            <Content v-if="!pending && data?.post?.id" :content="data?.post?.content ?? ''" />
-            <ContentPlaceholder v-else />
+            <Content v-if="data?.post?.id" :content="data?.post?.content ?? ''" />
+            <ContentPlaceholder v-if="!data?.post?.id" />
+
             <div class="component-border-top p-[7px]">
-                <PostAuthor v-if="!pending && data?.post?.id" :profile="data.postAuthor" />
-                <PostAuthorPlaceholder v-else />
+                <PostAuthor v-if="data?.post?.id" :profile="data.postAuthor" />
+                <PostAuthorPlaceholder v-if="!data?.post?.id" />
             </div>
         </BasicSection>
     </SectionWrapper>
 
-    <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible">
+    <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible" v-if="!isError">
         <template #aside>
             <StickySection width="334px">
                 <div class="m-[7px]">
@@ -100,23 +109,21 @@ const isTopAdVisible = ref(false)
 const $store = useNuxtApp()
 
 const data = $store.$requestData
-const pending = $store.$requestDataPending
+const isError = computed(() => $store.$requestDataPending.value === false && $store.$requestData.value?.post === undefined);
 
 definePageMeta({
-  middleware: ["page"],
+    middleware: ["page"],
 });
 
 const topAdVisible = (isVisible: boolean) => {
-  if (isVisible) {
-    isTopAdVisible.value = true
-    return;
-  }
+    if (isVisible) {
+        isTopAdVisible.value = true
+    }
 };
 
 const bottomAdVisible = (isVisible: boolean) => {
     if (isVisible) {
         isBottomAdVisible.value = true
-        return;
     }
 };
 
@@ -135,8 +142,12 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 }
 
 onMounted(async () => {
+    if (isError) {
+        return
+    }
+
     await blogStore.init();
-    blogStore.fetchPostRating(data?.post?.id)
+    blogStore.fetchPostRating(data.value?.post?.id)
 });
 
 watch(
