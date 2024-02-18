@@ -1,5 +1,5 @@
 <template>
-    <Head v-if="data?.post?.id">
+    <Head v-if="!pending">
         <Title>{{ data?.post?.title }} - blog.necodeo.com</Title>
         <Meta name="description" :content="data?.post?.teaser" />
     </Head>
@@ -17,15 +17,7 @@
         TabletAdv
         </BasicSection> -->
 
-        <MainContainer v-if="isError">
-            <SectionWrapper width="var(--desktop-main-content-width)">
-                <BasicSection width="var(--main-width)" class="component-border-vertical lg:h-[100vh]">
-                    <ErrorHeader :code="404" :message="'Strona nie została znaleziona'" />
-                </BasicSection>
-            </SectionWrapper>
-        </MainContainer>
-
-        <BasicSection width="var(--main-width)" class="component-border-vertical" v-if="!isError">
+        <BasicSection width="var(--main-width)" class="component-border-vertical">
             <div>
                 <Header
                     v-if="data?.post?.id"
@@ -56,7 +48,7 @@
         </BasicSection>
     </SectionWrapper>
 
-    <SectionWrapper width="var(--desktop-main-content-width)" v-if="!isError">
+    <SectionWrapper width="var(--desktop-main-content-width)">
         <template #aside>
             <StickySection width="334px">
                 <div class="m-[7px]">
@@ -82,7 +74,7 @@
         </BasicSection>
     </SectionWrapper>
 
-    <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible" v-if="!isError">
+    <SectionWrapper width="var(--desktop-main-content-width)" v-observe-visibility="bottomAdVisible">
         <template #aside>
             <StickySection width="334px">
                 <div class="m-[7px]">
@@ -106,14 +98,7 @@ const router = useRouter()
 const isBottomAdVisible = ref(false)
 const isTopAdVisible = ref(false)
 
-const $store = useNuxtApp()
-
-const data = $store.$requestData
-const isError = computed(() => $store.$requestDataPending.value === false && $store.$requestData.value?.post === undefined);
-
-definePageMeta({
-    middleware: ["page"],
-});
+const { data, pending } = useFetch<any>(`/api/_page?path=${router.currentRoute.value.path}`)
 
 const topAdVisible = (isVisible: boolean) => {
     if (isVisible) {
@@ -146,6 +131,16 @@ onMounted(async () => {
 
     if (data.value?.post?.id) {
         blogStore.fetchPostRating(data.value?.post?.id)
+    }
+});
+
+watch([pending, data], ([newPending, newData]) => {
+    if (!newPending && !newData?.post?.id) {
+        showError({
+            statusCode: 404,
+
+            message: 'Strona nie znaleziona',
+        });
     }
 });
 

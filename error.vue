@@ -12,9 +12,9 @@
     </MainContainer>
 
     <AsideContainer class="component-border-vertical">
-        <!-- <BasicSection>
+        <BasicSection>
             <OtherPosts />
-        </BasicSection> -->
+        </BasicSection>
         <BasicSection>
             <ExternalLinks />
         </BasicSection>
