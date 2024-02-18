@@ -1,3 +1,10 @@
+## [1.27.8](https://github.com/necodeus/blog-nuxt/compare/v1.27.7...v1.27.8) (2024-02-18)
+
+
+### Bug Fixes
+
+* fix post rating fetching ([a9442c9](https://github.com/necodeus/blog-nuxt/commit/a9442c9d210175d5cce1053342c89ebf38dee9b0))
+
 ## [1.27.7](https://github.com/necodeus/blog-nuxt/compare/v1.27.6...v1.27.7) (2024-02-18)
 
 
