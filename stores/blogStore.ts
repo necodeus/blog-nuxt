@@ -29,6 +29,8 @@ export const useBlogStore = defineStore('blog', () => {
     function fetchPostRating(postId: any) {
         const websocketStore = useWebSocketStore();
 
+        console.log('fetchPostRating', postId);
+
         websocketStore.sendMessage({
             type: 'GET_POST_RATING',
             postId: postId,
@@ -37,6 +39,8 @@ export const useBlogStore = defineStore('blog', () => {
 
     function updatePostRating(postId: any, value: any) {
         const websocketStore = useWebSocketStore();
+
+        console.log('updatePostRating', postId, value);
 
         websocketStore.sendMessage({
             type: 'UPDATE_POST_RATING',
@@ -48,9 +52,48 @@ export const useBlogStore = defineStore('blog', () => {
     function fetchCommentsForPost(postId: any) {
         const websocketStore = useWebSocketStore();
 
+        console.log('fetchCommentsForPost', postId);
+
         websocketStore.sendMessage({
             type: 'GET_POST_COMMENTS',
             postId: postId,
+        });
+    }
+
+    function addComment(postId: string, comment: string, parentId: string | null = null) {
+        const websocketStore = useWebSocketStore();
+
+        console.log('addComment', postId, comment);
+
+        websocketStore.sendMessage({
+            type: 'ADD_COMMENT',
+            postId,
+            commentId: parentId,
+            commentText: comment,
+        });
+    }
+
+    function upvoteComment(postId: any, commentId: any) {
+        const websocketStore = useWebSocketStore();
+
+        console.log('upvoteComment', postId, commentId);
+
+        websocketStore.sendMessage({
+            type: 'UPVOTE_COMMENT',
+            postId,
+            commentId,
+        });
+    }
+
+    function downvoteComment(postId: any, commentId: any) {
+        const websocketStore = useWebSocketStore();
+
+        console.log('downvoteComment', postId, commentId);
+
+        websocketStore.sendMessage({
+            type: 'DOWNVOTE_COMMENT',
+            postId,
+            commentId,
         });
     }
 
@@ -67,6 +110,7 @@ export const useBlogStore = defineStore('blog', () => {
         postRatings, postComments,
         init,
         fetchPostRating, updatePostRating, fetchCommentsForPost,
+        addComment, upvoteComment, downvoteComment,
         getRatingForPost, getCommentsForPost,
     };
 });

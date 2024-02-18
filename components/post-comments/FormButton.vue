@@ -1,6 +1,6 @@
 <template>
     <button
-        class="bg-[black] text-[white] border-[#dfdfdf] w-full border-[0px] rounded-[16px] px-[22px] py-[14px] font-medium justify-center flex items-center relative"
+        class="bg-[black] text-[white] border-[#dfdfdf] w-full border-[0px] rounded-[7px] px-[22px] py-[14px] font-medium justify-center flex items-center relative"
         v-on:click.prevent="handleButtonClick">
         Wyślij
         <svg class="ml-2 w-[18px] h-[18px] min-w-[18px] min-h-[18px]" xmlns="http://www.w3.org/2000/svg" width="24"

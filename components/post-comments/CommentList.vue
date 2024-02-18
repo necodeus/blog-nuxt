@@ -56,8 +56,12 @@
 import moment from 'moment/min/moment-with-locales'
 import sha256 from 'js-sha256'
 
-// import { useBlogStore } from '../../stores/blogStore'
-// const { send } = useBlogStore()
+import { useBlogStore } from '../../stores/blogStore'
+const {
+    upvoteComment,
+    downvoteComment,
+    addComment,
+} = useBlogStore()
 
 function getGravatarURL(name: any, size = 40) {
     const lowercaseName = String(name).trim().toLowerCase()
@@ -80,45 +84,23 @@ const actionHandler = (payload: any) => {
     switch (payload.action) {
         case 'EXPAND':
             expandReplies(payload.commentId)
-            // TODO: Pobierz odpowiedzi do komentarza
-            // send({
-            //     action: 'GET_COMMENT_REPLIES',
-            //     postId: payload.postId,
-            //     commentId: payload.commentId,
-            // })
             break
-        case 'COMMENT':
-            // TODO: Wyślij komentarz
-            // send({
-            //     ...payload,
-            //     action: 'ADD_COMMENT',
-            // })
+        case 'REPLY': {
+            addComment(props.postId, payload.replyText, payload.commentId)
             break
-        case 'REPLY':
-            // TODO: Wyślij komentarz
-            // send({
-            //     ...payload,
-            //     action: 'ADD_REPLY',
-            // })
-            break
+        }
         case 'UPVOTE':
-            // send({
-            //     ...payload,
-            //     action: 'UPVOTE_COMMENT',
-            // })
+            upvoteComment(props.postId, payload.commentId)
             break
         case 'DOWNVOTE':
-            // send({
-            //     ...payload,
-            //     action: 'DOWNVOTE_COMMENT',
-            // })
+            downvoteComment(props.postId, payload.commentId)
             break
     }
 }
 
 moment.locale("pl")
 
-defineProps({
+const props = defineProps({
     postId: {
         type: String,
         required: true,

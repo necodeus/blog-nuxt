@@ -46,7 +46,7 @@ const onReply = () => {
     actionHandler({
         action: 'REPLY',
         commentId,
-        replyText,
+        replyText: replyText.value,
     })
 
     if (clearOnAction) {

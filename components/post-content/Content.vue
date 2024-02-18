@@ -198,7 +198,7 @@ defineProps({
 
 .c-content pre.hljs {
     margin: 7px;
-    border-radius: 14px;
+    border-radius: 7px;
     position: relative;
     overflow: hidden;
 
@@ -302,7 +302,7 @@ defineProps({
 .c-content blockquote {
     margin: 0;
     background-color: #eee;
-    border-radius: 14px;
+    border-radius: 7px;
     font-style: italic;
     margin: 7px;
     padding: 42px 21px;

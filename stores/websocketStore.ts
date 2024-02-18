@@ -6,48 +6,60 @@ export const useWebSocketStore = defineStore('websocket', () => {
     let websocket: WebSocket | null = null;
     const messageHandlers: any = reactive({});
 
-    function connect() {
+    async function connect() {
         return new Promise((resolve, reject) => {
             if (!isConnected.value && !websocket) {
                 const websocketAddress = useRuntimeConfig().public.WEBSOCKET_ADDRESS;
 
                 websocket = new WebSocket(websocketAddress);
-    
+
                 websocket.onopen = () => {
-                    isConnected.value = true;
                     console.log('WebSocket połączony');
+                    isConnected.value = true;
                     resolve(true);
                 };
-    
+
                 websocket.onclose = () => {
-                    isConnected.value = false;
                     console.log('WebSocket rozłączony');
+                    isConnected.value = false;
                 };
-    
+
                 websocket.onmessage = (event) => {
+                    console.log('Odebrano wiadomość WebSocket:', JSON.parse(event.data));
                     handleIncomingMessage(event.data);
                 };
-    
+
                 websocket.onerror = (error) => {
                     console.log('Błąd WebSocket: ', error);
                     reject(error);
                 };
             } else {
-                resolve(true); 
+                resolve(true);
             }
         });
     }
 
     async function ensureConnected() {
+        console.log('Sprawdzanie połączenia WebSocket...');
+
         if (!isConnected.value) {
+            console.log('Brak połączenia WebSocket, próba ponownego połączenia');
             await connect();
+            isConnected.value = true;
+        } else {
+            console.log('OK!');
         }
     }
 
     async function sendMessage(message: any) {
         await ensureConnected();
+
         if (websocket) {
+            console.log('Wysyłanie wiadomości WebSocket:', message);
+
             websocket.send(JSON.stringify(message));
+        } else {
+            console.error('Wywołano sendMessage() przed połączeniem WebSocket');
         }
     }
 
@@ -68,6 +80,8 @@ export const useWebSocketStore = defineStore('websocket', () => {
     }
 
     function disconnect() {
+        console.log('Rozłączanie WebSocket');
+
         if (websocket) {
             websocket.close();
             isConnected.value = false;

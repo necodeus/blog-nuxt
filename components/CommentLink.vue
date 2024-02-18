@@ -43,10 +43,6 @@ const scrollTo = (id) => {
             top: commentsEl?.offsetTop,
             behavior: 'smooth',
         });
-        // parent.scrollTo({
-        //     top: hashEl.offsetTop + hashEl.parentElement.offsetTop,
-        //     behavior: 'smooth',
-        // })
     }, 10);
 }
 </script>
