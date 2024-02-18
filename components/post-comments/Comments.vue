@@ -41,12 +41,14 @@ const actionHandler = (payload) => {
 
 const isCommentsVisible = ref(false)
 
-const commentsVisibility = () => {
+const commentsVisibility = (isVisible) => {
+    console.log('commentsVisibility', isVisible)
+
     if (!isCommentsVisible.value) {
-        setTimeout(() => {
-            fetchCommentsForPost(props.postId)
-            isCommentsVisible.value = true
-        }, 50)
+        console.log('Fetching comments')
+
+        fetchCommentsForPost(props.postId)
+        isCommentsVisible.value = true
     }
 }
 </script>

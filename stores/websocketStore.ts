@@ -66,7 +66,9 @@ export const useWebSocketStore = defineStore('websocket', () => {
     function handleIncomingMessage(messageData: any) {
         try {
             const message = JSON.parse(messageData);
+
             const handler = messageHandlers[message.type];
+
             if (handler) {
                 handler(message);
             }

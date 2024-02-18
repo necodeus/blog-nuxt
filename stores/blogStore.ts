@@ -8,6 +8,7 @@ export const useBlogStore = defineStore('blog', () => {
 
     async function init() {
         const websocketStore = useWebSocketStore();
+
         await websocketStore.connect();
 
         websocketStore.onMessage('CLIENTS_COUNT', (message: any) => {
