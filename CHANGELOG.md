@@ -1,3 +1,10 @@
+# [1.28.0](https://github.com/necodeus/blog-nuxt/compare/v1.27.8...v1.28.0) (2024-02-18)
+
+
+### Features
+
+* add comments actions to websocketStore ([fc7b3fb](https://github.com/necodeus/blog-nuxt/commit/fc7b3fbe6777c847eed8523f2a9e96e9d86034d5))
+
 ## [1.27.8](https://github.com/necodeus/blog-nuxt/compare/v1.27.7...v1.27.8) (2024-02-18)
 
 
