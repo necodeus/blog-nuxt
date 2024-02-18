@@ -123,7 +123,7 @@ function extractMarkdownHeadersWithIds(markdownText: any) {
 
 onMounted(async () => {
     await blogStore.init();
-    blogStore.fetchPostRating(route.meta.pageData.post.id);
+    blogStore.fetchPostRating(data?.post?.id);
 })
 
 watch(router.currentRoute, () => {
